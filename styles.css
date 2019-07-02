@@ -1923,9 +1923,23 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
 .format-tiles .course-content .tiles.pinnedsections li.pinned .tile-top {
     display: none;
 }
+.format-tiles .course-content .tiles.pinnedsections li.pinned .tile-content .tile-text{
+    tiles pinnedsections
+    height: auto;
+    line-height: 1;
+    text-overflow: ellipsis;
+}
+
 .format-tiles .course-content .tiles.pinnedsections li.pinned .tile-textinner{
+    display: block;
+    max-width: 150px;
     position: relative;
     top: 10px;
+}
+.format-tiles .course-content .tiles.pinnedsections li.pinned .tile-textinner h3{
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+    overflow: hidden;
 }
 .format-tiles .course-content .tiles.pinnedsections li.pinned, .sectionname,
 .format-tiles .course-content .tiles.pinnedsections li.pinned h3{
