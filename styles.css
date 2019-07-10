@@ -67,9 +67,20 @@
     vertical-align: baseline;
 }
 
+.format-tiles ul.tiles li.section .left .section-handle.moodle-core-dragdrop-draghandle {
+    display: none;
+}
+
 .format-tiles ul.tiles li.section .activity-count {
     margin-right: 3px;
 }
+
+.format-tiles #page .course-content ul li.section.main.sectiondraggable {
+    border: 1px solid rgba(75, 126, 117, 0.15) !important;
+    background-color: rgba(75, 126, 117, 0.05) !important;
+    padding: 5px 5px 5px 10px;
+}
+
 
 li#section-0.section.main.clearfix {
     border-bottom: 0;
@@ -271,6 +282,12 @@ li#section-0.section.main.clearfix {
     padding: 0;
 }
 
+.format-tiles.editing ul.tiles#multi_section_tiles li.section.pinned {
+    background-image: url("[[pix:format_tiles|pushpin-lb]]");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+}
+
 .format-tiles .editing ul.tiles#multi_section_tiles li.section,
 .format-tiles ul.tiles#multi_section_tiles li#section-0.section {
     display: block;
@@ -285,6 +302,7 @@ li#section-0.section.main.clearfix {
     /* stop 'dot' background image in essential theme*/
     background-image: none;
     margin-top: 10px;
+    margin-left: 15px;
     padding-top: 12px;
 }
 .format-tiles .course-content ul li.section.main:target {
@@ -359,6 +377,15 @@ li#section-0.section.main.clearfix {
     border: none;
     box-shadow: none;
     visibility: hidden;
+}
+
+.format-tiles ul.tiles li.movehere {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.format-tiles ul.tiles li.movehere img.movetarget {
+    width: 80px;
 }
 
 .format-tiles .tile a,
@@ -1882,7 +1909,7 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
 .format-tiles .course-content .tiles.pinnedsections li.pinned {
   position: relative;
   background-color: #19284f;
-  background-image: url("[[pix:format_grid|pushpin]]");
+  background-image: url("[[pix:format_tiles|pushpin]]");
   background-size: 10%;
   background-position: 10px;
   background-repeat: no-repeat;
@@ -1945,4 +1972,10 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
 .format-tiles .course-content .tiles.pinnedsections li.pinned h3{
     font-size: 1em;
     color: #fff;
+}
+.format-tiles .course-content .tiles.pinnedsections li.pinned {
+  position: relative;
+  background-color: #19284f;
+  background-image: url("[[pix:format_tiles|pushpin]]");
+  background-size: 10%;
 }
