@@ -29,6 +29,7 @@
 defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/course/format/renderer.php');
 require_once($CFG->dirroot . '/course/format/tiles/locallib.php');
+require_once($CFG->dirroot . '/course/format/tiles/lib.php');
 
 /**
  * Basic renderer for tiles format.
@@ -100,7 +101,7 @@ class format_tiles_renderer extends format_section_renderer_base
      * @throws coding_exception
      * @throws moodle_exception
      */
-    public function section_edit_control_items($course, $section, $onsectionpage = false) {
+    public function section_edit_control_items($course, $section, $onsectionpage = false, $level = 0) {
         global $PAGE, $SESSION;
 
         if (!$PAGE->user_is_editing()) {
@@ -137,31 +138,33 @@ class format_tiles_renderer extends format_section_renderer_base
                     'attr' => array('class' => 'editing_highlight', 'title' => $markthistopic,
                         'data-action' => 'setmarker'));
             }
-            if ($section->pinned == 1) {  // alreday pinned section. show unpin icon
-                $url = course_get_url($course);
-                $url->param('pinned', 1);
-                $url->param('sesskey', sesskey());
-                $pinnedsection = get_string('pinnedsection', 'format_tiles');
-                $topuninsection = get_string('tounpinsection', 'format_tiles');
-                $controls['pinned'] = array('url' => $url, "icon" => 'i/unlock',
-                                               'name' => $topuninsection,
-                                               'pixattr' => array('class' => '', 'alt' => $pinnedsection),
-                                               'attr' => array('class' => 'editing_pinning tounpinsection', 'title' => $pinnedsection,
-                                               'data-action' => 'tounpinsection'));
-            } else {
-                $url = course_get_url($course);
-                $url->param('pinned', 0); // not pinned section. show pin icon
-                $url->param('sesskey', sesskey());
-                $unpinnedsection = get_string('unpinnedsection', 'format_tiles');
-                $topinsection = get_string('topinsection', 'format_tiles');
-                $controls['pinned'] = array('url' => $url, "icon" => 'i/lock',
-                                               'name' => $topinsection,
-                                               'pixattr' => array('class' => '', 'alt' => $unpinnedsection),
-                                               'attr' => array('class' => 'editing_highlight topinsection', 'title' => $unpinnedsection,
-                                               'data-action' => 'topinsection'));
+            if ($level == 0) {
+                if ($section->pinned == 1) {  // alreday pinned section. show unpin icon
+                    $url = course_get_url($course);
+                    $url->param('pinned', 1);
+                    $url->param('sesskey', sesskey());
+                    $pinnedsection = get_string('pinnedsection', 'format_tiles');
+                    $topuninsection = get_string('tounpinsection', 'format_tiles');
+                    $controls['pinned'] = array('url' => $url, "icon" => 'i/unlock',
+                                                   'name' => $topuninsection,
+                                                   'pixattr' => array('class' => '', 'alt' => $pinnedsection),
+                                                   'attr' => array('class' => 'editing_pinning tounpinsection', 'title' => $pinnedsection,
+                                                   'data-action' => 'tounpinsection'));
+                } else {
+                    $url = course_get_url($course);
+                    $url->param('pinned', 0); // not pinned section. show pin icon
+                    $url->param('sesskey', sesskey());
+                    $unpinnedsection = get_string('unpinnedsection', 'format_tiles');
+                    $topinsection = get_string('topinsection', 'format_tiles');
+                    $controls['pinned'] = array('url' => $url, "icon" => 'i/lock',
+                                                   'name' => $topinsection,
+                                                   'pixattr' => array('class' => '', 'alt' => $unpinnedsection),
+                                                   'attr' => array('class' => 'editing_highlight topinsection', 'title' => $unpinnedsection,
+                                                   'data-action' => 'topinsection'));
+                }
             }
         }
-
+        
         if (!$onsectionpage && $section->section && has_capability('moodle/course:update', $coursecontext)) {
             // Add controls to drop down menu on each editing tile for teacher to enter section, expand section etc.
             $urlparams = array('id' => $course->id, 'section' => $section->section);
@@ -220,7 +223,20 @@ class format_tiles_renderer extends format_section_renderer_base
         }
 
         $parentcontrols = parent::section_edit_control_items($course, $section, $onsectionpage);
-
+        
+        $endcontrols = array();
+        if (array_key_exists("delete", $parentcontrols) && $section->section && has_capability('moodle/course:update', $coursecontext)) {
+            unset($parentcontrols['delete']);
+            $url = course_get_url($course);
+            $url->param('deletesection', $section->section);
+            $url->param('sesskey', sesskey());
+            $deletesection = get_string('deletesection', 'format_tiles');
+            $endcontrols['delete'] = array('url' => $url, "icon" => 'i/delete',
+                                           'name' => $deletesection,
+                                           'pixattr' => array('class' => '', 'alt' => $deletesection),
+                                           'attr' => array('class' => '', 'title' => $deletesection));
+        }
+        
         // If the edit key exists, we are going to insert our controls after it.
         if (array_key_exists("edit", $parentcontrols)) {
             $merged = array();
@@ -233,11 +249,11 @@ class format_tiles_renderer extends format_section_renderer_base
                     $merged = array_merge($merged, $controls);
                 }
             }
-
-            return $merged;
         } else {
-            return array_merge($controls, $parentcontrols);
+            $merged = array_merge($controls, $parentcontrols);
         }
+        
+        return array_merge($merged, $endcontrols);
     }
 
     // @codingStandardsIgnoreStart - Override this here so we have access from the output class.
@@ -292,7 +308,6 @@ class format_tiles_renderer extends format_section_renderer_base
         
         $templateable = new \format_tiles\output\course_output($course, false, 0, $this->courserenderer);
         $data = $templateable->export_for_template($this);
-        $data['pinned'] = "<!-- PINNED[0] -->";
         echo $this->render_from_template('format_tiles/multi_section_page', $data);
     }
 
@@ -519,5 +534,156 @@ class format_tiles_renderer extends format_section_renderer_base
         $formatoptions->overflowdiv = true;
         $formatoptions->context = $context;
         return format_text($text, $record->contentformat, $formatoptions);
+    }
+    
+    
+    /**
+     * renders HTML for format_tiles_edit_control
+     *
+     * @param format_tiles_edit_control $control
+     * @return string
+     */
+    protected function render_format_tiles_edit_control(format_tiles_edit_control $control) {
+        if (!$control) {
+            return '';
+        }
+        if ($control->type === 'addsection') {
+            $icon = new pix_icon('t/add', '', 'moodle', array('class' => 'iconsmall'));
+            $text = $this->render($icon). html_writer::tag('span', $control->text, array('class' => $control->class.'-text'));
+            $action = new action_link($control->url, $text, null, array('class' => $control->class));
+            return html_writer::tag('div', $this->render($action), array('class' => 'mdl-right'));
+        } else if ($control->type === 'movehere') {
+            $icon = new pix_icon('movehere', $control->text, 'moodle', array('class' => 'movetarget', 'title' => $control->text));
+            $action = new action_link($control->url, $icon, null, array('class' => $control->class));
+            return html_writer::tag('li', $this->render($action), array('class' => 'movehere'));
+        } else if ($control->type === 'cancelmovingsection' || $control->type === 'cancelmovingactivity') {
+            return html_writer::tag('div', html_writer::link($control->url, $control->text),
+                    array('class' => 'cancelmoving '.$control->class));
+        } else if ($control->type === 'move' || $control->type === 'expanded' || $control->type === 'collapsed' ||
+                $control->type === 'hide' || $control->type === 'show' || $control->type === 'delete') {
+            $icon = new pix_icon('t/'. $control->type, $control->text, 'moodle', array('class' => 'iconsmall', 'title' => $control->text));
+        }
+        
+        if (isset($icon)) {
+            if ($control->url) {
+                // icon with a link
+                $action = new action_link($control->url, $icon, null, array('class' => $control->class));
+                return $this->render($action);
+            } else {
+                // just icon
+                return html_writer::tag('span', $this->render($icon), array('class' => $control->class));
+            }
+        }
+        // unknown control
+        return ' '. html_writer::link($control->url, $control->text, array('class' => $control->class)). '';
+    }
+    
+    public function add_section_control($parentsection, $courseid) {
+        global $PAGE;
+        if (!$PAGE->user_is_editing()) {
+            return null;
+        }
+        $parentsection = get_section_number($parentsection);
+        $url = course_get_url($courseid, get_viewed_section());
+        $url->param('addchildsection', $parentsection);
+        if ($parentsection) {
+            $text = new lang_string('addsubsection', 'format_tiles');
+        } else {
+            $text = new lang_string('addsection', 'format_tiles');
+        }
+        return $this->render(new format_tiles_edit_control('addsection', 'addsection', $url, $text));
+    }
+    
+    public function display_insert_section_here($courseorid, $parent, $before = null, $sr = null) {
+        if ($control = course_get_format($courseorid)->get_edit_control_movehere($parent, $before, $sr)) {
+            return $this->render($control);
+        }
+    }
+    
+    public function add_moving_control($section, $courseid) {
+        // display controls except for expanded/collapsed
+        $controls = course_get_format($courseid)->get_section_edit_controls($section);
+        $pincontrol = '';
+        $controlsstr = '';
+
+        foreach ($controls as $idxcontrol => $control) {
+            if ($control->type === 'pinned' || $control->type === 'unpinned' ) {
+                if ($section->parent == 0) {
+                    $pincontrol .= $this->render($control);
+                }
+            } else {
+                $controlsstr .= $this->render($control);
+            }
+        }
+        if (!empty($pincontrol) && !empty($controlsstr)) {
+            $controlsstr = $pincontrol . $controlsstr;
+        }
+        if (!empty($controlsstr)) {
+            return html_writer::tag('div', $controlsstr, array('class' => 'controls'));
+        }
+    }
+    
+    public function cancel_moving_control($courseorid) {
+        $rendered = '';
+        $cancelmovingcontrols = course_get_format($courseorid)->get_edit_controls_cancelmoving();
+        foreach ($cancelmovingcontrols as $control) {
+            $rendered .= $this->render($control);
+        }
+        return $rendered;
+    }
+    
+    /**
+     * renders HTML for format_tiles_moving_control
+     *
+     * @param format_tiles_moving_control $control
+     * @return string
+     */
+    protected function render_format_tiles_moving_control(format_tiles_edit_control $control) {
+        if (!$control) {
+            return '';
+        }
+        if ($control->type === 'movehere') {
+            $icon = new pix_icon('movehere', $control->text, 'moodle', array('class' => 'movetarget', 'title' => $control->text));
+            $action = new action_link($control->url, $icon, null, array('class' => $control->class));
+            return html_writer::tag('li', $this->render($action), array('class' => 'movehere'));
+        } else if ($control->type === 'cancelmovingsection' || $control->type === 'cancelmovingactivity') {
+            return html_writer::tag('div', html_writer::link($control->url, $control->text),
+                    array('class' => 'cancelmoving '.$control->class));
+        } else if ($control->type === 'move' || $control->type === 'expanded' || $control->type === 'collapsed' ||
+                $control->type === 'hide' || $control->type === 'show' || $control->type === 'delete') {
+            $icon = new pix_icon('t/'. $control->type, $control->text, 'moodle', array('class' => 'iconsmall', 'title' => $control->text));
+        }
+
+        
+        if (isset($icon)) {
+            if ($control->url) {
+                // icon with a link
+                $action = new action_link($control->url, $icon, null, array('class' => $control->class));
+                return $this->render($action);
+            } else {
+                // just icon
+                return html_writer::tag('span', $this->render($icon), array('class' => $control->class));
+            }
+        }
+        // unknown control
+        return ' '. html_writer::link($control->url, $control->text, array('class' => $control->class)). '';
+    }
+
+    
+    /**
+     * Displays a confirmation dialogue when deleting the section (for non-JS mode)
+     *
+     * @param stdClass $course
+     * @param int $sectionreturn
+     * @param int $deletesection
+     */
+    public function confirm_delete_section($course, $sectionreturn, $deletesection) {
+        echo $this->box_start('noticebox');
+        $courseurl = course_get_url($course, $sectionreturn);
+        $optionsyes = array('confirm' => 1, 'deletesection' => $deletesection, 'sesskey' => sesskey());
+        $formcontinue = new single_button(new moodle_url($courseurl, $optionsyes), get_string('yes'));
+        $formcancel = new single_button($courseurl, get_string('no'), 'get');
+        echo $this->confirm(get_string('confirmdelete', 'format_tiles'), $formcontinue, $formcancel);
+        echo $this->box_end();
     }
 }
