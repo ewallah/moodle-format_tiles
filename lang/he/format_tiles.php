@@ -385,15 +385,14 @@ $string['usesubtilesseczero_help'] = 'If selected, sub tiles will be used in top
 
 $string['privacy:metadata:preference:format_tiles_stopjsnav'] = 'Whether the user has disabled animated JavaScript navigation.';
 
-$string['pinnedsection'] = 'This section is pinned';
-$string['unpinnedsection'] = 'Pin this section to show it in the front';
-$string['topinsection'] = 'Pin section';
-$string['tounpinsection'] = 'Unpin section';
-$string['showpinned'] = 'Pin this section';
-$string['showunpinned'] = 'Unpin this section';
-$string['displaypinned'] = 'Pin or Unpin section';
-$string['addsection'] = 'Add section';
-$string['addsubsection'] = 'Add subsection';
+$string['pinnedsection'] = 'יחידה קבוע';
+$string['unpinnedsection'] = 'קבע יחידה לתצוגה למעלה';
+$string['topinsection'] = 'יחידה קבוע';
+$string['tounpinsection'] = 'בטל הצמדת יחידה';
+$string['showpinned'] = 'הצמד יחידה';
+$string['showunpinned'] = 'בטל הצמדת יחידה';
+$string['displaypinned'] = 'הצמד או בטל הצמדה ליחידה';
+$string['addsection'] = 'הסף יחידה';
+$string['addsubsection'] = 'הסף תת יחידה';
 $string['cancelmoving'] = 'Cancel moving \'{$a}\'';
-
-$string['toomuch_pinned_sections'] = 'Too many fixed sections (maximum 4)';
+$string['toomuch_pinned_sections'] = 'יותר מדי יחידות קבועות (מקסימום 4)';
