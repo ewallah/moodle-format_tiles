@@ -356,6 +356,7 @@ class course_output implements \renderable, \templatable
 
         // If photo tile backgrounds are allowed by site admin, prepare the image for this section.
         if (get_config('format_tiles', 'allowphototiles')) {
+            $data['allowphototiles'] = 1;
             $tilephoto = new tile_photo($this->course->id, $thissection->id);
             $tilephotourl = $tilephoto->get_image_url();
 
@@ -407,6 +408,7 @@ class course_output implements \renderable, \templatable
         $level = 0;
         $data['level'] = $level;
         
+        
         $sectionstree = array();
         $allsections = $this->modinfo->get_section_info_all();
         foreach ($allsections as $section) {
@@ -414,8 +416,9 @@ class course_output implements \renderable, \templatable
         }
         if (isset($sectionstree[$thissection->section]) and count($sectionstree[$thissection->section])) {
             foreach($sectionstree[$thissection->section] as $subsectionnum) {
+
                 $subsection = $allsections[$subsectionnum];
-                $data['subsections'][] = $this->get_tile($output, $data, $subsectionnum, $subsection, [], $sectionstree, $allsections, $level+1);
+                $data['subsections'][] = $this->get_tile($output, $data, $subsectionnum, $subsection, $sectionstree, $allsections, $level+1);
             }
         }
         
