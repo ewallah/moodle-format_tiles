@@ -8,6 +8,9 @@
     display: flex;
     justify-content: center;
 }
+.format-tiles ul.tiles.editing {
+    display: inline-block;
+}
 
 .format-tiles ul.tiles.pinnedsections {
     display: flex;
@@ -277,6 +280,11 @@ li#section-0.section.main.clearfix {
     justify-content: flex-start;
     flex-wrap: wrap;
 }
+.format-tiles ul.tiles.editing#multi_section_tiles,
+.format-tiles ul.tiles.multi_section_subtiles
+{
+    display: block;
+}
 .format-tiles #single_section_tiles {
     display: block;
     padding-left: 0;
@@ -312,6 +320,7 @@ li#section-0.section.main.clearfix {
     background-image: none;
     margin-top: 10px;
     margin-left: 15px;
+    margin-bottom: 10px;
     padding-top: 12px;
 }
 .format-tiles .course-content ul li.section.main:target {
@@ -543,7 +552,7 @@ li#section-0.section.main.clearfix {
     /*z-index needs to be behind navigation-arrows as they may overlap*/
 }
 
-.format-tiles #sectionbuttons {
+.format-tiles .sectionbuttons {
     position: relative;
     right: 30px;
     top: 0;
@@ -557,6 +566,10 @@ li#section-0.section.main.clearfix {
     height: 45px;
     text-align: center;
 }
+.format-tiles .subsection .sectionbuttons .closesectionbtn,
+.format-tiles .subsection .sectionbuttons .editsectionbtn {
+    display: none;
+}
 .format-tiles .expand-section,
 .format-tiles .collapse-section {
     width: 30px;
@@ -564,6 +577,12 @@ li#section-0.section.main.clearfix {
     background-size: contain;
     margin-top: 10px;
 }
+.format-tiles .sectionbutton.expandsectionbtn.expandedcontent > .expandicon{
+    display:none;
+}    
+.format-tiles .sectionbutton.expandsectionbtn:not(.expandedcontent) > .collapseicon{
+    display:none;
+}    
 .format-tiles .expand-section {
     background-image: url([[pix:format_tiles|expand]]);
 }
