@@ -15,19 +15,19 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * format_tiles settings tabs
+ * format_supertiles settings tabs
  *
- * @package     format_tiles
+ * @package     format_supertiles
  * @copyright   2019 David Watson {@link http://evolutioncode.uk} based on Andreas Grabs <info@grabs-edv.de> (Unilabel plugin)
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace format_tiles;
+namespace format_supertiles;
 
 defined('MOODLE_INTERNAL') || die();
 /**
  * Settings page providing a tabbed view.
- * @package     format_tiles
+ * @package     format_supertiles
  * @copyright   2019 David Watson {@link http://evolutioncode.uk}
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -82,24 +82,24 @@ class admin_settingspage_tabs extends \admin_settingpage {
 
         foreach ($this->get_tabs() as $index => $tab) {
             $data = array(
-                'name' => str_replace('format_tiles/' , '', $tab->name),
+                'name' => str_replace('format_supertiles/' , '', $tab->name),
                 'displayname' => $tab->visiblename,
                 'html' => $tab->output_html()
             );
             if ($index == 0 ) {
                 $data['active'] = 1;
             }
-            if ($tab->name === "format_tiles/tab-colours") {
+            if ($tab->name === "format_supertiles/tab-colours") {
                 $data['iscolourstab'] = 1;
             }
 
             $context['tabs'][] = $data;
         }
-        $context['documentationurl'] = get_config('format_tiles', 'documentationurl');
-        $context['isregistered'] = \format_tiles\registration_manager::is_registered();
+        $context['documentationurl'] = get_config('format_supertiles', 'documentationurl');
+        $context['isregistered'] = \format_supertiles\registration_manager::is_registered();
         $context['sesskey'] = sesskey();
 
-        return $OUTPUT->render_from_template('format_tiles/admin_setting_tabs', $context);
+        return $OUTPUT->render_from_template('format_supertiles/admin_setting_tabs', $context);
     }
 }
 

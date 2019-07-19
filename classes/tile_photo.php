@@ -16,17 +16,17 @@
 
 /**
  * Tile photo class for format tiles.
- * @package    format_tiles
+ * @package    format_supertiles
  * @copyright  2019 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace format_tiles;
+namespace format_supertiles;
 
 defined('MOODLE_INTERNAL') || die();
 /**
  * Tile photo class for format tiles.
- * @package    format_tiles
+ * @package    format_supertiles
  * @copyright  2019 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -99,7 +99,7 @@ class tile_photo {
     private function get_course_format_option() {
         global $DB;
         return $DB->get_record('course_format_options', array(
-                'format' => 'tiles',
+                'format' => 'supertiles',
                 'courseid' => $this->courseid,
                 'sectionid' => $this->sectionid,
                 'name' => 'tilephoto'
@@ -116,7 +116,7 @@ class tile_photo {
     public static function get_course_format_option_value($sectionid) {
         global $DB;
         $field = $DB->get_field('course_format_options', 'value', array(
-                'format' => 'tiles',
+                'format' => 'supertiles',
                 'sectionid' => $sectionid,
                 'name' => 'tilephoto'
             )
@@ -136,7 +136,7 @@ class tile_photo {
         $record = $this->get_course_format_option();
         if (!$record) {
             $record = new \stdClass();
-            $record->format = 'tiles';
+            $record->format = 'supertiles';
             $record->name = 'tilephoto';
             $record->courseid = $this->courseid;
             $record->sectionid = $this->sectionid;
@@ -320,30 +320,30 @@ class tile_photo {
 
         $imageinfo = $file->get_imageinfo();
         $ratio = $imageinfo['height'] / $imageinfo['width'];
-        $messageshort = get_string('imagesize', 'format_tiles') . ": ";
+        $messageshort = get_string('imagesize', 'format_supertiles') . ": ";
         if (abs($ratio - $requiredratio) > $tolerance) {
             if ($ratio > $requiredratio) {
                 $tallorwide = array(
-                    'tallorwide' => get_string('tootall', 'format_tiles')
+                    'tallorwide' => get_string('tootall', 'format_supertiles')
                 );
-                $messageshort .= get_string('tootall', 'format_tiles');
+                $messageshort .= get_string('tootall', 'format_supertiles');
             } else {
                 $tallorwide = array(
-                    'tallorwide' => get_string('toowide', 'format_tiles'),
+                    'tallorwide' => get_string('toowide', 'format_supertiles'),
                 );
-                $messageshort .= get_string('toowide', 'format_tiles');
+                $messageshort .= get_string('toowide', 'format_supertiles');
             }
             return array(
                 'status' => false,
                 'message' => get_string(
                     'aspectratiotootallorwide',
-                    'format_tiles',
+                    'format_supertiles',
                     $tallorwide
                 ),
                 'messageshort' => $messageshort
             );
         }
-        $messageshort .= get_string('ok', 'format_tiles');
+        $messageshort .= get_string('ok', 'format_supertiles');
         return array('status' => true, 'message' => $messageshort, 'messageshort' => $messageshort);
     }
 
@@ -357,7 +357,7 @@ class tile_photo {
             $DB->delete_records(
                 'course_format_options',
                 array(
-                    'format' => 'tiles',
+                    'format' => 'supertiles',
                     'name' => 'tilephoto',
                     'courseid' => $this->courseid,
                     'sectionid' => $this->sectionid,
@@ -409,7 +409,7 @@ class tile_photo {
         global $DB;
         $records = $DB->get_records(
             'course_format_options',
-            array('format' => 'tiles', 'courseid' => $courseid, 'name' => 'tilephoto'),
+            array('format' => 'supertiles', 'courseid' => $courseid, 'name' => 'tilephoto'),
             'sectionid',
             'sectionid'
         );
@@ -508,7 +508,7 @@ class tile_photo {
      */
     public static function file_api_params() {
         return array(
-            'component' => 'format_tiles',
+            'component' => 'format_supertiles',
             'filearea' => 'tilephoto',
             'filepath' => '/tilephoto/',
             'tempfilearea' => 'temptilephoto'

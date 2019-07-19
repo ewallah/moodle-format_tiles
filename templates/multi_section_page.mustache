@@ -16,7 +16,7 @@
 }}
 
 {{!
-    @template format_tiles/multi_section_page
+    @template format_supertiles/multi_section_page
 
     Multi section page template.
 
@@ -68,19 +68,19 @@
             </div>
         </form>
     {{/completionenabled}}
-    {{> format_tiles/above_tiles}}
+    {{> format_supertiles/above_tiles}}
 {{/from_ajax}}
 
 {{#userdisabledjsnav}}
     <div id="jswarning" class="alert alert-info">
-        {{#str}}jsdeactivated, format_tiles{{/str}}
-        <a href="{{{config.wwwroot}}}/course/view.php?id={{courseid}}&stopjsnav=1">({{#str}}reactivate, format_tiles{{/str}})</a>
+        {{#str}}jsdeactivated, format_supertiles{{/str}}
+        <a href="{{{config.wwwroot}}}/course/view.php?id={{courseid}}&stopjsnav=1">({{#str}}reactivate, format_supertiles{{/str}})</a>
     </div>
 {{/userdisabledjsnav}}
 {{^userdisabledjsnav}}
     <noscript>
         {{^jsSessionDisabled}}
-            <div id="jswarning" class="alert alert-warning">{{#str}}nojswarning, format_tiles{{/str}}
+            <div id="jswarning" class="alert alert-warning">{{#str}}nojswarning, format_supertiles{{/str}}
                 {{#showJScancelLink}}
                 <a href="{{{config.wwwroot}}}/course/view.php?id={{courseid}}&canceljssession=1">{{#str}}refresh{{/str}}</a>
                 {{/showJScancelLink}}
@@ -92,28 +92,28 @@
 {{#showinitialpageloadingicon}}
     <a id="page-loading-icon" href="{{config.wwwroot}}/course/view.php?id={{courseid}}&skipcheck=1">
         <div class="text-center mt-5">
-        {{> format_tiles/loading}}
-            <div class="text-center" style="text-decoration: none;"><small>{{#str}}clickiffailstoload, format_tiles{{/str}}</small></div>
+        {{> format_supertiles/loading}}
+            <div class="text-center" style="text-decoration: none;"><small>{{#str}}clickiffailstoload, format_supertiles{{/str}}</small></div>
         </div>
     </a>
 {{/showinitialpageloadingicon}}
 
 {{#isediting}}
     <div class="expand-collapse-all-btns">
-        <a class="btn btn-secondary" data-action="expand-all" title="{{#str}}expandall, format_tiles{{/str}}"
+        <a class="btn btn-secondary" data-action="expand-all" title="{{#str}}expandall, format_supertiles{{/str}}"
            href="{{{config.wwwroot}}}/course/view.php?id={{courseid}}&expanded=1" id="expand-all-btn">
-        {{#pix}}expand, format_tiles{{/pix}}&nbsp;{{#str}}expandall, format_tiles{{/str}}
+        {{#pix}}expand, format_supertiles{{/pix}}&nbsp;{{#str}}expandall, format_supertiles{{/str}}
         </a>
-        <a class="btn btn-secondary" data-action="collaspse-all" title="{{#str}}collapsesections, format_tiles{{/str}}"
+        <a class="btn btn-secondary" data-action="collaspse-all" title="{{#str}}collapsesections, format_supertiles{{/str}}"
             href="{{{config.wwwroot}}}/course/view.php?id={{courseid}}&expanded=-1" id="collapse-all-btn">
-        {{#pix}}collapse, format_tiles{{/pix}}&nbsp;{{#str}}collapsesections, format_tiles{{/str}}
+        {{#pix}}collapse, format_supertiles{{/pix}}&nbsp;{{#str}}collapsesections, format_supertiles{{/str}}
         </a>
     </div>
 {{/isediting}}
 
     {{#section_zero}}
     <ul class="tiles{{#isediting}} editing{{/isediting}}" >
-        {{> format_tiles/section_zero}}
+        {{> format_supertiles/section_zero}}
     </ul>    
     {{/section_zero}}
     <ul class="tiles{{#isediting}} editing{{/isediting}} pinnedsections">
@@ -124,10 +124,10 @@
     <ul class="tiles{{#isediting}} editing{{/isediting}}" id="multi_section_tiles">
     {{#tiles}}
         {{^isediting}}
-            {{> format_tiles/multi_section_tile}}
+            {{> format_supertiles/multi_section_tile}}
         {{/isediting}}
         {{#isediting}}
-            {{> format_tiles/multi_section_tilebar}}
+            {{> format_supertiles/multi_section_tilebar}}
         {{/isediting}}
     {{/tiles}}
 
@@ -153,10 +153,10 @@
 </ul>
 <span class="pull-right" id="coursecontrolbuttons">
     {{#isediting}}
-        <span id="changenumsections" data-toggle="tooltip" title="{{#str}}addsections, format_tiles{{/str}}">
-            <a data-add-sections="{{#str}}addsections, format_tiles{{/str}}"
+        <span id="changenumsections" data-toggle="tooltip" title="{{#str}}addsections, format_supertiles{{/str}}">
+            <a data-add-sections="{{#str}}addsections, format_supertiles{{/str}}"
                href="{{{ config.wwwroot }}}/course/changenumsections.php?courseid={{courseid}}&sesskey={{sesskey}}&insertsection=0&sectionreturn=0">
-                {{#pix}}t/switch_plus, core, {{#str}}addsections, format_tiles{{/str}}{{/pix}}
+                {{#pix}}t/switch_plus, core, {{#str}}addsections, format_supertiles{{/str}}{{/pix}}
             </a>
         </span>
     {{/isediting}}

@@ -19,7 +19,7 @@
  *
  * @module tile_fitter
  * @package course/format
- * @subpackage tiles
+ * @subpackage supertiles
  * @copyright 2019 David Watson {@link http://evolutioncode.uk}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @since Moodle 3.3
@@ -38,7 +38,7 @@ define(["jquery", "core/ajax"], function ($, ajax) {
         TILE: ".tile",
         TILEID: "#tile-",
         TILE_COLLAPSED: ".tile-collapsed",
-        TILES: ".format-tiles.jsenabled ul.tiles",
+        TILES: ".format-supertiles.jsenabled ul.tiles",
         ACTIVITY: ".activity",
         SPACER: ".spacer",
         SECTION_ID: "#section-",
@@ -54,7 +54,7 @@ define(["jquery", "core/ajax"], function ($, ajax) {
      * If we have a single tile on the last row it looks odd.
      * We might want to shrink the tile window down a little to even it out.
      * So we work out how many per row would be optimal, and shrink the window accordingly.
-     * @see format_tiles_width_template_data() in locallib.php for more information.
+     * @see format_supertiles_width_template_data() in locallib.php for more information.
      * @return {Promise}
      */
     var resizeTilesDivWidth = function() {
@@ -168,7 +168,7 @@ define(["jquery", "core/ajax"], function ($, ajax) {
             timeoutBeforeResizeAjax = setTimeout(function () {
 
                 ajax.call([{
-                    methodname: "format_tiles_set_session_width",
+                    methodname: "format_supertiles_set_session_width",
                     args: {courseid: courseId, width: Math.floor(resizeWidth)}
                 }]);
             }, 3000);
@@ -176,7 +176,7 @@ define(["jquery", "core/ajax"], function ($, ajax) {
             // Unset widths as something went wrong.
             tiles.css("max-width", winWidth).animate({"max-width": "100%"}, 500, "swing");
             ajax.call([{
-                methodname: "format_tiles_set_session_width",
+                methodname: "format_supertiles_set_session_width",
                 args: {courseid: courseId, width: 0}
             }]);
             dfd.reject("Failed to resize");

@@ -1,4 +1,4 @@
-@format @format_tiles @group_restriction @javascript
+@format @format_supertiles @group_restriction @javascript
 Feature: Teacher can restrict course modules to groups
 
   Background:
@@ -23,13 +23,13 @@ Feature: Teacher can restrict course modules to groups
     And the following config values are set as admin:
       | config                 | value    | plugin       |
       | enablecompletion       | 1        | core         |
-      | modalmodules           | page     | format_tiles |
-      | modalresources         | pdf,html | format_tiles |
-      | assumedatastoreconsent | 1        | format_tiles |
-      | reopenlastsection      | 0        | format_tiles |
-      | usejavascriptnav       | 1        | format_tiles |
+      | modalmodules           | page     | format_supertiles |
+      | modalresources         | pdf,html | format_supertiles |
+      | assumedatastoreconsent | 1        | format_supertiles |
+      | reopenlastsection      | 0        | format_supertiles |
+      | usejavascriptnav       | 1        | format_supertiles |
       | enableavailability     | 1        | core         |
-      | jsmaxstoreditems       | 0        | format_tiles |
+      | jsmaxstoreditems       | 0        | format_supertiles |
     # We set jsmaxstoreditems to zero as otherwise when we switch between subtiles and tiles format we may not see an immediate change in display
 
     And the following "groups" exist:
@@ -39,7 +39,7 @@ Feature: Teacher can restrict course modules to groups
 
   @javascript
   Scenario: Teacher can restrict cm by group, and student can only see it if they are in that group
-    When format_tiles subtiles are on for course "Course 1"
+    When format_supertiles subtiles are on for course "Course 1"
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
     And I wait "1" seconds

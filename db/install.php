@@ -20,7 +20,7 @@
  * This file:
  * - creates a sample image in the database for use in the photo library
  *
- * @package    format_tiles
+ * @package    format_supertiles
  * @copyright  2019 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -34,16 +34,16 @@ defined('MOODLE_INTERNAL') || die;
  * @throws file_exception
  * @throws stored_file_creation_exception
  */
-function xmldb_format_tiles_install() {
+function xmldb_format_supertiles_install() {
     global $CFG;
 
     // Store the sample photo tile image in the database.
     $fs = get_file_storage();
-    $filerecord = format_tiles\tile_photo::file_api_params();
+    $filerecord = format_supertiles\tile_photo::file_api_params();
     $filerecord['contextid'] = \context_system::instance()->id;
     $filerecord['itemid'] = 0;
     $filerecord['mimetype'] = 'image/jpeg';
     $filerecord['filename'] = 'sample_image.jpg';
-    $path = $CFG->dirroot . '/course/format/tiles/';
+    $path = $CFG->dirroot . '/course/format/supertiles/';
     $fs->create_file_from_pathname($filerecord, $path . $filerecord['filename']);
 }

@@ -45,9 +45,9 @@ define(["jquery", "core/notification", "core/config", "core/str"], function ($, 
                         if (data.status) {
                             var stringKeys = [
                                 {key: "registration", component: "admin"},
-                                {key: "registeredthanks", component: "format_tiles"},
-                                {key: "registerclicktocomplete", component: "format_tiles"},
-                                {key: "ok", component: "format_tiles"},
+                                {key: "registeredthanks", component: "format_supertiles"},
+                                {key: "registerclicktocomplete", component: "format_supertiles"},
+                                {key: "ok", component: "format_supertiles"},
                                 {key: "cancel"},
                             ];
                             str.get_strings(stringKeys).done(function (s) {
@@ -58,7 +58,7 @@ define(["jquery", "core/notification", "core/config", "core/str"], function ($, 
                                     s[4],
                                     function() {
                                         window.location.href = config.wwwroot
-                                            + '/course/format/tiles/register.php?key=' + data.key + "&sesskey=" + sesskey;
+                                            + '/course/format/supertiles/register.php?key=' + data.key + "&sesskey=" + sesskey;
                                     },
                                     function() {
                                         window.location.href = config.wwwroot + '/admin/settings.php?section=formatsettingtiles';

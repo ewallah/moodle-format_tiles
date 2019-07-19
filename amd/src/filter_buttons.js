@@ -18,11 +18,11 @@
 /* global localStorage, setTimeout, document*/
 
 /**
- * Javascript Module to handle filter buttons which appear above the tiles if used for format_tiles
+ * Javascript Module to handle filter buttons which appear above the tiles if used for format_supertiles
  *
  * @module      filter_buttons
  * @package     course/format
- * @subpackage  tiles
+ * @subpackage  supertiles
  * @copyright   2018 David Watson {@link http://evolutioncode.uk}
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @since Moodle 3.3

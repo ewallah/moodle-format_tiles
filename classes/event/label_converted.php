@@ -15,22 +15,22 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * The format_tiles label converted to page event.
+ * The format_supertiles label converted to page event.
  *
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2018 David Watson {@link http://evolutioncode.uk}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace format_tiles\event;
+namespace format_supertiles\event;
 
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * The format_tiles label converted to page event.
+ * The format_supertiles label converted to page event.
  *
- * @package    format_tiles
+ * @package    format_supertiles
  * @since      Moodle 3.3
  * @copyright  2018 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -55,7 +55,7 @@ class label_converted extends \core\event\course_module_created  {
      * @throws \coding_exception
      */
     public static function get_name() {
-        return get_string('converttopage', 'format_tiles');
+        return get_string('converttopage', 'format_supertiles');
     }
     /**
      * Returns non-localised event description with id's for admin use only.

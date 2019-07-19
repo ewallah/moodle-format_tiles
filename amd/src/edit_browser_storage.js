@@ -26,7 +26,7 @@
 
 /* eslint space-before-function-paren: 0 */
 
-define(["jquery", "format_tiles/browser_storage_set_up"], function ($, storageSetUp) {
+define(["jquery", "format_supertiles/browser_storage_set_up"], function ($, storageSetUp) {
     "use strict";
     var Selector = {
         PAGE: '#page',

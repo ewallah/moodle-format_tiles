@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Specialised restore for format_tiles (based on the equivalent for format_topics
+ * Specialised restore for format_supertiles (based on the equivalent for format_topics
  *
- * @package   format_tiles
+ * @package   format_supertiles
  * @category  backup
  * @copyright 2019 David Watson {@link http://evolutioncode.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,25 +26,25 @@
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Specialised backup for format_tiles
+ * Specialised backup for format_supertiles
  *
  * Ensure that photo background images are included in course backups.
  *
- * @package   format_tiles
+ * @package   format_supertiles
  * @category  backup
  * @copyright 2019 David Watson {@link http://evolutioncode.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class backup_format_tiles_plugin extends backup_format_plugin {
+class backup_format_supertiles_plugin extends backup_format_plugin {
 
     /**
      * Returns the format information to attach to section element.
      */
     protected function define_section_plugin_structure() {
-        $fileapiparams = \format_tiles\tile_photo::file_api_params();
+        $fileapiparams = \format_supertiles\tile_photo::file_api_params();
 
         // Define the virtual plugin element with the condition to fulfill.
-        $plugin = $this->get_plugin_element(null, $this->get_format_condition(), 'tiles');
+        $plugin = $this->get_plugin_element(null, $this->get_format_condition(), 'supertiles');
 
         // Define each element separated.
         $tile = new backup_nested_element('tile', array('id'), array('tilephoto'));

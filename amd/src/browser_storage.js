@@ -14,7 +14,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Javascript Module to handle browser storage for format_tiles for student view.
+ * Javascript Module to handle browser storage for format_supertiles for student view.
  * (Can also be used by staff when they view the student view).
  * Stores and retrieves course content and settings
  * e.g. which filter button do I have pressed
@@ -29,7 +29,7 @@
 /* global localStorage, sessionStorage, setTimeout*/
 /* eslint space-before-function-paren: 0 */
 
-define(["jquery", "format_tiles/browser_storage_set_up"], function ($, storageSetUp) {
+define(["jquery", "format_supertiles/browser_storage_set_up"], function ($, storageSetUp) {
     "use strict";
 
     var courseId;

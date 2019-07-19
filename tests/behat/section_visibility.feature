@@ -1,5 +1,5 @@
-@format @format_tiles @format_tiles_section_vis
-Feature: Show/hide course sections in format_tiles
+@format @format_supertiles @format_supertiles_section_vis
+Feature: Show/hide course sections in format_supertiles
   In order to delay sections availability
   As a teacher
   I need to show or hide sections
@@ -21,12 +21,12 @@ Feature: Show/hide course sections in format_tiles
     And the following config values are set as admin:
       | config                 | value    | plugin       |
       | enablecompletion       | 1        | core         |
-      | modalmodules           | page     | format_tiles |
-      | modalresources         | pdf,html | format_tiles |
-      | assumedatastoreconsent | 1        | format_tiles |
-      | reopenlastsection      | 0        | format_tiles |
-      | usejavascriptnav       | 1        | format_tiles |
-      | jsmaxstoreditems       | 0        | format_tiles |
+      | modalmodules           | page     | format_supertiles |
+      | modalresources         | pdf,html | format_supertiles |
+      | assumedatastoreconsent | 1        | format_supertiles |
+      | reopenlastsection      | 0        | format_supertiles |
+      | usejavascriptnav       | 1        | format_supertiles |
+      | jsmaxstoreditems       | 0        | format_supertiles |
     And the following "activities" exist:
       | activity | name               | intro | course | idnumber  | section | visible |
       | forum    | Test visible forum 2 | intro | C1     | forrumvis | 2       | 1       |

@@ -247,7 +247,7 @@ define(["jquery", "core/ajax", "core/templates", "core/notification", "core/str"
                 // If we are not using sub tiles in section zero, don't bother changing it there.
                 addedCourseModule.children().hide();
                 addedCourseModule.append($("<img/>")
-                    .attr("src", url.imageUrl("loading", "format_tiles"))
+                    .attr("src", url.imageUrl("loading", "format_supertiles"))
                     .addClass("loading-subtile").attr('title', stringStore.loading));
                 var previousNonSpacer = addedCourseModule.prevAll(Selector.SUBTILE).not(Selector.SPACER).first();
                 addedCourseModule.prevUntil(previousNonSpacer, Selector.SPACER).hide();
@@ -261,7 +261,7 @@ define(["jquery", "core/ajax", "core/templates", "core/notification", "core/str"
                 }
                 var stringKey = "displaytitle_mod_" + modResourceType;
                 if (stringStore[stringKey] === undefined) {
-                    str.get_string(stringKey, "format_tiles")
+                    str.get_string(stringKey, "format_supertiles")
                         .done(function (string) {
                             if (string.substring(0, 2) !== "[[") {
                                 // The [[ means unknown string.
@@ -273,7 +273,7 @@ define(["jquery", "core/ajax", "core/templates", "core/notification", "core/str"
                                 addedCourseModule, modResourceType, string
                             );
                             Templates.render(
-                                "format_tiles/course_module",
+                                "format_supertiles/course_module",
                                 cmAttributes
                             ).done(function (html) {
                                 addedCourseModule.replaceWith(html);
@@ -295,7 +295,7 @@ define(["jquery", "core/ajax", "core/templates", "core/notification", "core/str"
                     var cmAttributes = legacyCourseModGetSubtileAttributes(
                         addedCourseModule, modResourceType, stringStore[stringKey]
                     );
-                    Templates.render("format_tiles/course_module", cmAttributes).done(function (html) {
+                    Templates.render("format_supertiles/course_module", cmAttributes).done(function (html) {
                         addedCourseModule.replaceWith(html);
                         // The move cm icon will not work, so if is clicked, we refresh page so it works.
                         $('#module-' + cmAttributes.cmid).find('.editing_move')
@@ -386,11 +386,11 @@ define(["jquery", "core/ajax", "core/templates", "core/notification", "core/str"
                         {key: "no"},
                         {key: "show"},
                         {key: "hide"},
-                        {key: "converttopage_confirm", component: "format_tiles"},
+                        {key: "converttopage_confirm", component: "format_supertiles"},
                         {key: "areyousure"},
-                        {key: "complete", component: "format_tiles"},
-                        {key: "fileaddedtobottom", component: "format_tiles"},
-                        {key: "loading", component: "format_tiles"}
+                        {key: "complete", component: "format_supertiles"},
+                        {key: "fileaddedtobottom", component: "format_supertiles"},
+                        {key: "loading", component: "format_supertiles"}
                     ]).done(function (s) {
                         stringStore = {
                             "yes": s[0],

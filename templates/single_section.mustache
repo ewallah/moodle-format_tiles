@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template format_tiles/single_section
+    @template format_supertiles/single_section
 
     Single Section content template.
 
@@ -83,31 +83,31 @@
         <div class="right side"></div>
         {{^hidden_section}}
             {{^from_ajax}}
-                {{>format_tiles/single_section_nav}}
+                {{>format_supertiles/single_section_nav}}
             {{/from_ajax}}
             {{#from_ajax}}
                 <div class="sectionbuttons">
                     {{^level}}
                         <span class="sectionbutton closesectionbtn pull-right" id="closesectionbtn-{{tileid}}"
-                              title="{{#str}}close, format_tiles{{/str}}" tabindex="3" data-section="{{tileid}}">
-                            {{#pix}}close, format_tiles, {{#str}}close, format_tiles{{/str}}{{/pix}}
+                              title="{{#str}}close, format_supertiles{{/str}}" tabindex="3" data-section="{{tileid}}">
+                            {{#pix}}close, format_supertiles, {{#str}}close, format_supertiles{{/str}}{{/pix}}
                         </span>
                     {{#canedit}}
                         {{^isediting}}
                             <a class="sectionbutton editsectionbtn pull-right" id="editsectionbtn-{{tileid}}"
                                href="{{{ config.wwwroot }}}/course/view.php?id={{courseid}}&section={{tileid}}&sesskey={{sesskey}}&edit=on">
-                            {{#pix}}pencil, format_tiles, {{#str}}edit{{/str}}{{/pix}}
+                            {{#pix}}pencil, format_supertiles, {{#str}}edit{{/str}}{{/pix}}
                             </a>
                         {{/isediting}}
                     {{/canedit}}
                     {{/level}}
                     <span class="sectionbutton expandsectionbtn pull-right" id="expandsectionbtn-{{tileid}}"
-                          title="{{#str}}expand, format_tiles{{/str}}" tabindex="3" data-section="{{tileid}}">
+                          title="{{#str}}expand, format_supertiles{{/str}}" tabindex="3" data-section="{{tileid}}">
                         <span class="expandicon">
-                        {{#pix}}expand, format_tiles, {{#str}}expand, format_tiles{{/str}}{{/pix}}
+                        {{#pix}}expand, format_supertiles, {{#str}}expand, format_supertiles{{/str}}{{/pix}}
                         </span>
                         <span class="collapseicon" >
-                        {{#pix}}collapse, format_tiles, {{#str}}collapse, format_tiles{{/str}}{{/pix}}
+                        {{#pix}}collapse, format_supertiles, {{#str}}collapse, format_supertiles{{/str}}{{/pix}}
                         </span>
                     </span>
                 </div>
@@ -116,18 +116,18 @@
             {{^hastilephoto}}
                 <div class="tileiconcontainer" id="tileicon_{{tileid}}"
                 {{#isediting}}data-toggle="tooltip" data-placement="left"
-                     data-original-title="{{^allowphototiles}}{{#str}}picknewicon, format_tiles{{/str}}{{/allowphototiles}}{{#allowphototiles}}{{#str}}picknewiconphoto, format_tiles{{/str}}{{/allowphototiles}}"
+                     data-original-title="{{^allowphototiles}}{{#str}}picknewicon, format_supertiles{{/str}}{{/allowphototiles}}{{#allowphototiles}}{{#str}}picknewiconphoto, format_supertiles{{/str}}{{/allowphototiles}}"
                 {{/isediting}}>
-                    {{>format_tiles/tileicon}}
+                    {{>format_supertiles/tileicon}}
                 </div>
             {{/hastilephoto}}
             {{#hastilephoto}}
                     <div class="tileiconcontainer hasphoto" id="tileicon_{{tileid}}"
                         {{#isediting}}data-toggle="tooltip" data-placement="left"
-                         data-original-title="{{^allowphototiles}}{{#str}}picknewicon, format_tiles{{/str}}{{/allowphototiles}}{{#allowphototiles}}{{#str}}picknewiconphoto, format_tiles{{/str}}{{/allowphototiles}}"
+                         data-original-title="{{^allowphototiles}}{{#str}}picknewicon, format_supertiles{{/str}}{{/allowphototiles}}{{#allowphototiles}}{{#str}}picknewiconphoto, format_supertiles{{/str}}{{/allowphototiles}}"
                         {{/isediting}}>
 
-                        {{>format_tiles/tilebarphoto}}
+                        {{>format_supertiles/tilebarphoto}}
                     </div>
             {{/hastilephoto}}
 
@@ -153,7 +153,7 @@
                 {{/isediting}}
                 <ul class="section img-text {{^useSubtiles}}no{{/useSubtiles}}subtiles">
                     {{#course_modules}}
-                        {{>format_tiles/course_module}}
+                        {{>format_supertiles/course_module}}
                     {{/course_modules}}
                     {{#useSubtiles}}
                         <li class="activity subtile spacer" aria-hidden="true"></li>
@@ -168,7 +168,7 @@
                 {{^from_ajax}}
                     {{#single_sec_content_is_long}}
                     {{!repeat nav arrows at bottom of page if it is long}}
-                        {{>format_tiles/single_section_nav}}
+                        {{>format_supertiles/single_section_nav}}
                     {{/single_sec_content_is_long}}
                 {{/from_ajax}}
 
@@ -176,7 +176,7 @@
                     <span class="pull-right">{{#str}}yourprogress, completion{{/str}}
                         <a id="completionhelp_{{tileid}}" class="btn btn-link p-a-0 progresshelp" role="button"
                            data-container="body" data-toggle="popover"
-                           data-placement="left" data-content="{{#str}}completion_help, format_tiles{{/str}}"
+                           data-placement="left" data-content="{{#str}}completion_help, format_supertiles{{/str}}"
                            data-html="true" tabindex="-1" data-trigger="focus">
                             {{#pix}}help, core, {{alt}}{{/pix}}
                         </a>
@@ -185,7 +185,7 @@
             </div>
             <ul class="tiles multi_section_subtiles">
             {{#subsections}}
-                {{> format_tiles/single_section}}
+                {{> format_supertiles/single_section}}
             {{/subsections}}
             </ul>
         {{/hidden_section}}

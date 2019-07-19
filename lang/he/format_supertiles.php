@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'format_tiles', language 'en', branch 'MOODLE_33_STABLE'
+ * Strings for component 'format_supertiles', language 'en', branch 'MOODLE_33_STABLE'
  *
- * @package   format_tiles
+ * @package   format_supertiles
  * @copyright David Watson {@link http://evolutioncode.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -91,7 +91,7 @@ $string['defaultthiscourse'] = 'Default for this course';
 $string['deletesection'] = 'Delete tile';
 $string['confirmdelete'] = 'Are you sure you want to delete this section? All activities and subsections will also be deleted.';
 $string['deleteimage'] = 'Delete image';
-$string['developedby'] = '"Tiles" developed by {$a}';
+$string['developedby'] = '"Supertiles" developed by {$a}';
 $string['developer'] = 'Developer';
 $string['disabledbyadmin'] = 'Disabled by Site Administrator';
 $string['displayfilterbar_error'] = 'Unless you have set up outcomes for this course, you can only display a filter bar based on tile numbers, and not based on outcomes.  Create some outcomes first then come back here. See';
@@ -110,7 +110,7 @@ $string['displaytitle_mod_ppt'] = 'Powerpoint presentation';
 $string['displaytitle_mod_zip'] = 'Zip';
 $string['documentation'] = 'Documentation';
 $string['documentationurl'] = 'Documentation URL';
-$string['documentationurl_descr'] = 'URL where Tiles documentation can be found.';
+$string['documentationurl_descr'] = 'URL where supertiles documentation can be found.';
 $string['download'] = 'Download';
 $string['editsectionname'] = 'Edit tile name';
 $string['embeddedurlerror'] = 'If the external website refuses to connect in the window above, use this: ';
@@ -277,13 +277,13 @@ $string['picknewiconphoto'] = 'Pick a new icon or background photo';
 $string['photoguidance_desc'] = '<p>Upload a photo in <strong>landscape</strong> format.  The width should be about 1.35 times the height.  E.g. 270 width x 200 height would fit well.  You need not be exact.</p>
 <p>Photos in portrait format will not match the shape of the tile.  Large images or files will be scaled down and compressed if necessary, after upload.</p>';
 $string['photolibrary'] = 'Photo library';
-$string['pluginname'] = 'Tiles format';
+$string['pluginname'] = 'Supertiles format';
 $string['previoustopic'] = 'Previous topic';
 $string['privacypolicy'] = 'Privacy policy';
 $string['progress'] = 'Progress';
 $string['reactivate'] = 'reactivate';
 $string['register'] = 'Register';
-$string['tilesformatregistration'] = 'Tiles format registration';
+$string['tilesformatregistration'] = 'Supertiles format registration';
 $string['registeragreeprivacy'] = 'I agree to the plugin developer\'s {$a->privacypolicylink}';
 $string['registerpolicyagreedlinktext'] = 'Privacy policy and Data Processing Agreement';
 $string['registerintro1'] = "We'd love to stay in touch!  When you register";
@@ -307,7 +307,7 @@ $string['sectionnumber'] = 'Section / tile number';
 $string['sectionerrorstring'] = "Your session may have expired.  Try refreshing this page.";
 $string['sectionerrortitle'] = 'Error loading content';
 $string['selected'] = 'Selected';
-$string['settings'] = 'Tiles format settings';
+$string['settings'] = 'Supertiles format settings';
 $string['show'] = 'Show';
 $string['showalltiles'] = "Show all tiles";
 $string['showseparatewin'] = 'Show file in separate window';
@@ -322,8 +322,6 @@ $string['tilecolourschanged'] = 'Tiles colours have been reset.  All tiles now h
 $string['tileicon_help'] = 'Item selected here will override, for this tile only, whatever tile icon has been set at the course level.';
 $string['tileicon'] = 'Icon to display on this tile only';
 $string['tileicons'] = 'Tile icons';
-$string['tileimgtype'] = 'Show tile image as:';
-$string['tileimgtype_help'] = 'Show image as icon or background.';
 $string['tileselecttip'] = "Here's an easier way to change a tile icon or photo: in the course, with editing mode on, simply click the icon or photo you want to change.  The icon picker window will pop up.";
 $string['tip'] = 'Tip';
 $string['togglecompletion'] = 'Click to toggle completion status';
@@ -332,21 +330,21 @@ $string['uploadnewphoto'] = 'Upload new photo';
 $string['uploadnewphoto_help'] = 'Upload an image to be used on this tile';
 $string['width'] = 'width';
 
-$string['displayunits'] = 'Display study units';
-$string['displayunitsdesc'] = 'Show or hide block';
-$string['displayunitsdesc_help'] = 'Show or hide block';
-$string['displaymessages'] = 'Display messages';
-$string['displaymessagesdesc'] = 'Show or hide block';
-$string['displaymessagesdesc_help'] = 'Show or hide block';
-$string['displaygrades'] = 'Display grades';
-$string['displaygradesdesc'] = 'Show or hide block';
-$string['displaygradesdesc_help'] = 'Show or hide block';
-$string['showbagestag'] = 'Display Badges block';
-$string['showbagestagdesc'] = 'Show or hide block';
-$string['showbagestagdesc_help'] = 'Show or hide block';
-$string['showcertificatestag'] = 'Display Certificates block';
-$string['showcertificatestagdesc'] = 'Show or hide block';
-$string['showcertificatestagdesc_help'] = 'Show or hide block';
+$string['displayunits'] = 'משבצת יחידות';
+$string['displayunitsdesc'] = 'משבצת יחידות';
+$string['displayunitsdesc_help'] = 'משבצת יחידות';
+$string['displaymessages'] = 'משבצת הודעות';
+$string['displaymessagesdesc'] = 'משבצת הודעות';
+$string['displaymessagesdesc_help'] = 'משבצת הודעות';
+$string['displaygrades'] = 'משבצת צלמיות';
+$string['displaygradesdesc'] = 'משבצת צלמיות';
+$string['displaygradesdesc_help'] = 'משבצת צלמיות';
+$string['showbagestag'] = 'צלמית מדליות';
+$string['showbagestagdesc'] = 'צלמית מדליות';
+$string['showbagestagdesc_help'] = 'צלמית מדליות';
+$string['showcertificatestag'] = 'צלמית תעודות';
+$string['showcertificatestagdesc'] = 'צלמית תעודות';
+$string['showcertificatestagdesc_help'] = 'צלמית תעודות';
 
 // Admin Settings page strings.
 $string['addsections'] = 'Add tiles';
@@ -392,7 +390,7 @@ $string['tilecolourgeneral_descr'] = 'These settings allow the administrator to 
 $string['tilecolourgeneral'] = 'Colour palette - optional colour';
 $string['tileoutcome_help'] = 'If you select an outcome for this tile, you will then under course settings be able to display a set of <em>filter buttons</em>, one for each outcome,  which when pressed filter the displayed tiles according to which outcome they have been assigned';
 $string['tileoutcome'] = 'Outcome for this tile';
-$string['usejavascriptnav'] = 'Use JavaScript navigation from Tiles main page';
+$string['usejavascriptnav'] = 'Use JavaScript navigation from Supertiles main page';
 $string['usejavascriptnav_desc'] = 'When checked, if user clicks a Tile on the main course overview page, and has JavaScript, JS will be used to transition to tile contents.  Tile contents will be stored locally in browser according to the other settings below.  If unchecked, JS will not be used and legacy navigation will be used instead.  The other JS settings below will be ignored.';
 $string['usejseditingexpandcollapse'] = 'Editing mode - use JavaScript to expand/collapse tiles';
 $string['usejseditingexpandcollapse_desc'] = 'If selected, in editing mode a teacher can expand and collapse editing tiles with animated transitions.  Tile content will be loaded on expand, without page reloads.';
@@ -401,17 +399,16 @@ $string['usejsnavforsinglesection_desc'] = 'When checked, any call for a single 
 $string['usesubtilesseczero'] = 'Use sub tiles in top section';
 $string['usesubtilesseczero_help'] = 'If selected, sub tiles will be used in top section of course as well as within all tiles.  This is as the sub tiles take up a lot of room at the very top of the course.  It may be better to leave this unselected, so that any items in the top section are shown in standard list format instead.';
 
-$string['privacy:metadata:preference:format_tiles_stopjsnav'] = 'Whether the user has disabled animated JavaScript navigation.';
+$string['privacy:metadata:preference:format_supertiles_stopjsnav'] = 'Whether the user has disabled animated JavaScript navigation.';
 
-$string['pinnedsection'] = 'This section is pinned';
-$string['unpinnedsection'] = 'Pin this section to show it in the front';
-$string['topinsection'] = 'Pin section';
-$string['tounpinsection'] = 'Unpin section';
-$string['showpinned'] = 'Pin this section';
-$string['showunpinned'] = 'Unpin this section';
-$string['displaypinned'] = 'Pin or Unpin section';
-$string['addsection'] = 'Add section';
-$string['addsubsection'] = 'Add subsection';
+$string['pinnedsection'] = 'יחידה קבוע';
+$string['unpinnedsection'] = 'קבע יחידה לתצוגה למעלה';
+$string['topinsection'] = 'יחידה קבוע';
+$string['tounpinsection'] = 'בטל הצמדת יחידה';
+$string['showpinned'] = 'הצמד יחידה';
+$string['showunpinned'] = 'בטל הצמדת יחידה';
+$string['displaypinned'] = 'הצמד או בטל הצמדה ליחידה';
+$string['addsection'] = 'הסף יחידה';
+$string['addsubsection'] = 'הסף תת יחידה';
 $string['cancelmoving'] = 'Cancel moving \'{$a}\'';
-
-$string['toomuch_pinned_sections'] = 'Too many fixed sections (maximum 4)';
+$string['toomuch_pinned_sections'] = 'יותר מדי יחידות קבועות (מקסימום 4)';

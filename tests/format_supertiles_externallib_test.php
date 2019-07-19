@@ -17,7 +17,7 @@
 /**
  * External tiles format functions unit tests.
  *
- * @package    format_tiles
+ * @package    format_supertiles
  * @category   external
  * @copyright  2018 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -32,12 +32,12 @@ require_once($CFG->dirroot . '/webservice/tests/helpers.php');
 /**
  * External course functions unit tests
  *
- * @package    format_tiles
+ * @package    format_supertiles
  * @category   external
  * @copyright  2018 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class format_tiles_externallib_testcase extends externallib_advanced_testcase {
+class format_supertiles_externallib_testcase extends externallib_advanced_testcase {
 
     /**
      * The format options to use when setting up a course in tiles format.
@@ -47,7 +47,7 @@ class format_tiles_externallib_testcase extends externallib_advanced_testcase {
         'shortname' => 'aname',
         'fullname' => 'A Name',
         'numsections' => 5,
-        'format' => 'tiles',
+        'format' => 'supertiles',
         'defaulttileicon' => 'user-o',
         'basecolour' => '#700000',
         'courseusesubtiles' => 1,
@@ -62,7 +62,7 @@ class format_tiles_externallib_testcase extends externallib_advanced_testcase {
      */
     protected function setUp() {
         global $CFG;
-        require_once($CFG->dirroot . '/course/format/tiles/externallib.php');
+        require_once($CFG->dirroot . '/course/format/supertiles/externallib.php');
     }
 
     /**
@@ -95,8 +95,8 @@ class format_tiles_externallib_testcase extends externallib_advanced_testcase {
         $newicon = 'number_1';
         $sectionid = get_fast_modinfo($course)->get_section_info_all()[1]->id;
 
-        $result = \format_tiles_external::set_image($course->id, $sectionid, $newicon, 'tileicon', 0, 0);
-        $result = external_api::clean_returnvalue(format_tiles_external::set_image_returns(), $result);
+        $result = \format_supertiles_external::set_image($course->id, $sectionid, $newicon, 'tileicon', 0, 0);
+        $result = external_api::clean_returnvalue(format_supertiles_external::set_image_returns(), $result);
         // Check for 0 warnings.
         $this->assertEquals(true, $result['status']);
 
@@ -104,7 +104,7 @@ class format_tiles_externallib_testcase extends externallib_advanced_testcase {
         $dbvalue = $DB->get_field(
             'course_format_options',
             'value',
-            array('courseid' => $course->id, 'format' => 'tiles', 'sectionid' => $sectionid, 'name' => 'tileicon'
+            array('courseid' => $course->id, 'format' => 'supertiles', 'sectionid' => $sectionid, 'name' => 'tileicon'
             )
         );
 
@@ -113,7 +113,7 @@ class format_tiles_externallib_testcase extends externallib_advanced_testcase {
         // Call without required capability.
         $this->unassignUserCapability('moodle/course:update', $contextid, $roleid);
         $this->expectException('required_capability_exception');
-        $result = format_tiles_external::set_image($course->id, $sectionid, $newicon, 'tileicon');
+        $result = format_supertiles_external::set_image($course->id, $sectionid, $newicon, 'tileicon');
 
         // Student not allowed to do it.
         $student1 = self::getDataGenerator()->create_user();
@@ -123,15 +123,15 @@ class format_tiles_externallib_testcase extends externallib_advanced_testcase {
             $studentrole->id);
         $this->setUser($student1);
         $this->expectException('required_capability_exception');
-        $result = format_tiles_external::set_image($course->id, $sectionid, $newicon, 'tileicon');
-        $result = external_api::clean_returnvalue(format_tiles_external::set_image_returns(), $result);
+        $result = format_supertiles_external::set_image($course->id, $sectionid, $newicon, 'tileicon');
+        $result = external_api::clean_returnvalue(format_supertiles_external::set_image_returns(), $result);
 
         // Fail when the user is not allow to access the course (enrolled) or is not teacher.
         $this->setGuestUser();
         $this->expectException('required_capability_exception');
 
-        $result = format_tiles_external::set_image($course->id, $sectionid, $newicon, 'tileicon');
-        $result = external_api::clean_returnvalue(format_tiles_external::set_image_returns(), $result);
+        $result = format_supertiles_external::set_image($course->id, $sectionid, $newicon, 'tileicon');
+        $result = external_api::clean_returnvalue(format_supertiles_external::set_image_returns(), $result);
     }
 
 
@@ -158,13 +158,13 @@ class format_tiles_externallib_testcase extends externallib_advanced_testcase {
         $contextid = context_course::instance($course->id)->id;
         $roleid = $this->assignUserCapability('moodle/course:update', $contextid);
 
-        $result = \format_tiles_external::set_session_width($course->id, 1366);
-        $result = external_api::clean_returnvalue(format_tiles_external::set_session_width_returns(), $result);
+        $result = \format_supertiles_external::set_session_width($course->id, 1366);
+        $result = external_api::clean_returnvalue(format_supertiles_external::set_session_width_returns(), $result);
         // Check for 0 warnings.
         $this->assertEquals(true, $result['status']);
 
         // Check it worked and data made it to $SESSION.
-        $sessionvarname = 'format_tiles_width_' . $course->id;
+        $sessionvarname = 'format_supertiles_width_' . $course->id;
         $this->assertEquals(1366, $SESSION->$sessionvarname);
 
         // Student also allowed to do it.
@@ -175,20 +175,20 @@ class format_tiles_externallib_testcase extends externallib_advanced_testcase {
             $studentrole->id);
         $this->setUser($student1);
 
-        $result = \format_tiles_external::set_session_width($course->id, 1366);
-        $result = external_api::clean_returnvalue(format_tiles_external::set_session_width_returns(), $result);
+        $result = \format_supertiles_external::set_session_width($course->id, 1366);
+        $result = external_api::clean_returnvalue(format_supertiles_external::set_session_width_returns(), $result);
         // Check for 0 warnings.
         $this->assertEquals(true, $result['status']);
 
         // Check it worked and data made it to $SESSION.
-        $sessionvarname = 'format_tiles_width_' . $course->id;
+        $sessionvarname = 'format_supertiles_width_' . $course->id;
         $this->assertEquals(1366, $SESSION->$sessionvarname);
 
         // Fail when the user is not allow to access the course (enrolled) or is not teacher.
         $this->setGuestUser();
         $this->expectException('require_login_exception');
 
-        $result = \format_tiles_external::set_session_width($course->id, 1366);
-        $result = external_api::clean_returnvalue(format_tiles_external::set_session_width_returns(), $result);
+        $result = \format_supertiles_external::set_session_width($course->id, 1366);
+        $result = external_api::clean_returnvalue(format_supertiles_external::set_session_width_returns(), $result);
     }
 }

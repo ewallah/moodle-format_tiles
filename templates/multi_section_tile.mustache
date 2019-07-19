@@ -16,7 +16,7 @@
 }}
 
 {{!
-    @template format_tiles/multi_section_tile
+    @template format_supertiles/multi_section_tile
 
     Tile template for display on multi section page to represent one section/topic.
 
@@ -56,19 +56,19 @@
             <div class="tile-top" id="tileTop-{{tileid}}">
                 <div class="tileiconcontainer" id="tileicon_{{tileid}}"
                     {{#isediting}}data-toggle="tooltip" data-placement="left"
-                     data-original-title="{{^allowphototiles}}{{#str}}picknewicon, format_tiles{{/str}}{{/allowphototiles}}{{#allowphototiles}}{{#str}}picknewiconphoto, format_tiles{{/str}}{{/allowphototiles}}"
+                     data-original-title="{{^allowphototiles}}{{#str}}picknewicon, format_supertiles{{/str}}{{/allowphototiles}}{{#allowphototiles}}{{#str}}picknewiconphoto, format_supertiles{{/str}}{{/allowphototiles}}"
                     {{/isediting}}>
-                    {{>format_tiles/tileicon}}
+                    {{>format_supertiles/tileicon}}
                 </div>
                 <div class="tiletopright pull-right" id="tiletopright-{{tileid}}" aria-hidden="true">
                     {{#hidden}}
-                        {{#pix}}eye-slash, format_tiles, {{#str}}hidden, format_tiles{{/str}}{{/pix}}
+                        {{#pix}}eye-slash, format_supertiles, {{#str}}hidden, format_supertiles{{/str}}{{/pix}}
                     {{/hidden}}
                     {{#restricted}}
-                        {{#pix}}lock, format_tiles, {{#str}}restricted{{/str}}{{/pix}}
+                        {{#pix}}lock, format_supertiles, {{#str}}restricted{{/str}}{{/pix}}
                     {{/restricted}}
                     {{#progress}}
-                        {{> format_tiles/progress}}
+                        {{> format_supertiles/progress}}
                     {{/progress}}
                 </div>
             </div>
@@ -78,7 +78,7 @@
                   {{#title}}<h3>{{{title}}}</h3>{{/title}}
                 </span>
                 {{#availabilitymessage}}
-                    {{>format_tiles/availability_info}}
+                    {{>format_supertiles/availability_info}}
                 {{/availabilitymessage}}
             </div>
         </div>
@@ -87,7 +87,7 @@
         {{#tileimagebackground}}
             {{^pinned}}
             {{#availabilitymessage}}
-                {{>format_tiles/availability_info}}
+                {{>format_supertiles/availability_info}}
             {{/availabilitymessage}}
             <div class="" id="tileText-{{tileid}}"
                  {{#activity_summary}}title="{{activity_summary}}"{{^ismobile}} data-toggle="tooltip" data-html="true"{{/ismobile}}{{/activity_summary}}>
@@ -105,19 +105,19 @@
             <div class="tile-top" id="tileTop-{{tileid}}">
                 <div class="tileiconcontainer" id="tileicon_{{tileid}}"
                     {{#isediting}}data-toggle="tooltip" data-placement="left"
-                     data-original-title="{{^allowphototiles}}{{#str}}picknewicon, format_tiles{{/str}}{{/allowphototiles}}{{#allowphototiles}}{{#str}}picknewiconphoto, format_tiles{{/str}}{{/allowphototiles}}"
+                     data-original-title="{{^allowphototiles}}{{#str}}picknewicon, format_supertiles{{/str}}{{/allowphototiles}}{{#allowphototiles}}{{#str}}picknewiconphoto, format_supertiles{{/str}}{{/allowphototiles}}"
                     {{/isediting}}>
-                    {{>format_tiles/tileicon}}
+                    {{>format_supertiles/tileicon}}
                 </div>
                 <div class="tiletopright pull-right" id="tiletopright-{{tileid}}" aria-hidden="true">
                     {{#hidden}}
-                        {{#pix}}eye-slash, format_tiles, {{#str}}hidden, format_tiles{{/str}}{{/pix}}
+                        {{#pix}}eye-slash, format_supertiles, {{#str}}hidden, format_supertiles{{/str}}{{/pix}}
                     {{/hidden}}
                     {{#restricted}}
-                        {{#pix}}lock, format_tiles, {{#str}}restricted{{/str}}{{/pix}}
+                        {{#pix}}lock, format_supertiles, {{#str}}restricted{{/str}}{{/pix}}
                     {{/restricted}}
                     {{#progress}}
-                        {{> format_tiles/progress}}
+                        {{> format_supertiles/progress}}
                     {{/progress}}
                 </div>
             </div>
@@ -127,7 +127,7 @@
                   {{#title}}<h3>{{{title}}}</h3>{{/title}}
                 </span>
                 {{#availabilitymessage}}
-                    {{>format_tiles/availability_info}}
+                    {{>format_supertiles/availability_info}}
                 {{/availabilitymessage}}
             </div>
             </div>

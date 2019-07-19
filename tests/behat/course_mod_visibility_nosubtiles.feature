@@ -1,4 +1,4 @@
-@format @format_tiles @course_mod_visibility_nosubtiles @javascript
+@format @format_supertiles @course_mod_visibility_nosubtiles @javascript
 Feature: In a section for Teacher, hidden activities are dimmed
 
   Background:
@@ -28,14 +28,14 @@ Feature: In a section for Teacher, hidden activities are dimmed
     And the following config values are set as admin:
       | config                 | value    | plugin       |
       | enablecompletion       | 1        | core         |
-      | modalmodules           | page     | format_tiles |
-      | modalresources         | pdf,html | format_tiles |
-      | assumedatastoreconsent | 1        | format_tiles |
-      | reopenlastsection      | 0        | format_tiles |
-      | usejavascriptnav       | 1        | format_tiles |
-      | jsmaxstoreditems       | 0        | format_tiles |
+      | modalmodules           | page     | format_supertiles |
+      | modalresources         | pdf,html | format_supertiles |
+      | assumedatastoreconsent | 1        | format_supertiles |
+      | reopenlastsection      | 0        | format_supertiles |
+      | usejavascriptnav       | 1        | format_supertiles |
+      | jsmaxstoreditems       | 0        | format_supertiles |
     # We set jsmaxstoreditems to zero as otherwise when we switch between subtiles and tiles format we may not see an immediate change in display
-    And format_tiles subtiles are off for course "Course Mod Vis NoSubtiles Course"
+    And format_supertiles subtiles are off for course "Course Mod Vis NoSubtiles Course"
 
   @javascript
   Scenario: Teacher can see visible (V) and not visible (NV) activities with subtiles off

@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template format_tiles/admin_setting_tabs
+    @template format_supertiles/admin_setting_tabs
     This template is a slightly modified clone of the theme_boost/admin_setting_tabs template.
 
     Example context (json):
@@ -43,16 +43,16 @@
 }}
 <div id="docsbuttons" class="text-right">
     {{#documentationurl}}
-        <a class="btn btn-primary" href="{{documentationurl}}" target="_blank">{{#str}}documentation, format_tiles{{/str}}</a>
+        <a class="btn btn-primary" href="{{documentationurl}}" target="_blank">{{#str}}documentation, format_supertiles{{/str}}</a>
     {{/documentationurl}}
-    <a class="btn btn-primary" href="https://evolutioncode.uk/contact" target="_blank">{{#str}}contactdeveloper, format_tiles{{/str}}</a>
+    <a class="btn btn-primary" href="https://evolutioncode.uk/contact" target="_blank">{{#str}}contactdeveloper, format_supertiles{{/str}}</a>
 </div>
 {{^isregistered}}
     <div class="box generalbox adminerror alert alert-danger py-3">
-        {{#str}}notregistered, format_tiles{{/str}}
+        {{#str}}notregistered, format_supertiles{{/str}}
         {{{registerhelpicon}}}
-        <a href="{{config.wwwroot}}/course/format/tiles/register.php?sesskey={{sesskey}}" class="btn btn-secondary" title="">
-            {{#str}}register, format_tiles{{/str}}
+        <a href="{{config.wwwroot}}/course/format/supertiles/register.php?sesskey={{sesskey}}" class="btn btn-secondary" title="">
+            {{#str}}register, format_supertiles{{/str}}
         </a>
     </div>
 {{/isregistered}}
@@ -68,7 +68,7 @@
     {{#tabs}}
         <div class="tab-pane{{#active}} active{{/active}}" id="{{name}}" role="tabpanel">
             {{#iscolourstab}}
-                {{>format_tiles/admin_settings_colours_tab_header}}
+                {{>format_supertiles/admin_settings_colours_tab_header}}
             {{/iscolourstab}}
             {{{html}}}
         </div>

@@ -1,4 +1,4 @@
-@format @format_tiles @javascript_nav @javascript
+@format @format_supertiles @javascript_nav @javascript
 Feature: Interface can be enhabced with JS nav if allowed by site admin
   In order to improve navigation
   As a user
@@ -24,12 +24,12 @@ Feature: Interface can be enhabced with JS nav if allowed by site admin
     And the following config values are set as admin:
       | config                 | value    | plugin       |
       | enablecompletion       | 1        | core         |
-      | modalmodules           | page     | format_tiles |
-      | modalresources         | pdf,html | format_tiles |
-      | assumedatastoreconsent | 1        | format_tiles |
-      | usejavascriptnav       | 1        | format_tiles |
-      | reopenlastsection      | 0        | format_tiles |
-      | jsmaxstoreditems       | 0        | format_tiles |
+      | modalmodules           | page     | format_supertiles |
+      | modalresources         | pdf,html | format_supertiles |
+      | assumedatastoreconsent | 1        | format_supertiles |
+      | usejavascriptnav       | 1        | format_supertiles |
+      | reopenlastsection      | 0        | format_supertiles |
+      | jsmaxstoreditems       | 0        | format_supertiles |
     # We set jsmaxstoreditems to zero as otherwise when we switch between subtiles and tiles format we may not see an immediate change in display
 
   @javascript
@@ -63,7 +63,7 @@ Feature: Interface can be enhabced with JS nav if allowed by site admin
   Scenario: Open section 1 then close and open section 2 without JS as student
     When the following config values are set as admin:
       | config           | value | plugin       |
-      | usejavascriptnav | 0     | format_tiles |
+      | usejavascriptnav | 0     | format_supertiles |
     And I log in as "student1"
     And I am on "Course 1" course homepage
     And I wait until the page is ready
@@ -100,7 +100,7 @@ Feature: Interface can be enhabced with JS nav if allowed by site admin
 #    When I log in as "teacher1"
 #    And the following config values are set as admin:
 #      | config | value | plugin |
-#      | usejavascriptnav | 1 | format_tiles |
+#      | usejavascriptnav | 1 | format_supertiles |
 #    And I am on "Course 1" course homepage
 #    And I click on tile "1"
 #    And I wait until the page is ready

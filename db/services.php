@@ -17,7 +17,7 @@
 /**
  * Format tiles web services defintions
  *
- * @package   format_tiles
+ * @package   format_supertiles
  * @category  event
  * @copyright 2018 David Watson {@link http://evolutioncode.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -26,70 +26,70 @@
 defined('MOODLE_INTERNAL') || die();
 
 $functions = array (
-    'format_tiles_set_image' => array(
-        'classname'   => 'format_tiles_external',
+    'format_supertiles_set_image' => array(
+        'classname'   => 'format_supertiles_external',
         'methodname'  => 'set_image',
-        'classpath'   => 'course/format/tiles/externallib.php',
+        'classpath'   => 'course/format/supertiles/externallib.php',
         'description' => 'Set tile icon (intended to be used from AJAX)',
         'type'        => 'write',
         'ajax'        => true,
         'loginrequired' => true,
         'capabilities' => 'moodle/course:update'
     ),
-    'format_tiles_log_mod_view' => array(
-        'classname'   => 'format_tiles_external',
+    'format_supertiles_log_mod_view' => array(
+        'classname'   => 'format_supertiles_external',
         'methodname'  => 'log_mod_view',
-        'classpath'   => 'course/format/tiles/externallib.php',
+        'classpath'   => 'course/format/supertiles/externallib.php',
         'description' => 'Trigger course module view event (for log) for a resource (for modal use)',
         'type'        => 'write',
         'ajax'        => true,
         'loginrequired' => true,
         'capabilities' => 'mod/[modulename]:view'
     ),
-    'format_tiles_get_single_section_page_html' => array(
-        'classname'   => 'format_tiles_external',
+    'format_supertiles_get_single_section_page_html' => array(
+        'classname'   => 'format_supertiles_external',
         'methodname'  => 'get_single_section_page_html',
-        'classpath'   => 'course/format/tiles/externallib.php',
+        'classpath'   => 'course/format/supertiles/externallib.php',
         'description' => 'Get HTML for single section page for this course (i.e. tile contents)',
         'type'        => 'read',
         'ajax'        => true,
         'loginrequired' => true,
         'capabilities' => '' // Enrolment check, not capability - see externallib.php.
     ),
-    'format_tiles_log_tile_click' => array(
-        'classname'   => 'format_tiles_external',
+    'format_supertiles_log_tile_click' => array(
+        'classname'   => 'format_supertiles_external',
         'methodname'  => 'log_tile_click',
-        'classpath'   => 'course/format/tiles/externallib.php',
+        'classpath'   => 'course/format/supertiles/externallib.php',
         'description' => 'Trigger course view event for a section (for log) on section tile click',
         'type'        => 'write',
         'ajax'        => true,
         'loginrequired' => true,
         'capabilities' => ''  // Enrolment check, not capability - see externallib.php.
     ),
-    'format_tiles_get_mod_page_html' => array(
-        'classname'   => 'format_tiles_external',
+    'format_supertiles_get_mod_page_html' => array(
+        'classname'   => 'format_supertiles_external',
         'methodname'  => 'get_mod_page_html',
-        'classpath'   => 'course/format/tiles/externallib.php',
+        'classpath'   => 'course/format/supertiles/externallib.php',
         'description' => 'Return the HTML for a page course module (for modal use)',
         'type'        => 'read',
         'ajax'        => true,
         'loginrequired' => true,
         'capabilities' => 'mod/page:view'
     ),
-    'format_tiles_get_icon_set' => array(
-        'classname'   => 'format_tiles_external',
+    'format_supertiles_get_icon_set' => array(
+        'classname'   => 'format_supertiles_external',
         'methodname'  => 'get_icon_set',
-        'classpath'   => 'course/format/tiles/externallib.php',
+        'classpath'   => 'course/format/supertiles/externallib.php',
         'description' => 'Return the available icon set (for editing teacher)',
         'type'        => 'read',
         'ajax'        => true,
         'loginrequired' => true,
         'capabilities' => 'moodle/course:update'
     ),
-    'format_tiles_set_session_width' => array(
-        'classname'   => 'format_tiles_external',
+    'format_supertiles_set_session_width' => array(
+        'classname'   => 'format_supertiles_external',
         'methodname'  => 'set_session_width',
-        'classpath'   => 'course/format/tiles/externallib.php',
+        'classpath'   => 'course/format/supertiles/externallib.php',
         'description' => 'Set session width of tiles window (so that tiles can be shown with correct width on page load',
         'type'        => 'write',
         'ajax'        => true,

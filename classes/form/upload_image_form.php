@@ -17,13 +17,13 @@
 /**
  * Form to upload an image to be shown as tile background.
  *
- * @package format_tiles
+ * @package format_supertiles
  * @copyright  2019 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or late
  **/
 
 
-namespace format_tiles\form;
+namespace format_supertiles\form;
 defined('MOODLE_INTERNAL') || die();
 use moodleform;
 global $CFG;
@@ -31,7 +31,7 @@ require_once("{$CFG->libdir}/formslib.php");
 
 /**
  * Class upload_image_form
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2018 David Watson {@link http://evolutioncode.uk}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -48,9 +48,9 @@ class upload_image_form extends moodleform {
 
         // Visible elements.
 
-        $mform->addElement('header', 'guidance', get_string('guidance', 'format_tiles'));
+        $mform->addElement('header', 'guidance', get_string('guidance', 'format_supertiles'));
         $mform->addElement('html', \html_writer::div(
-            get_string('photoguidance_desc', 'format_tiles'),
+            get_string('photoguidance_desc', 'format_supertiles'),
             'photoguidance mt-3 mb-3'
             )
         );
@@ -58,12 +58,12 @@ class upload_image_form extends moodleform {
 
         $existingphotourl = isset($instance['existingurl']) ? $instance['existingurl'] : '';
         if ($existingphotourl) {
-            $mform->addElement('header', 'headertag', get_string('existingimage', 'format_tiles'));
+            $mform->addElement('header', 'headertag', get_string('existingimage', 'format_supertiles'));
             $formheading = '';
             $formheading .= \html_writer::div(
                 \html_writer::img(
                     $existingphotourl,
-                    get_string('existingimage', 'format_tiles'), array('class' => 'existingtilephoto')
+                    get_string('existingimage', 'format_supertiles'), array('class' => 'existingtilephoto')
                 )
             );
             if ($instance['aspectratiomessage']) {
@@ -71,9 +71,9 @@ class upload_image_form extends moodleform {
             }
             $formheading .= \html_writer::div(
                 \html_writer::link(
-                    new \moodle_url('/course/format/tiles/editimage.php',
+                    new \moodle_url('/course/format/supertiles/editimage.php',
                         array('delete' => 1, 'courseid' => $instance['courseid'], 'sectionid' => $instance['sectionid'])),
-                    get_string('deleteimage', 'format_tiles'),
+                    get_string('deleteimage', 'format_supertiles'),
                     array('class' => 'btn btn-secondary')
                 ),
                 'mt-2 mb-2'
@@ -82,17 +82,17 @@ class upload_image_form extends moodleform {
             $mform->setExpanded('headertag', false);
         }
 
-        $mform->addElement('header', 'uploadnewphotoheader', get_string('uploadnewphoto', 'format_tiles'));
+        $mform->addElement('header', 'uploadnewphotoheader', get_string('uploadnewphoto', 'format_supertiles'));
 
         $mform->addElement(
             'filepicker',
             'tileimagefile',
-            get_string('uploadnewphoto', 'format_tiles'),
+            get_string('uploadnewphoto', 'format_supertiles'),
             null,
             $instance['options']
         );
 
-        $mform->addHelpButton('tileimagefile', 'uploadnewphoto', 'format_tiles');
+        $mform->addHelpButton('tileimagefile', 'uploadnewphoto', 'format_supertiles');
         $mform->setExpanded('uploadnewphotoheader', true);
 
         // Hidden params.

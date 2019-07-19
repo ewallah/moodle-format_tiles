@@ -1,4 +1,4 @@
-@format @format_tiles @course_mod_visibility_subtiles_visible_sec  @javascript
+@format @format_supertiles @course_mod_visibility_subtiles_visible_sec  @javascript
 Feature: Teacher can hide course modules when subtiles being used in a visible section and this is respected
 
   Background:
@@ -28,15 +28,15 @@ Feature: Teacher can hide course modules when subtiles being used in a visible s
     And the following config values are set as admin:
       | config                 | value    | plugin       |
       | enablecompletion       | 1        | core         |
-      | modalmodules           | page     | format_tiles |
-      | modalresources         | pdf,html | format_tiles |
-      | assumedatastoreconsent | 1        | format_tiles |
-      | reopenlastsection      | 0        | format_tiles |
-      | usejavascriptnav       | 1        | format_tiles |
-      | jsmaxstoreditems       | 0        | format_tiles |
+      | modalmodules           | page     | format_supertiles |
+      | modalresources         | pdf,html | format_supertiles |
+      | assumedatastoreconsent | 1        | format_supertiles |
+      | reopenlastsection      | 0        | format_supertiles |
+      | usejavascriptnav       | 1        | format_supertiles |
+      | jsmaxstoreditems       | 0        | format_supertiles |
     # We set jsmaxstoreditems to zero as otherwise when we switch between subtiles and tiles format we may not see an immediate change in display
 
-    And format_tiles subtiles are on for course "Course Mod Vis Course4"
+    And format_supertiles subtiles are on for course "Course Mod Vis Course4"
 
   @javascript
   Scenario: Teacher can see visible (V) and not visible (NV) activities with subtiles on in a visible section

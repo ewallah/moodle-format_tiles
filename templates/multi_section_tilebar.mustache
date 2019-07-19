@@ -16,7 +16,7 @@
 }}
 
 {{!
-    @template format_tiles/multi_section_tilebar
+    @template format_supertiles/multi_section_tilebar
 
     Tile bar template.
 
@@ -80,17 +80,17 @@
             {{^hastilephoto}}
                 <div class="tileiconcontainer" id="tileicon_{{tileid}}"
                     {{#isediting}}data-toggle="tooltip" data-placement="left"
-                        data-original-title="{{^allowphototiles}}{{#str}}picknewicon, format_tiles{{/str}}{{/allowphototiles}}{{#allowphototiles}}{{#str}}picknewiconphoto, format_tiles{{/str}}{{/allowphototiles}}"
+                        data-original-title="{{^allowphototiles}}{{#str}}picknewicon, format_supertiles{{/str}}{{/allowphototiles}}{{#allowphototiles}}{{#str}}picknewiconphoto, format_supertiles{{/str}}{{/allowphototiles}}"
                      {{/isediting}}>
-                        {{>format_tiles/tileicon}}
+                        {{>format_supertiles/tileicon}}
                 </div>
             {{/hastilephoto}}
             {{#hastilephoto}}
                 <span class="tileiconcontainer hasphoto" id="tileicon_{{tileid}}"
                 {{#isediting}}data-toggle="tooltip" data-placement="left"
-                      data-original-title="{{^allowphototiles}}{{#str}}picknewicon, format_tiles{{/str}}{{/allowphototiles}}{{#allowphototiles}}{{#str}}picknewiconphoto, format_tiles{{/str}}{{/allowphototiles}}"
+                      data-original-title="{{^allowphototiles}}{{#str}}picknewicon, format_supertiles{{/str}}{{/allowphototiles}}{{#allowphototiles}}{{#str}}picknewiconphoto, format_supertiles{{/str}}{{/allowphototiles}}"
                 {{/isediting}}>
-                    {{>format_tiles/tilebarphoto}}
+                    {{>format_supertiles/tilebarphoto}}
                 </span>
             {{/hastilephoto}}
             {{^isediting}}
@@ -105,15 +105,15 @@
                     {{{inplace_editable_title}}}
                 </span>
 
-                <div class="icon20 pull-right" id="hiddeneye{{tileid}}" title="{{#str}}hidden, format_tiles{{/str}}"></div>
+                <div class="icon20 pull-right" id="hiddeneye{{tileid}}" title="{{#str}}hidden, format_supertiles{{/str}}"></div>
                 {{#is_expanded}}
-                    <a class="expand-collapse-sec collapse-section pull-right" data-toggle="tooltip" data-placement="right" data-original-title="{{#str}}collapse, format_tiles{{/str}}"
+                    <a class="expand-collapse-sec collapse-section pull-right" data-toggle="tooltip" data-placement="right" data-original-title="{{#str}}collapse, format_supertiles{{/str}}"
                        data-section="{{tileid}}" href="{{{config.wwwroot}}}/course/view.php?id={{courseid}}&expand=-1#section-{{tileid}}" id="collapse{{tileid}}">
                       </span>
                     </a>
                 {{/is_expanded}}
                 {{^is_expanded}}
-                    <a class="expand-collapse-sec expand-section pull-right" data-toggle="tooltip" data-placement="right" data-original-title="{{#str}}expand, format_tiles{{/str}}"
+                    <a class="expand-collapse-sec expand-section pull-right" data-toggle="tooltip" data-placement="right" data-original-title="{{#str}}expand, format_supertiles{{/str}}"
                        data-sectionid="{{secid}}" data-section="{{tileid}}" id="expand{{tileid}}"
                        href="{{{config.wwwroot}}}/course/view.php?id={{courseid}}&expand={{tileid}}#section-{{tileid}}">
                     </a>
@@ -133,13 +133,13 @@
                 <ul class="section img-text {{^useSubtiles}}no{{/useSubtiles}}subtiles">
                     {{#is_expanded}}
                             {{#course_modules}}
-                                {{>format_tiles/course_module}}
+                                {{>format_supertiles/course_module}}
                             {{/course_modules}}
                     {{/is_expanded}}
                 </ul>
                 <ul class="tiles{{#isediting}} editing{{/isediting}} multi_section_subtiles">
                 {{#subsections}}
-                    {{> format_tiles/multi_section_tilebar}}
+                    {{> format_supertiles/multi_section_tilebar}}
                 {{/subsections}}
                 
                 {{{moveend}}}

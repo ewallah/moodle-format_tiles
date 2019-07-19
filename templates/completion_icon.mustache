@@ -16,7 +16,7 @@
 }}
 
 {{!
-    @template format_tiles/completion_icon
+    @template format_supertiles/completion_icon
 
     Course module completion icon template
 
@@ -56,8 +56,8 @@
 }}
 {{^isediting}}
     {{!complete-y-xxx is a class not an id as there will be two on the page if a modal is open}}
-    <span class="completionchangenotify complete-y-{{cmid}}">{{#str}}complete, format_tiles{{/str}}</span>
-    <span class="completionchangenotify complete-n-{{cmid}}">{{#str}}notcomplete, format_tiles{{/str}}</span>
+    <span class="completionchangenotify complete-y-{{cmid}}">{{#str}}complete, format_supertiles{{/str}}</span>
+    <span class="completionchangenotify complete-n-{{cmid}}">{{#str}}notcomplete, format_supertiles{{/str}}</span>
     {{#completionIsManual}}
         <form method="post" action="{{{ config.wwwroot }}}/course/togglecompletion.php"
               class="togglecompletion" data-cmid="{{cmid}}" data-section="{{tileid}}" data-ismanual="1" data-placement="bottom">
@@ -66,7 +66,7 @@
                 <input type="hidden" name="sesskey" value="{{sesskey}}">
                 <input type="hidden" name="modulename" value="{{modtitle}}">
                 <input type="hidden" name="completionstate" id="completionstate_{{cmid}}" value="{{completionstateInverse}}">
-                <button class="btn" title="{{#completionstring}}{{completionstring}}{{/completionstring}}{{^completionstring}}{{#str}}togglecompletion, format_tiles{{/str}}{{/completionstring}}"
+                <button class="btn" title="{{#completionstring}}{{completionstring}}{{/completionstring}}{{^completionstring}}{{#str}}togglecompletion, format_supertiles{{/str}}{{/completionstring}}"
                         data-toggle="tooltip">
                     <span class="completion-icon completion_img_{{cmid}} completion-icon-{{completionicon}}">
                     </span>
@@ -77,7 +77,7 @@
     {{/completionIsManual}}
     {{^completionIsManual}}
         <span class="completioncheckbox completion-auto" id="completion-check-{{cmid}}"
-              title="{{#completionstring}}{{completionstring}}{{/completionstring}}{{^completionstring}}{{#str}}togglecompletion, format_tiles{{/str}}{{/completionstring}}"
+              title="{{#completionstring}}{{completionstring}}{{/completionstring}}{{^completionstring}}{{#str}}togglecompletion, format_supertiles{{/str}}{{/completionstring}}"
               data-ismanual="0" data-completionstate="{{completionstate}}" data-toggle="tooltip">
             <span class="completion-icon completion_img_{{cmid}} completion-icon-{{completionicon}}"></span>
         </span>
@@ -86,7 +86,7 @@
 
 {{#isediting}}
     <div class="completioncheckbox" id="completion-check-{{cmid}}"
-    title="{{#completionstring}}{{completionstring}}{{/completionstring}}{{^completionstring}}{{#str}}togglecompletion, format_tiles{{/str}}{{/completionstring}}" data-ismanual="0">
+    title="{{#completionstring}}{{completionstring}}{{/completionstring}}{{^completionstring}}{{#str}}togglecompletion, format_supertiles{{/str}}{{/completionstring}}" data-ismanual="0">
         <span class="completion-icon completion_img_{{cmid}} completion-icon-{{completionicon}}"></span>
     </div>
 {{/isediting}}

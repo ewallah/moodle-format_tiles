@@ -17,7 +17,7 @@
 /**
  * Format tiles plugin event handler definition.
  *
- * @package   format_tiles
+ * @package   format_supertiles
  * @category  event
  * @copyright 2018 David Watson {@link http://evolutioncode.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -28,10 +28,10 @@ defined('MOODLE_INTERNAL') || die();
 $observers = array (
     array(
     'eventname'     => '\core\event\course_deleted',
-    'callback'    => 'format_tiles_observer::course_deleted',
+    'callback'    => 'format_supertiles_observer::course_deleted',
     ),
     array(
         'eventname'     => '\core\event\course_section_deleted',
-        'callback'    => 'format_tiles_observer::course_section_deleted',
+        'callback'    => 'format_supertiles_observer::course_section_deleted',
     ),
 );

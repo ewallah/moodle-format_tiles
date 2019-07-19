@@ -17,7 +17,7 @@
 /**
  * Steps definitions related to Format tiles
  *
- * @package    format_tiles
+ * @package    format_supertiles
  * @category   test
  * @copyright  2018 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -30,32 +30,32 @@ require_once(__DIR__ . '/../../../../../lib/behat/behat_base.php');
 /**
  * Format tiles related steps definitions.
  *
- * @package    format_tiles
+ * @package    format_supertiles
  * @category   test
  * @copyright  2018 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class behat_format_tiles extends behat_base {
+class behat_format_supertiles extends behat_base {
 
     /**
      * Set course format option for subtiles on for course.
      *
-     * @Given /^format_tiles subtiles are on for course "(?P<coursefullname_string>(?:[^"]|\\")*)"$/
+     * @Given /^format_supertiles subtiles are on for course "(?P<coursefullname_string>(?:[^"]|\\")*)"$/
      * @param string $coursefullname
      * @throws dml_exception
      */
-    public function format_tiles_sub_tiles_are_on_for_course($coursefullname) {
+    public function format_supertiles_sub_tiles_are_on_for_course($coursefullname) {
         $this->sub_tiles_on_off($coursefullname, 1);
     }
 
     /**
      * * Set course format option for subtiles off for course.
      *
-     * @Given /^format_tiles subtiles are off for course "(?P<coursefullname_string>(?:[^"]|\\")*)"$/
+     * @Given /^format_supertiles subtiles are off for course "(?P<coursefullname_string>(?:[^"]|\\")*)"$/
      * @param string $coursefullname
      * @throws dml_exception
      */
-    public function format_tiles_sub_tiles_are_off_for_course($coursefullname) {
+    public function format_supertiles_sub_tiles_are_off_for_course($coursefullname) {
         $this->sub_tiles_on_off($coursefullname, 0);
     }
 
@@ -77,7 +77,7 @@ class behat_format_tiles extends behat_base {
     /**
      * Set the course format option for the progress indicator for a course as percent or fraction.
      *
-     * @Given /^format_tiles progress indicator is showing as "(?P<progresstype_string>(?:[^"]|\\")*)" for course "(?P<coursefullname_string>(?:[^"]|\\")*)"$/
+     * @Given /^format_supertiles progress indicator is showing as "(?P<progresstype_string>(?:[^"]|\\")*)" for course "(?P<coursefullname_string>(?:[^"]|\\")*)"$/
      * @param string $progresstype
      * @param string $coursefullname
      * @throws \Behat\Mink\Exception\ExpectationException
@@ -102,7 +102,7 @@ class behat_format_tiles extends behat_base {
     /**
      * For a given page, check that its progress indicator shows a certain value (i.e. complete or not).
      *
-     * @Then /^format_tiles progress for "(?P<activitytitle_string>(?:[^"]|\\")*)" in "(?P<coursefullname_string>(?:[^"]|\\")*)" is "(?P<value>\d+)" in the database$/
+     * @Then /^format_supertiles progress for "(?P<activitytitle_string>(?:[^"]|\\")*)" in "(?P<coursefullname_string>(?:[^"]|\\")*)" is "(?P<value>\d+)" in the database$/
      * @param string $activitytitle
      * @param string $coursefullname
      * @param int $value
@@ -156,7 +156,7 @@ class behat_format_tiles extends behat_base {
      * @return bool
      * @throws \Behat\Mink\Exception\ExpectationException
      */
-    public function activity_in_format_tiles_is_dimmed($activityname) {
+    public function activity_in_format_supertiles_is_dimmed($activityname) {
         $activityname = behat_context_helper::escape($activityname);
         // Var $xpath is to find the li (the ancestor) which contains an element where the text is activity name.
         $xpath = "//text()[contains(.," . $activityname . ")]/ancestor::*[self::li][1]";
@@ -172,8 +172,8 @@ class behat_format_tiles extends behat_base {
      * @return bool
      * @throws \Behat\Mink\Exception\ExpectationException
      */
-    public function activity_in_format_tiles_is_not_dimmed($activityname) {
-        return !$this->activity_in_format_tiles_is_dimmed($activityname);
+    public function activity_in_format_supertiles_is_not_dimmed($activityname) {
+        return !$this->activity_in_format_supertiles_is_dimmed($activityname);
     }
 
     /**
@@ -265,7 +265,7 @@ class behat_format_tiles extends behat_base {
      * @param string $activitytitle
      * @throws Exception
      */
-    public function click_format_tiles_activity($activitytitle) {
+    public function click_format_supertiles_activity($activitytitle) {
         // Var $xpath is to find the li (the ancestor) which contains an element where the text is activity name.
         $xpath = "//text()[contains(.,'" . $activitytitle . "')]/ancestor::*[contains(@class, 'instancename')]";
         $this->execute('behat_general::wait_until_the_page_is_ready');
@@ -297,7 +297,7 @@ class behat_format_tiles extends behat_base {
     /**
      * Progress Indicator for tile shows correct out of values e.g. 1 / 2 complete.
      *
-     * @Given /^format_tiles progress indicator for tile "(?P<tilenumber>\d+)" is "(?P<numcomplete>\d+)" out of "(?P<outof>\d+)"$/
+     * @Given /^format_supertiles progress indicator for tile "(?P<tilenumber>\d+)" is "(?P<numcomplete>\d+)" out of "(?P<outof>\d+)"$/
      * @param string $tilenumber
      * @param string $numcomplete
      * @param string $outof
@@ -391,7 +391,7 @@ class behat_format_tiles extends behat_base {
         }
 
         // Click on show/hide link.
-        $strhide = get_string($showhide, 'format_tiles');
+        $strhide = get_string($showhide, 'format_supertiles');
         $this->execute('behat_general::i_click_on_in_the',
             array($strhide, "link", $this->escape($xpath), "xpath_element")
         );
@@ -438,7 +438,7 @@ class behat_format_tiles extends behat_base {
             'course_sections', 'id', array('course' => $courseid, 'section' => $sectionnumber), MUST_EXIST
         );
 
-        $tilephoto = new \format_tiles\tile_photo($courseid, $sectionid);
+        $tilephoto = new \format_supertiles\tile_photo($courseid, $sectionid);
         if (!$tilephoto->get_file()) {
             throw new \Behat\Mink\Exception\ExpectationException(
                 "File not found in files table for course $coursename tile $sectionnumber photo $photoname ",
@@ -447,7 +447,7 @@ class behat_format_tiles extends behat_base {
         }
 
         $imageurl = $CFG->wwwroot . "/pluginfile.php/" . $context->id
-            . '/format_tiles/tilephoto/' . $sectionid . '/tilephoto/' . $photoname;
+            . '/format_supertiles/tilephoto/' . $sectionid . '/tilephoto/' . $photoname;
         $xpath = "//li[@id='tile-" . $sectionnumber . "']";
         $node = $this->get_selected_node("xpath_element", $xpath);
         if (strpos($node->getAttribute('style'), $imageurl) === false) {

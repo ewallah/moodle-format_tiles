@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This file contains local methods for the course format Tiles (not included in lib.php as that's widely called)
+ * This file contains local methods for the course format Supertiles (not included in lib.php as that's widely called)
  * @since     Moodle 2.7
- * @package   format_tiles
+ * @package   format_supertiles
  * @copyright 2018 David Watson {@link http://evolutioncode.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -32,7 +32,7 @@ defined('MOODLE_INTERNAL') || die();
  * @throws required_capability_exception
  * @throws coding_exception
  */
-function format_tiles_convert_label_to_page($cmid, $course) {
+function format_supertiles_convert_label_to_page($cmid, $course) {
     global $DB;
     $cm = $DB->get_record('course_modules', array('id' => $cmid), '*', MUST_EXIST);
     $labelmoduleid = $DB->get_record('modules', array('name' => 'label'), 'id', MUST_EXIST)->id;
@@ -53,11 +53,11 @@ function format_tiles_convert_label_to_page($cmid, $course) {
     $newpage = $label;
 
     // New page display name - label names may be multi line but we only want first line.
-    $newpage->name = format_tiles_get_first_line($label->name);
+    $newpage->name = format_supertiles_get_first_line($label->name);
 
     // Now the content - if the first line contains a repetition of the 'name', remove the repetition.
     $newpage->content = $label->intro;
-    $firstline = format_tiles_get_first_line($newpage->content);
+    $firstline = format_supertiles_get_first_line($newpage->content);
     if (strpos($firstline, $newpage->name) !== false && strpos($firstline, 'PLUGINFILE') === false) {
         // The first line seems to include what we are using for the name.
         // Also it does not seem to contain a file link so is not adding anything - remove it.
@@ -122,10 +122,10 @@ function format_tiles_convert_label_to_page($cmid, $course) {
     // Finally remove the old label.
     $DB->delete_records('label', array('id' => $label->id));
     rebuild_course_cache($course->id, true);
-    \core\notification::info(get_string('labelconverted', 'format_tiles'));
+    \core\notification::info(get_string('labelconverted', 'format_supertiles'));
     $cm->modname = "page";
     $cm->name = $newpage->name;
-    $event = \format_tiles\event\label_converted::create_from_cm($cm);
+    $event = \format_supertiles\event\label_converted::create_from_cm($cm);
     $event->trigger();
 }
 
@@ -135,7 +135,7 @@ function format_tiles_convert_label_to_page($cmid, $course) {
  * @param string $text the text to search
  * @return string the resulting text
  */
-function format_tiles_get_first_line($text) {
+function format_supertiles_get_first_line($text) {
     $text = explode(chr(13), $text)[0];  // Newline char \n.
     if (strpos($text, chr(10))) { // Return char \r in case it is used instead.
         $text = explode(chr(10), $text)[0];
@@ -148,14 +148,14 @@ function format_tiles_get_first_line($text) {
  * @return array the permitted modules including resource types e.g. page, pdf, HTML
  * @throws dml_exception
  */
-function format_tiles_allowed_modal_modules() {
+function format_supertiles_allowed_modal_modules() {
     $devicetype = \core_useragent::get_device_type();
     if ($devicetype != \core_useragent::DEVICETYPE_TABLET && $devicetype != \core_useragent::DEVICETYPE_MOBILE
         && !(\core_useragent::is_ie())) {
         // JS navigation and modals in Internet Explorer are not supported by this plugin so we disable modals here.
         return array(
-            'resources' => explode(",", get_config('format_tiles', 'modalresources')),
-            'modules' => explode(",", get_config('format_tiles', 'modalmodules'))
+            'resources' => explode(",", get_config('format_supertiles', 'modalresources')),
+            'modules' => explode(",", get_config('format_supertiles', 'modalmodules'))
         );
     } else {
         return array('resources' => [], 'modules' => []);
@@ -174,26 +174,26 @@ function format_tiles_allowed_modal_modules() {
  * Then we can load the page immediately at that width without hiding anything.
  * The skipcheck URL param is there in case anyone gets stuck at loading icon and clicks it - they escape it for session.
  * @param int $courseid the course ID we are in.
- * @see format_tiles_external::set_session_width() for where the session vars are set from JS.
+ * @see format_supertiles_external::set_session_width() for where the session vars are set from JS.
  * @return array the data to add to our mustache templates.
  * @throws coding_exception
  * @throws dml_exception
  */
-function format_tiles_width_template_data($courseid) {
+function format_supertiles_width_template_data($courseid) {
     global $SESSION, $PAGE;
     $data = [];
-    if (get_config('format_tiles', 'fittilestowidth')) {
-        if (optional_param('skipcheck', 0, PARAM_INT) || isset($SESSION->format_tiles_skip_width_check)) {
-            $SESSION->format_tiles_skip_width_check = 1;
+    if (get_config('format_supertiles', 'fittilestowidth')) {
+        if (optional_param('skipcheck', 0, PARAM_INT) || isset($SESSION->format_supertiles_skip_width_check)) {
+            $SESSION->format_supertiles_skip_width_check = 1;
             return array('hidetilesinitially' => 0);
         } else if ($PAGE->user_is_editing()
-            || !get_config('format_tiles', 'usejavascriptnav')
-            || get_user_preferences('format_tiles_stopjsnav', 0)) {
+            || !get_config('format_supertiles', 'usejavascriptnav')
+            || get_user_preferences('format_supertiles_stopjsnav', 0)) {
             // Here we may don't tiles initially or restrict screen width.
                 return array('hidetilesinitially' => 0);
         } else {
             // If session screen width has been set, send it to template so we can include in inline CSS.
-            $sessionvar = 'format_tiles_width_' . $courseid;
+            $sessionvar = 'format_supertiles_width_' . $courseid;
             $sessionvarvalue = isset($SESSION->$sessionvar) ? $SESSION->$sessionvar : 0;
             $data['defaultscreenwidthsession'] = $sessionvarvalue;
 

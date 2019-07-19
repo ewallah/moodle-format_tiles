@@ -17,28 +17,28 @@
 /**
  * Format tiles external API
  *
- * @package    format_tiles
+ * @package    format_supertiles
  * @copyright  2018 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-use format_tiles\tile_photo;
+use format_supertiles\tile_photo;
 
 defined('MOODLE_INTERNAL') || die;
 global $CFG;
 require_once("$CFG->libdir/externallib.php");
-require_once($CFG->dirroot . '/course/format/tiles/locallib.php');
+require_once($CFG->dirroot . '/course/format/supertiles/locallib.php');
 
 /**
  * Format tiles external functions
  *
- * @package    format_tiles
+ * @package    format_supertiles
  * @category   external
  * @copyright  2018 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @since      Moodle 3.3
  */
-class format_tiles_external extends external_api
+class format_supertiles_external extends external_api
 {
     /**
      * Teacher is changing the icon for a course section or whole course using AJAX
@@ -86,7 +86,7 @@ class format_tiles_external extends external_api
                 $result = self::set_tile_icon($data);
                 break;
             case 'tilephoto':
-                if (!get_config('format_tiles', 'allowphototiles')) {
+                if (!get_config('format_supertiles', 'allowphototiles')) {
                     throw new invalid_parameter_exception("Photo tiles are disabled by site admin");
                 }
                 $result = self::set_tile_photo($data);
@@ -202,7 +202,7 @@ class format_tiles_external extends external_api
      */
     private static function set_tile_icon($data) {
         global $DB;
-        $availableicons = (new \format_tiles\icon_set)->available_tile_icons($data['courseid']);
+        $availableicons = (new \format_supertiles\icon_set)->available_tile_icons($data['courseid']);
         if (!isset($availableicons[$data['image']])) {
             throw new invalid_parameter_exception('Icon is invalid');
         }
@@ -215,12 +215,12 @@ class format_tiles_external extends external_api
 
         $existingicon = $DB->get_record(
             'course_format_options',
-            ['format' => 'tiles', 'name' => $optionname, 'courseid' => $data['courseid'], 'sectionid' => $data['sectionid']]
+            ['format' => 'supertiles', 'name' => $optionname, 'courseid' => $data['courseid'], 'sectionid' => $data['sectionid']]
         );
         if (!isset($existingicon->value)) {
             // No icon is presently stored for this so we need to insert new record.
             $record = new stdClass();
-            $record->format = 'tiles';
+            $record->format = 'supertiles';
             $record->courseid = $data['courseid'];
             $record->sectionid = $data['sectionid'];
             $record->name = $optionname;
@@ -230,13 +230,13 @@ class format_tiles_external extends external_api
             // We are dealing with a tile icon for one particular section, so check if user has picked the course default.
             $defaulticonthiscourse = $DB->get_record(
                 'course_format_options',
-                ['format' => 'tiles', 'name' => 'defaulttileicon', 'courseid' => $data['courseid'], 'sectionid' => 0]
+                ['format' => 'supertiles', 'name' => 'defaulttileicon', 'courseid' => $data['courseid'], 'sectionid' => 0]
             )->value;
             if ($data['image'] == $defaulticonthiscourse) {
                 // Using default icon for a tile do don't store anything in database = default.
                 $result = $DB->delete_records(
                     'course_format_options',
-                    ['format' => 'tiles', 'name' => 'tileicon', 'courseid' => $data['courseid'], 'sectionid' => $data['sectionid']]
+                    ['format' => 'supertiles', 'name' => 'tileicon', 'courseid' => $data['courseid'], 'sectionid' => $data['sectionid']]
                 );
             } else {
                 // User has not picked default and there is an existing record so update it.
@@ -332,17 +332,17 @@ class format_tiles_external extends external_api
         self::validate_context($context);
 
         $course = get_course($params['courseid']);
-        $renderer = $PAGE->get_renderer('format_tiles');
-        $templateable = new \format_tiles\output\course_output($course, true, $params['sectionid']);
+        $renderer = $PAGE->get_renderer('format_supertiles');
+        $templateable = new \format_supertiles\output\course_output($course, true, $params['sectionid']);
         $data = $templateable->export_for_template($renderer);
         $result = array(
-            'html' => $renderer->render_from_template('format_tiles/single_section', $data)
+            'html' => $renderer->render_from_template('format_supertiles/single_section', $data)
         );
         // This session var is used later, when user revisits main course page, or a single section, for a course using this format.
         // If set to true, the page can safely be rendered from PHP in the javascript friendly format.
         // (A <noscript> box will be displayed only to users who have JS disabled with a link to switch to non JS format).
         if ($params['setjsusedsession']) {
-            $SESSION->format_tiles_jssuccessfullyused = 1;
+            $SESSION->format_supertiles_jssuccessfullyused = 1;
         }
         return $result;
     }
@@ -406,13 +406,13 @@ class format_tiles_external extends external_api
         $mod = get_fast_modinfo($params['courseid'])->get_cm($params['cmid']);
         require_capability('mod/' . $mod->modname . ':view', $modcontext);
         if ($mod && $mod->available) {
-            if (array_search($mod->modname, explode(",", get_config('format_tiles', 'modalmodules'))) === false) {
+            if (array_search($mod->modname, explode(",", get_config('format_supertiles', 'modalmodules'))) === false) {
                 throw new invalid_parameter_exception('Not allowed to call this mod type - disabled by site admin');
             }
             if ($mod->modname == 'page') {
                 // Record from the page table.
                 $record = $DB->get_record($mod->modname, array('id' => $mod->instance), 'intro, content, revision, contentformat');
-                $renderer = $PAGE->get_renderer('format_tiles');
+                $renderer = $PAGE->get_renderer('format_supertiles');
                 $content = $renderer->format_cm_content_text($mod, $record, $modcontext);
                 $result['status'] = true;
                 $result['html'] = $content;
@@ -538,7 +538,7 @@ class format_tiles_external extends external_api
         self::validate_context($context);
         require_capability('mod/' . $cm->modname . ':view', $context);
 
-        $allowedmodalmodules  = format_tiles_allowed_modal_modules();
+        $allowedmodalmodules  = format_supertiles_allowed_modal_modules();
         if (array_search($cm->modname, $allowedmodalmodules['modules']) === false
             && count($allowedmodalmodules['resources']) == 0) {
             throw new invalid_parameter_exception(
@@ -654,10 +654,10 @@ class format_tiles_external extends external_api
         $data = array(
             'status' => true,
             'warnings' => [],
-            'icons' => json_encode((new \format_tiles\icon_set)->available_tile_icons($courseid)),
+            'icons' => json_encode((new \format_supertiles\icon_set)->available_tile_icons($courseid)),
             'photos' => ''
         );
-        if (get_config('format_tiles', 'allowphototiles')) {
+        if (get_config('format_supertiles', 'allowphototiles')) {
             $data['photos'] = json_encode(tile_photo::get_photo_library_photos($context->id));
         }
         return $data;
@@ -701,7 +701,7 @@ class format_tiles_external extends external_api
      * We can then use this to render the page from PHP at the correct width initially next time.
      * @param int $courseid the course id we are in
      * @param int $width the JS calculated width
-     * @see format_tiles_width_template_data() for where this is used.
+     * @see format_supertiles_width_template_data() for where this is used.
      * @return array of warnings and status result
      * @since Moodle 3.0
      * @throws moodle_exception
@@ -715,9 +715,9 @@ class format_tiles_external extends external_api
         // Request and permission validation - validate_context() includes require_login() check.
         $coursecontext = context_course::instance($params['courseid']);
         self::validate_context($coursecontext);
-        $sessionvar = 'format_tiles_width_' . $params['courseid'];
+        $sessionvar = 'format_supertiles_width_' . $params['courseid'];
 
-        if (!get_config('format_tiles', 'fittilestowidth')) {
+        if (!get_config('format_supertiles', 'fittilestowidth')) {
             throw new invalid_parameter_exception("Setting tiles width is disabled by site admin");
         }
 

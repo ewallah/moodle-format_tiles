@@ -1,4 +1,4 @@
-@format @format_tiles @format_tiles_data_preference @javascript
+@format @format_supertiles @format_supertiles_data_preference @javascript
 Feature: user can select whether or not data is stored in browser
   In order to maintain privacy
   As a user
@@ -25,10 +25,10 @@ Feature: user can select whether or not data is stored in browser
       | student1 | C2     | student |
     And the following config values are set as admin:
       | config                 | value | plugin       |
-      | assumedatastoreconsent | 0     | format_tiles |
-      | reopenlastsection      | 0     | format_tiles |
-      | usejavascriptnav       | 1     | format_tiles |
-      | jsmaxstoreditems       | 8     | format_tiles |
+      | assumedatastoreconsent | 0     | format_supertiles |
+      | reopenlastsection      | 0     | format_supertiles |
+      | usejavascriptnav       | 1     | format_supertiles |
+      | jsmaxstoreditems       | 8     | format_supertiles |
 
     And I log in as "student1"
 

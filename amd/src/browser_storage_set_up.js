@@ -88,8 +88,8 @@ define(["jquery"], function ($) {
     var obtainUserPreference = function (cleanUpFunc) {
         require(["core/str", "core/notification"], function(str, Notification) {
             str.get_strings([
-                {key: "datapref", component: "format_tiles"},
-                {key: "dataprefquestion", component: "format_tiles"},
+                {key: "datapref", component: "format_supertiles"},
+                {key: "dataprefquestion", component: "format_supertiles"},
                 {key: "yes"},
                 {key: "no"}
             ]).done(function (s) {

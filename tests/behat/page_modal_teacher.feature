@@ -1,4 +1,4 @@
-@format @format_tiles @format_tiles_mod_modal @format_tiles_page_modal_teacher @javascript
+@format @format_supertiles @format_supertiles_mod_modal @format_supertiles_page_modal_teacher @javascript
 Feature: Teacher can add a page to a course and open it with subtiles off
 
   Background:
@@ -20,19 +20,19 @@ Feature: Teacher can add a page to a course and open it with subtiles off
     And the following config values are set as admin:
       | config                 | value    | plugin       |
       | enablecompletion       | 1        | core         |
-      | modalmodules           | page     | format_tiles |
-      | modalresources         | pdf,html | format_tiles |
-      | assumedatastoreconsent | 1        | format_tiles |
-      | reopenlastsection      | 0        | format_tiles |
-      | usejavascriptnav       | 1        | format_tiles |
-      | jsmaxstoreditems       | 0        | format_tiles |
+      | modalmodules           | page     | format_supertiles |
+      | modalresources         | pdf,html | format_supertiles |
+      | assumedatastoreconsent | 1        | format_supertiles |
+      | reopenlastsection      | 0        | format_supertiles |
+      | usejavascriptnav       | 1        | format_supertiles |
+      | jsmaxstoreditems       | 0        | format_supertiles |
     And I log in as "teacher1"
     # We set jsmaxstoreditems to zero as otherwise when we switch between subtiles and tiles format we may not see an immediate change in display
 
   @javascript
   Scenario: Create and open new page using modal as teacher - subtiles off
     When I am on "Course 1" course homepage with editing mode on
-    And format_tiles subtiles are off for course "Course 1"
+    And format_supertiles subtiles are off for course "Course 1"
     And I wait until the page is ready
     And I follow "Collapse all"
     And I wait until the page is ready
@@ -76,7 +76,7 @@ Feature: Teacher can add a page to a course and open it with subtiles off
   @javascript
   Scenario: Create and open new page using modal as teacher - subtiles on
     When I am on "Course 1" course homepage with editing mode on
-    And format_tiles subtiles are on for course "Course 1"
+    And format_supertiles subtiles are on for course "Course 1"
     And I wait until the page is ready
     And I follow "Collapse all"
     And I wait until the page is ready

@@ -1,4 +1,4 @@
-@format @format_tiles @format_tiles_photo_tiles @javascript
+@format @format_supertiles @format_supertiles_photo_tiles @javascript
 Feature: Teacher can allocate photos to tiles
 
   Background:
@@ -28,13 +28,13 @@ Feature: Teacher can allocate photos to tiles
     And the following config values are set as admin:
       | config                 | value    | plugin       |
       | enablecompletion       | 1        | core         |
-      | modalmodules           | page     | format_tiles |
-      | modalresources         | pdf,html | format_tiles |
-      | assumedatastoreconsent | 1        | format_tiles |
-      | reopenlastsection      | 0        | format_tiles |
-      | usejavascriptnav       | 1        | format_tiles |
-      | jsmaxstoreditems       | 0        | format_tiles |
-      | allowphototiles        | 1        | format_tiles |
+      | modalmodules           | page     | format_supertiles |
+      | modalresources         | pdf,html | format_supertiles |
+      | assumedatastoreconsent | 1        | format_supertiles |
+      | reopenlastsection      | 0        | format_supertiles |
+      | usejavascriptnav       | 1        | format_supertiles |
+      | jsmaxstoreditems       | 0        | format_supertiles |
+      | allowphototiles        | 1        | format_supertiles |
 
     # We set jsmaxstoreditems to zero as otherwise when we switch between subtiles and tiles format we may not see an immediate change in display
 
@@ -49,7 +49,7 @@ Feature: Teacher can allocate photos to tiles
     And I wait "1" seconds
     And "Pick a new icon" "dialogue" should be visible
     And I follow "Upload new photo"
-    And I upload "course/format/tiles/tests/fixtures/blueberries.jpg" file to "Upload new photo" filemanager
+    And I upload "course/format/supertiles/tests/fixtures/blueberries.jpg" file to "Upload new photo" filemanager
     And I press "Save changes"
     And I wait until the page is ready
     And I should see "Image saved for tile 'Tile 1'"
@@ -72,7 +72,7 @@ Feature: Teacher can allocate photos to tiles
     And I wait "1" seconds
     And "Pick a new icon" "dialogue" should be visible
     And I follow "Upload new photo"
-    And I upload "course/format/tiles/tests/fixtures/strawberries.jpg" file to "Upload new photo" filemanager
+    And I upload "course/format/supertiles/tests/fixtures/strawberries.jpg" file to "Upload new photo" filemanager
     And I press "Save changes"
     And I wait until the page is ready
     And I should see "Image saved for tile 'Tile 3'"
