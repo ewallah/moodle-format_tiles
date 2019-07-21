@@ -14,7 +14,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Main Javascript module for format_tiles for when user *IS* editing.
+ * Main Javascript module for format_supertiles for when user *IS* editing.
  * See course.js for if they are not editing.
  * Handles the UI changes when tiles are selected and anything else not
  * covered by the specific modules
@@ -30,7 +30,7 @@
 /* eslint space-before-function-paren: 0 */
 
 define(
-    ["jquery", "core/str", "format_tiles/edit_browser_storage"],
+    ["jquery", "core/str", "format_supertiles/edit_browser_storage"],
     function($, str, browserStorageEdit) {
 
         var Selector = {
@@ -159,12 +159,12 @@ define(
                 // Some args are strings or ints but we prefer bool.  Change to bool now as they are passed on elsewhere.
                 assumeDataStoreConsent = assumeDataStoreConsent === "1";
                 // This is also called from lib.php, via edit_form_helper, if user is on course/edit.php or editsection.php.
-                require(['format_tiles/edit_icon_picker'], function(iconPicker) {
+                require(['format_supertiles/edit_icon_picker'], function(iconPicker) {
                     iconPicker.init(courseId, pageType, allowPhotoTiles, documentationurl);
                 });
 
                 if (useSubTiles) {
-                    require(['format_tiles/edit_course_mod'], function (editCourseMod) {
+                    require(['format_supertiles/edit_course_mod'], function (editCourseMod) {
                         editCourseMod.init(
                             courseId,
                             sectionNum,

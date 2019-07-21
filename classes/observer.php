@@ -16,7 +16,7 @@
 
 /**
  * Event observers supported by this format.
- * @package    format_tiles
+ * @package    format_supertiles
  * @copyright  2018 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,11 +25,11 @@ defined('MOODLE_INTERNAL') || die();
 
 /**
  * Event observers supported by this format.
- * @package    format_tiles
+ * @package    format_supertiles
  * @copyright  2018 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class format_tiles_observer {
+class format_supertiles_observer {
     /**
      * Observer for the event course_content_deleted.
      * Deletes the user preference entries for the given course upon course deletion.
@@ -39,7 +39,7 @@ class format_tiles_observer {
     public static function course_deleted(\core\event\course_deleted $event) {
         global $DB;
         $courseid = $event->objectid;
-        $DB->delete_records("user_preferences", array("name" => 'format_tiles_stopjsnav_' . $courseid));
+        $DB->delete_records("user_preferences", array("name" => 'format_supertiles_stopjsnav_' . $courseid));
     }
 
     /**
@@ -47,6 +47,6 @@ class format_tiles_observer {
      * @param \core\event\course_section_deleted $event
      */
     public static function course_section_deleted(\core\event\course_section_deleted $event) {
-        \format_tiles\tile_photo::delete_file_from_ids($event->courseid, $event->objectid);
+        \format_supertiles\tile_photo::delete_file_from_ids($event->courseid, $event->objectid);
     }
 }

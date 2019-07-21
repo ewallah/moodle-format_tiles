@@ -19,18 +19,18 @@
  * Javascript Module to handle changes which are made to the course > edit settings
  * form as the user changes various options
  * e.g. if user deselects one item, this deselects another linked one for them
- * if the user picks an invalid option it will be detected by format_tiles::edit_form_validation (lib.php)
+ * if the user picks an invalid option it will be detected by format_supertiles::edit_form_validation (lib.php)
  * but this is to help them avoid triggering that if they have JS enabled
  *
  * @module      edit_form_helper
  * @package     course/format
- * @subpackage  tiles
+ * @subpackage  supertiles
  * @copyright   2018 David Watson {@link http://evolutioncode.uk}
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @since       Moodle 3.3
  */
 
-define(["jquery", "core/notification", "core/str", "core/templates", "format_tiles/browser_storage"],
+define(["jquery", "core/notification", "core/str", "core/templates", "format_supertiles/browser_storage"],
     function ($, Notification, str, Templates, browserStorage) {
         "use strict";
         return {
@@ -54,7 +54,7 @@ define(["jquery", "core/notification", "core/str", "core/templates", "format_til
                                 enableCompBox.val("1");
                                 str.get_strings([
                                     {key: "completion", component: "completion"},
-                                    {key: "completionswitchhelp", component: "format_tiles"}
+                                    {key: "completionswitchhelp", component: "format_supertiles"}
                                 ]).done(function (s) {
                                     Notification.alert(
                                         s[0],
@@ -75,7 +75,7 @@ define(["jquery", "core/notification", "core/str", "core/templates", "format_til
 
                     // Create clickable colour swatch for each colour in the select drop down to help user choose.
                     var colourSelectMenu = $("select#id_basecolour");
-                    Templates.render("format_tiles/colour_picker", {
+                    Templates.render("format_supertiles/colour_picker", {
                         colours: colourSelectMenu.find("option").map(
                             function (index, option) {
                                 var optselector = $(option);
@@ -111,10 +111,10 @@ define(["jquery", "core/notification", "core/str", "core/templates", "format_til
                         });
 
                         // If the course is being switched in to "Tiles", body will still have old format class e.g. format-topics.
-                        // This comes from core.  We want body to have format-tiles class for our colour picker CSS, so we add it.
+                        // This comes from core.  We want body to have format-supertiles class for our colour picker CSS, so we add it.
                         var body = $("body");
-                        if (!body.hasClass("format-tiles")) {
-                            body.addClass("format-tiles");
+                        if (!body.hasClass("format-supertiles")) {
+                            body.addClass("format-supertiles");
                         }
                     });
 
@@ -138,7 +138,7 @@ define(["jquery", "core/notification", "core/str", "core/templates", "format_til
                         } else {
                             currentIcon = selectBox.val();
                         }
-                        Templates.render("format_tiles/icon_picker_launch_btn", {
+                        Templates.render("format_supertiles/icon_picker_launch_btn", {
                             initialicon: currentIcon,
                             initialname: selectedIconName,
                             sectionId: sectionId,
@@ -148,7 +148,7 @@ define(["jquery", "core/notification", "core/str", "core/templates", "format_til
 
                             // We can hide the original select box now as users will use the button instead.
                             selectBox.hide();
-                            require(["format_tiles/edit_icon_picker"], function(iconPicker) {
+                            require(["format_supertiles/edit_icon_picker"], function(iconPicker) {
                                 iconPicker.init(courseId, pageType, allowphototiles, documentationUrl);
                             });
                         });
@@ -158,7 +158,7 @@ define(["jquery", "core/notification", "core/str", "core/templates", "format_til
 
                     // Add a row to the page with link to plugin documentation.
                     Templates
-                        .render("format_tiles/edit_form_helptext", {documentationurl: documentationUrl + '/teacher'})
+                        .render("format_supertiles/edit_form_helptext", {documentationurl: documentationUrl + '/teacher'})
                         .done(function (html) {
                             $(html).appendTo($("#id_courseformathdr .fcontainer"));
                         });

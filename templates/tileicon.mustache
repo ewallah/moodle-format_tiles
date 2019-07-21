@@ -16,7 +16,7 @@
 }}
 
 {{!
-    @template format_tiles/tileicon
+    @template format_supertiles/tileicon
 
     Tile icon template.
 
@@ -50,13 +50,13 @@
     {{/isediting}}>
     {{^hastilephoto}}
         {{#tileicon}}
-            {{#pix}}tileicon/{{{tileicon}}}, format_tiles{{/pix}}
+            {{#pix}}tileicon/{{{tileicon}}}, format_supertiles{{/pix}}
         {{/tileicon}}
         {{^tileicon}}
-            {{#pix}}tileicon/{{{defaulttileicon}}}, format_tiles{{/pix}}
+            {{#pix}}tileicon/{{{defaulttileicon}}}, format_supertiles{{/pix}}
         {{/tileicon}}
     {{/hastilephoto}}
     {{#hastilephoto}}
-        {{>format_tiles/tilephoto}}
+        {{>format_supertiles/tilephoto}}
     {{/hastilephoto}}
 </span>

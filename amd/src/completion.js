@@ -16,16 +16,16 @@
 /* eslint space-before-function-paren: 0 */
 
 /**
- * Load the format_tiles JavaScript for the course edit settings page /course/edit.php?id=xxx
+ * Load the format_supertiles JavaScript for the course edit settings page /course/edit.php?id=xxx
  *
- * @module      format_tiles
+ * @module      format_supertiles
  * @package     course/format
- * @subpackage  tiles
+ * @subpackage  supertiles
  * @copyright   2018 David Watson {@link http://evolutioncode.uk}
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-define(["jquery", "core/templates", "core/config", "format_tiles/completion"], function ($, Templates, config) {
+define(["jquery", "core/templates", "core/config", "format_supertiles/completion"], function ($, Templates, config) {
     "use strict";
 
     var courseId;
@@ -122,7 +122,7 @@ define(["jquery", "core/templates", "core/config", "format_tiles/completion"], f
         );
 
         // Render and replace the progress indicator for *this tile*.
-        Templates.render("format_tiles/progress", progressTemplateData(
+        Templates.render("format_supertiles/progress", progressTemplateData(
             sectionNum,
             newTileProgressValue,
             tileProgressIndicator.attr(dataKeys.numberOutOf),
@@ -134,7 +134,7 @@ define(["jquery", "core/templates", "core/config", "format_tiles/completion"], f
         });
 
         // Render and replace the *overall* progress indicator for the *whole course*.
-        Templates.render("format_tiles/progress", progressTemplateData(
+        Templates.render("format_supertiles/progress", progressTemplateData(
             0,
             newOverallProgressValue,
             overallProgressIndicator.attr(dataKeys.numberOutOf),
@@ -196,7 +196,7 @@ define(["jquery", "core/templates", "core/config", "format_tiles/completion"], f
                         $("#tileprogress-" + form.attr(dataKeys.section)),
                         progressChange
                     );
-                    require(["format_tiles/browser_storage"], function(storage) {
+                    require(["format_supertiles/browser_storage"], function(storage) {
                         storage.storeCourseContent(courseId, form.attr("data-section"), "");
                     });
                 }
@@ -230,7 +230,7 @@ define(["jquery", "core/templates", "core/config", "format_tiles/completion"], f
             }
         }
         // Even if it is not a "complete on view" activity, clear UI storage so that when user returns it is correct.
-        require(["format_tiles/browser_storage"], function (storage) {
+        require(["format_supertiles/browser_storage"], function (storage) {
             storage.storeCourseContent(courseId, sectionNum, "");
         });
     };
@@ -266,13 +266,13 @@ define(["jquery", "core/templates", "core/config", "format_tiles/completion"], f
                         // For items which are auto complete on view or event, but don't launch in a modal e.g. Quiz.
                         // We just clear the UI storage so that when user returns to this page, new completion state shows.
                         var sectionNum = $(e.currentTarget).closest(Selector.section).attr('data-section');
-                        require(["format_tiles/browser_storage"], function(storage) {
+                        require(["format_supertiles/browser_storage"], function(storage) {
                             storage.storeCourseContent(courseId, sectionNum, "");
                         });
                     });
             });
         },
-        // Allow this to be accessed from elsewhere e.g. format_tiles module.
+        // Allow this to be accessed from elsewhere e.g. format_supertiles module.
         markAsAutoCompleteInUI: function(courseIdInit, activity) {
             courseId = courseIdInit;
             markAsAutoCompleteInUI(activity);

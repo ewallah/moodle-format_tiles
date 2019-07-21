@@ -1,4 +1,4 @@
-@format @format_tiles @format_tiles_create_course
+@format @format_supertiles @format_supertiles_create_course
 Feature: Create course in format tiles
   As an admin
   I need to be able to create a course in format tiles and set the options
@@ -10,12 +10,12 @@ Feature: Create course in format tiles
     And the following config values are set as admin:
       | config                 | value    | plugin       |
       | enablecompletion       | 1        | core         |
-      | modalmodules           | page     | format_tiles |
-      | modalresources         | pdf,html | format_tiles |
-      | assumedatastoreconsent | 1        | format_tiles |
-      | reopenlastsection      | 0        | format_tiles |
-      | usejavascriptnav       | 1        | format_tiles |
-      | jsmaxstoreditems       | 0        | format_tiles |
+      | modalmodules           | page     | format_supertiles |
+      | modalresources         | pdf,html | format_supertiles |
+      | assumedatastoreconsent | 1        | format_supertiles |
+      | reopenlastsection      | 0        | format_supertiles |
+      | usejavascriptnav       | 1        | format_supertiles |
+      | jsmaxstoreditems       | 0        | format_supertiles |
 
   @javascript
   Scenario: Latest course announcements are displayed and can be configured

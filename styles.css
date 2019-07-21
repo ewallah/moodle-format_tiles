@@ -1,4 +1,4 @@
-.format-tiles ul.tiles {
+.format-supertiles ul.tiles {
     transition: 0.3s ease-in-out;
     overflow: visible;
     width: 100%;
@@ -8,41 +8,41 @@
     display: flex;
     justify-content: center;
 }
-.format-tiles ul.tiles.editing {
+.format-supertiles ul.tiles.editing {
     display: inline-block;
 }
 
-.format-tiles ul.tiles.pinnedsections {
+.format-supertiles ul.tiles.pinnedsections {
     display: flex;
     justify-content: space-around;
 }
-.format-tiles ul.tiles.expanded {
+.format-supertiles ul.tiles.expanded {
     max-height: unset;
     overflow: visible;
 }
-.format-tiles li.section {
+.format-supertiles li.section {
     margin-top: 10px;
     list-style: none;
 }
-.format-tiles .course-content li.section ul {
+.format-supertiles .course-content li.section ul {
     list-style: none;
 }
 
-.format-tiles ul.tiles#multi_section_tiles li.tile.section.main {
+.format-supertiles ul.tiles#multi_section_tiles li.tile.section.main {
     /*tile contents when displayed in the multi tile screen via JS*/
     background-color: #fff;
     margin: 10px;
     padding: 30px 0 30px 0;
     width: 100%;
 }
-.format-tiles ul.tiles#multi_section_tiles li.section#section-0 {
+.format-supertiles ul.tiles#multi_section_tiles li.section#section-0 {
     padding: 0;
 }
 
-.format-tiles .modal-backdrop.fade.in {
+.format-supertiles .modal-backdrop.fade.in {
     opacity: 0.2;
 }
-.format-tiles .header-overlay {
+.format-supertiles .header-overlay {
     opacity: 0.3;
     position: fixed;
     top: 0;
@@ -53,39 +53,39 @@
     height: 60px;
 }
 
-.format-tiles ul.tiles li.section .content {
+.format-supertiles ul.tiles li.section .content {
     margin: 0 10px 0 0;
 }
 
-.format-tiles li.section .content.dimmed {
+.format-supertiles li.section .content.dimmed {
     opacity: 0.6;
 }
-.format-tiles ul.tiles li.section .left {
+.format-supertiles ul.tiles li.section .left {
     float: left;
 }
 
-.format-tiles ul.tiles li.section .right {
+.format-supertiles ul.tiles li.section .right {
     float: right;
 }
 
-.format-tiles ul.tiles li.section .right img.icon {
+.format-supertiles ul.tiles li.section .right img.icon {
     padding: 0 0 4px 0;
 }
 
-.format-tiles ul.tiles li.section .left .section-handle img.icon {
+.format-supertiles ul.tiles li.section .left .section-handle img.icon {
     padding: 0;
     vertical-align: baseline;
 }
 
-.format-tiles ul.tiles li.section .left .section-handle.moodle-core-dragdrop-draghandle {
+.format-supertiles ul.tiles li.section .left .section-handle.moodle-core-dragdrop-draghandle {
     display: none;
 }
 
-.format-tiles ul.tiles li.section .activity-count {
+.format-supertiles ul.tiles li.section .activity-count {
     margin-right: 3px;
 }
 
-.format-tiles #page .course-content ul li.section.main.sectiondraggable {
+.format-supertiles #page .course-content ul li.section.main.sectiondraggable {
     border: 1px solid rgba(75, 126, 117, 0.15) !important;
     background-color: rgba(75, 126, 117, 0.05) !important;
     padding: 5px 5px 5px 10px;
@@ -96,53 +96,53 @@ li#section-0.section.main.clearfix {
     border-bottom: 0;
 }
 
-.format-tiles .tile a {
+.format-supertiles .tile a {
     text-decoration: none;
     padding: 7px 10px 5px 10px;
 }
 
-.format-tiles .progress-indic {
+.format-supertiles .progress-indic {
     display: inline-block;
     color: #999;
 }
 
-.format-tiles .progress-indic svg {
+.format-supertiles .progress-indic svg {
     width: 40px;
     height: 40px;
     display: inline-block;
 }
-.format-tiles .progress-indic i.fa {
+.format-supertiles .progress-indic i.fa {
     opacity: 0.5;
     height: 30px;
 }
 
-.format-tiles .progress-indic i.fa-check {
+.format-supertiles .progress-indic i.fa-check {
     color: darkgreen;
 }
-.format-tiles  .progress-indic svg circle.partial {
+.format-supertiles  .progress-indic svg circle.partial {
     stroke: #888;
     fill: none;
 }
 
-.format-tiles .progress-indic svg circle.whole {
+.format-supertiles .progress-indic svg circle.whole {
     stroke: rgba(0, 0, 0, 0.15);
     fill: none;
 }
 
-.format-tiles .progress-indic svg text {
+.format-supertiles .progress-indic svg text {
     font-size: 18px;
     font-weight: normal;
     transition: all 0.2s ease-in-out;
     fill: #666;
 }
-.format-tiles .tiletopright i.icon.fa {
+.format-supertiles .tiletopright i.icon.fa {
     font-size: 30px;
     width: 30px;
     height: 30px;
     vertical-align: top;
 }
 
-.format-tiles .progress-indic .progress-indic-label {
+.format-supertiles .progress-indic .progress-indic-label {
     display: inline-block;
     vertical-align: top;
     line-height: 40px;
@@ -151,17 +151,17 @@ li#section-0.section.main.clearfix {
     font-size: 0.9em;
 }
 
-.format-tiles .overall-progress {
+.format-supertiles .overall-progress {
     text-align: center;
     color: gray;
     transition: all 0.5s;
 }
 
-.format-tiles .overall-progress.hidden {
+.format-supertiles .overall-progress.hidden {
     display: none;
 }
 
-.format-tiles .navigation-arrows {
+.format-supertiles .navigation-arrows {
     min-width: 130px;
     display: inline-block;
     float: right;
@@ -170,10 +170,10 @@ li#section-0.section.main.clearfix {
     /*z-index needs to be on top of pagesechead*/
 }
 
-.format-tiles #page .course-content  ul li.section.main.current {
+.format-supertiles #page .course-content  ul li.section.main.current {
     background-color: inherit;
 }
-.format-tiles ul.tiles .tile_bar {
+.format-supertiles ul.tiles .tile_bar {
     width: 100%;
     min-height: 65px;
     text-align: left;
@@ -191,7 +191,7 @@ li#section-0.section.main.clearfix {
     height: auto;
 }
 
-.format-tiles ul.tiles .tile_bar_text {
+.format-supertiles ul.tiles .tile_bar_text {
     position: relative;
     left: 20px;
     top: 10px;
@@ -203,117 +203,117 @@ li#section-0.section.main.clearfix {
 }
 
 
-.format-tiles ul.tiles .tile_bar_restricted {
+.format-supertiles ul.tiles .tile_bar_restricted {
     opacity: 0.6;
 }
 
-.format-tiles ul.tiles .sectiondraggable .tile_bar {
+.format-supertiles ul.tiles .sectiondraggable .tile_bar {
     margin-left: 40px;
 }
 
-.format-tiles ul.tiles .sectiondraggable {
+.format-supertiles ul.tiles .sectiondraggable {
     width: 100%;
 }
 
-.format-tiles ul.tiles .sectiondraggable .summary,
-.format-tiles .section.main .summary {
+.format-supertiles ul.tiles .sectiondraggable .summary,
+.format-supertiles .section.main .summary {
     margin-left: 1.5em;
 }
-.format-tiles ul.tiles .sectiondraggable .alert.alert-warning {
+.format-supertiles ul.tiles .sectiondraggable .alert.alert-warning {
     margin-left: 70px;
     width: 100%; /*fallback*/
     /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
     width: calc(100% - 11em);
 }
 
-.format-tiles #warning_large_sec0 {
+.format-supertiles #warning_large_sec0 {
     margin: 10px;
 }
 
-.format-tiles ul.tiles .sectiondraggable .alert.alert-danger {
+.format-supertiles ul.tiles .sectiondraggable .alert.alert-danger {
     margin-left: 40px;
     width: 100%; /*fallback*/
     /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
     width: calc(100% - 9em);
 }
 
-.format-tiles ul.tiles .sectiondraggable .tile_bar.narrow {
+.format-supertiles ul.tiles .sectiondraggable .tile_bar.narrow {
     width: 100%; /*fallback*/
     /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
     width: calc(100% - 8em);
 }
 
-.format-tiles .icon20 {
+.format-supertiles .icon20 {
     max-width: 20px;
     max-height: 20px;
     opacity: 0.5;
 }
 
-.format-tiles .tiletopright img {
+.format-supertiles .tiletopright img {
     width: 30px;
     height: 30px;
     opacity: 0.5;
 }
 
-.format-tiles .icon40 {
+.format-supertiles .icon40 {
     max-width: 40px;
     max-height: 40px;
     opacity: 0.5;
 }
 
-.format-tiles .icon50 {
+.format-supertiles .icon50 {
     max-width: 50px;
     max-height: 50px;
     opacity: 0.5;
 }
 
-.format-tiles .tile_bar .inplaceeditable .quickediticon img {
+.format-supertiles .tile_bar .inplaceeditable .quickediticon img {
     opacity: 0.6;
 }
 
-.format-tiles .tile_bar .inplaceeditable a {
+.format-supertiles .tile_bar .inplaceeditable a {
     color: #777;
 }
 
-.format-tiles ul.tiles#multi_section_tiles {
+.format-supertiles ul.tiles#multi_section_tiles {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
 }
-.format-tiles ul.tiles.editing#multi_section_tiles,
-.format-tiles ul.tiles.multi_section_subtiles
+.format-supertiles ul.tiles.editing#multi_section_tiles,
+.format-supertiles ul.tiles.multi_section_subtiles
 {
     display: block;
 }
-.format-tiles #single_section_tiles {
+.format-supertiles #single_section_tiles {
     display: block;
     padding-left: 0;
     margin-left: 0;
 }
-.format-tiles ul.tiles#multi_section_tiles li.section {
+.format-supertiles ul.tiles#multi_section_tiles li.section {
     display: block;
 }
-.format-tiles.editing ul.tiles#multi_section_tiles li.section {
+.format-supertiles.editing ul.tiles#multi_section_tiles li.section {
     padding: 0;
 }
 
-.format-tiles.editing ul.tiles#multi_section_tiles li.section.pinned {
-    background-image: url("[[pix:format_tiles|pushpin-lb]]");
+.format-supertiles.editing ul.tiles#multi_section_tiles li.section.pinned {
+    background-image: url("[[pix:format_supertiles|pushpin-lb]]");
     background-position: 10px 10px;
     background-repeat: no-repeat;
 }
-.format-tiles.editing.dir-rtl ul.tiles#multi_section_tiles li.section.pinned {
+.format-supertiles.editing.dir-rtl ul.tiles#multi_section_tiles li.section.pinned {
     background-position-x: 99%;
 }
-.format-tiles .editing ul.tiles#multi_section_tiles li.section,
-.format-tiles ul.tiles#multi_section_tiles li#section-0.section {
+.format-supertiles .editing ul.tiles#multi_section_tiles li.section,
+.format-supertiles ul.tiles#multi_section_tiles li#section-0.section {
     display: block;
     width: 100%;
 }
-.format-tiles #section-0 .addresourcemodchooser {
+.format-supertiles #section-0 .addresourcemodchooser {
     position: relative;
 }
-.format-tiles .course-content ul li.section.main {
+.format-supertiles .course-content ul li.section.main {
     width: calc(100% - 15px);
     background-color: white;
     /* stop 'dot' background image in essential theme*/
@@ -323,32 +323,32 @@ li#section-0.section.main.clearfix {
     margin-bottom: 10px;
     padding-top: 12px;
 }
-.format-tiles .course-content ul li.section.main:target {
+.format-supertiles .course-content ul li.section.main:target {
     padding-top: 0;
     margin-top: 30px;
 }
-.format-tiles .activity:target {
+.format-supertiles .activity:target {
     /* stylelint-disable-next-line declaration-no-important */
     margin-top: 0 !important;
     /* stylelint-disable-next-line declaration-no-important */
     padding-top: 0 !important;
 }
-.format-tiles .subtile a.menu-action {
+.format-supertiles .subtile a.menu-action {
     /*essential for clean and other themes to ensure that the link is on top to avoid non responsive menu*/
     z-index: 1;
 }
-.format-tiles #page .course-content ul li.section.main {
+.format-supertiles #page .course-content ul li.section.main {
     /*adaptable theme*/
     background: #fff;
     border: 0;
 }
-.format-tiles .course-content ul li.section.main.moveablesection {
+.format-supertiles .course-content ul li.section.main.moveablesection {
     padding: 30px 10px 10px 10px;
     margin-left: 7px;
     /* For snap theme*/
     visibility: visible;
 }
-.format-tiles .course-content ul.tiles .tile {
+.format-supertiles .course-content ul.tiles .tile {
     display: flex;
     flex-basis: 225px;
     max-width: 260px;
@@ -367,12 +367,12 @@ li#section-0.section.main.clearfix {
     position: relative;
     overflow: hidden;
 }
-.format-tiles .course-content ul.tiles .tile.spacer {
+.format-supertiles .course-content ul.tiles .tile.spacer {
     margin-top: 0;
     margin-bottom: 0;
     padding: 0;
 }
-.format-tiles.jsenabled .course-content ul.tiles .tile.tile-collapsed {
+.format-supertiles.jsenabled .course-content ul.tiles .tile.tile-collapsed {
     display: none;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -380,7 +380,7 @@ li#section-0.section.main.clearfix {
     transition: all 0.3s ease-in-out;
 }
 
-.format-tiles.jsenabled .course-content ul.tiles .tile.tile-collapsing {
+.format-supertiles.jsenabled .course-content ul.tiles .tile.tile-collapsing {
     opacity: 0;
     display: flex;
     -webkit-transition: all 0.3s ease-in-out;
@@ -389,7 +389,7 @@ li#section-0.section.main.clearfix {
     transition: all 0.3s ease-in-out;
 }
 
-.format-tiles ul.tiles li:empty {
+.format-supertiles ul.tiles li:empty {
     height: 0;
     min-height: 0;
     border: none;
@@ -397,88 +397,88 @@ li#section-0.section.main.clearfix {
     visibility: hidden;
 }
 
-.format-tiles ul.tiles li.movehere {
+.format-supertiles ul.tiles li.movehere {
     list-style: none;
     margin: 0;
     padding: 0;
 }
-.format-tiles ul.tiles li.movehere img.movetarget {
+.format-supertiles ul.tiles li.movehere img.movetarget {
     width: 80px;
 }
 
-.format-tiles .tile a {
+.format-supertiles .tile a {
     color: #777;
     width: 100%;
 }
-.format-tiles #page-content a.quickeditlink {
+.format-supertiles #page-content a.quickeditlink {
     color: #777;
     width: 40px;
 }
 
-.format-tiles .section li.activity.label h1,
-.format-tiles .section li.activity.label h2,
-.format-tiles .section li.activity.label h3,
-.format-tiles .section li.activity.label h4 {
+.format-supertiles .section li.activity.label h1,
+.format-supertiles .section li.activity.label h2,
+.format-supertiles .section li.activity.label h3,
+.format-supertiles .section li.activity.label h4 {
     color: #555;
 }
 
-.format-tiles .section li.activity.label .dimmed_text h1,
-.format-tiles .section li.activity.label .dimmed_text h2,
-.format-tiles .section li.activity.label .dimmed_text h3,
-.format-tiles .section li.activity.label .dimmed_text h4 {
+.format-supertiles .section li.activity.label .dimmed_text h1,
+.format-supertiles .section li.activity.label .dimmed_text h2,
+.format-supertiles .section li.activity.label .dimmed_text h3,
+.format-supertiles .section li.activity.label .dimmed_text h4 {
     color: #818a91;
 }
 
-.format-tiles .hidden .sectiontitle h2,
-.format-tiles #page-content .hidden .sectiontitle h2 a.quickeditlink {
+.format-supertiles .hidden .sectiontitle h2,
+.format-supertiles #page-content .hidden .sectiontitle h2 a.quickeditlink {
     color: #818a91;
 }
 
-.format-tiles .course-content ul.tiles .tile-clickable:hover {
+.format-supertiles .course-content ul.tiles .tile-clickable:hover {
     transform: translateY(-6px);
     transition: transform 0.2s ease-in-out;
     -moz-transition: transform 0.2s ease-in-out;
     -o-transition: transform 0.2s ease-in-out;
 }
-.format-tiles ul.tiles .tile:focus {
+.format-supertiles ul.tiles .tile:focus {
     outline: 1px dotted;
 }
 
-.format-tiles ul.tiles .tile-top {
+.format-supertiles ul.tiles .tile-top {
     height: 55px;
     width: 100%;
 }
 
-.format-tiles ul.tiles .current .tile_bar,
-.format-tiles ul.tiles .current .tile_bar.narrow,
-.format-tiles .course-content ul.tiles .tile.current {
+.format-supertiles ul.tiles .current .tile_bar,
+.format-supertiles ul.tiles .current .tile_bar.narrow,
+.format-supertiles .course-content ul.tiles .tile.current {
     border-top-color: red;
 }
 
-.format-tiles ul.tiles .tile.tile-restricted,
-.format-tiles ul.tiles .tile.tile-hidden .format-tiles li .section .hidden .tile_bar {
+.format-supertiles ul.tiles .tile.tile-restricted,
+.format-supertiles ul.tiles .tile.tile-hidden .format-supertiles li .section .hidden .tile_bar {
     opacity: 0.5;
 }
 
-.format-tiles ul.tiles .tile.tile-hidden:hover,
-.format-tiles ul.tiles .tile-restricted.tile-clickable:hover {
+.format-supertiles ul.tiles .tile.tile-hidden:hover,
+.format-supertiles ul.tiles .tile-restricted.tile-clickable:hover {
     opacity: 0.3;
 }
 
-.format-tiles ul.tiles .tile.tile-hidden,
-.format-tiles ul.tiles .hidden .tile_bar {
+.format-supertiles ul.tiles .tile.tile-hidden,
+.format-supertiles ul.tiles .hidden .tile_bar {
     opacity: 0.5;
 }
 
-.format-tiles .expandcontrol {
+.format-supertiles .expandcontrol {
     margin: 0 30px 0 30px;
 }
 
-.format-tiles ul.tiles li.section .warningtext {
+.format-supertiles ul.tiles li.section .warningtext {
     color: red;
 }
 
-.format-tiles ul.tiles li.section .warningbar {
+.format-supertiles ul.tiles li.section .warningbar {
     background-color: red;
     color: #fff;
     padding: 5px;
@@ -486,11 +486,11 @@ li#section-0.section.main.clearfix {
     width: 90%;
 }
 
-.format-tiles ul.tiles li#spacersection {
+.format-supertiles ul.tiles li#spacersection {
     height: 130px;
 }
 
-.format-tiles li.activity.subtile.spacer {
+.format-supertiles li.activity.subtile.spacer {
     height: 0;
     min-height: 0;
     border: 0;
@@ -501,18 +501,18 @@ li#section-0.section.main.clearfix {
     flex-grow: 1;
     margin: 5px;
 }
-.format-tiles ul.tiles .tile .topic-number {
+.format-supertiles ul.tiles .tile .topic-number {
     display: inline-block;
     float: right;
     font-size: 1.5em;
     padding-right: 0.5em;
     vertical-align: top;
 }
-.format-tiles .moveablesection .tileiconcontainer {
+.format-supertiles .moveablesection .tileiconcontainer {
     margin-left: 0.5rem;
 }
-.format-tiles .tileiconcontainer,
-.format-tiles .tileiconcontainer img {
+.format-supertiles .tileiconcontainer,
+.format-supertiles .tileiconcontainer img {
     display: inline-block;
     text-align: left;
     vertical-align: top;
@@ -520,31 +520,31 @@ li#section-0.section.main.clearfix {
     height: 55px;
     font-size: 1em;
 }
-.format-tiles .tileiconcontainer.hasphoto {
+.format-supertiles .tileiconcontainer.hasphoto {
     width: 85px;
 }
-.format-tiles .tileiconcontainer .icon {
+.format-supertiles .tileiconcontainer .icon {
     width: 55px;
     height: 55px;
 }
-.format-tiles .tileiconcontainer .icon.fa {
+.format-supertiles .tileiconcontainer .icon.fa {
     font-size: 55px;
 }
-.format-tiles .course-content .icon,
-.format-tiles .iconpickericons .icon,
+.format-supertiles .course-content .icon,
+.format-supertiles .iconpickericons .icon,
 .format-site .iconpickericons .icon {
     color: #979797;
     opacity: 1;
 }
-.format-tiles .sectionbutton .icon {
+.format-supertiles .sectionbutton .icon {
     font-size: 1.4em;
     margin: 10px 0 0 0;
 }
-.format-tiles .sectionbutton img.icon {
+.format-supertiles .sectionbutton img.icon {
     width: 18px;
     height: 18px;
 }
-.format-tiles .pagesechead {
+.format-supertiles .pagesechead {
     min-height: 60px;
     z-index: 1;
     position: relative;
@@ -552,13 +552,13 @@ li#section-0.section.main.clearfix {
     /*z-index needs to be behind navigation-arrows as they may overlap*/
 }
 
-.format-tiles .sectionbuttons {
+.format-supertiles .sectionbuttons {
     position: relative;
     right: 30px;
     top: 0;
     z-index: 2;
 }
-.format-tiles .sectionbutton {
+.format-supertiles .sectionbutton {
     background-color: rgba(100, 100, 100, 0.05);
     margin-left: 5px;
     opacity: 1;
@@ -566,30 +566,30 @@ li#section-0.section.main.clearfix {
     height: 45px;
     text-align: center;
 }
-.format-tiles .subsection .sectionbuttons .closesectionbtn,
-.format-tiles .subsection .sectionbuttons .editsectionbtn {
+.format-supertiles .subsection .sectionbuttons .closesectionbtn,
+.format-supertiles .subsection .sectionbuttons .editsectionbtn {
     display: none;
 }
-.format-tiles .expand-section,
-.format-tiles .collapse-section {
+.format-supertiles .expand-section,
+.format-supertiles .collapse-section {
     width: 30px;
     height: 30px;
     background-size: contain;
     margin-top: 10px;
 }
-.format-tiles .sectionbutton.expandsectionbtn.expandedcontent > .expandicon{
+.format-supertiles .sectionbutton.expandsectionbtn.expandedcontent > .expandicon{
     display:none;
 }    
-.format-tiles .sectionbutton.expandsectionbtn:not(.expandedcontent) > .collapseicon{
+.format-supertiles .sectionbutton.expandsectionbtn:not(.expandedcontent) > .collapseicon{
     display:none;
 }    
-.format-tiles .expand-section {
-    background-image: url([[pix:format_tiles|expand]]);
+.format-supertiles .expand-section {
+    background-image: url([[pix:format_supertiles|expand]]);
 }
-.format-tiles .collapse-section {
-    background-image: url([[pix:format_tiles|collapse]]);
+.format-supertiles .collapse-section {
+    background-image: url([[pix:format_supertiles|collapse]]);
 }
-.format-tiles ul.tiles .tile .tile-text {
+.format-supertiles ul.tiles .tile .tile-text {
     text-align: left;
     width: 100%;
     height: 110px;
@@ -598,7 +598,7 @@ li#section-0.section.main.clearfix {
     position: relative;
 }
 /* centralise text vertically on tile */
-.format-tiles ul.tiles .tile .tile-textinner {
+.format-supertiles ul.tiles .tile .tile-textinner {
     display: inline-block;
     line-height: normal;
     top: 45%;
@@ -606,21 +606,21 @@ li#section-0.section.main.clearfix {
     position: absolute;
 }
 
-.format-tiles ul.tiles .tile .tile-textinner.longtitle h3 {
+.format-supertiles ul.tiles .tile .tile-textinner.longtitle h3 {
     font-size: 1.2em;
 }
 
-.format-tiles ul.tiles .tile_bar .icon20 {
+.format-supertiles ul.tiles .tile_bar .icon20 {
     width: 20px;
     margin-right: 10px;
 }
 
-.format-tiles a img {
+.format-supertiles a img {
     outline: none;
     -moz-outline-radius: 0;
 }
 
-.format-tiles .single-section  .navigation-arrow:hover {
+.format-supertiles .single-section  .navigation-arrow:hover {
     -webkit-transition: all 0.2s ease-in-out;
     -moz-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
@@ -629,41 +629,41 @@ li#section-0.section.main.clearfix {
     -webkit-transform: scale(1.05, 1.05);
 }
 
-.format-tiles .single-section .navigation-arrow,
-.format-tiles  .single-section .navigation-arrow img {
+.format-supertiles .single-section .navigation-arrow,
+.format-supertiles  .single-section .navigation-arrow img {
     width: 40px;
     height: 40px;
     background-repeat: no-repeat;
     display: inline-block;
     text-align: center;
 }
-.format-tiles .single-section .navigation-arrow .icon {
+.format-supertiles .single-section .navigation-arrow .icon {
     font-size: 35px;
 }
-.format-tiles .single-section .navigation-arrow.dimmed {
+.format-supertiles .single-section .navigation-arrow.dimmed {
     opacity: 0.5;
 }
-.format-tiles .navigation-arrows .navigation-arrow.dimmed:hover {
+.format-supertiles .navigation-arrows .navigation-arrow.dimmed:hover {
     background-color: inherit;
 }
 
 /* the following items are to avoid lots of padding under section 0 in single section view */
-.format-tiles .single-section {
+.format-supertiles .single-section {
     /* stylelint-disable-next-line declaration-no-important */
     margin-top: 0 !important;
 }
 
-.format-tiles #section-0 ul.section {
+.format-supertiles #section-0 ul.section {
     margin: 1rem 1rem 0 1rem;
 }
 
 /*dealing with left border to current section in boost theme*/
-.format-tiles .course-content .current::before {
+.format-supertiles .course-content .current::before {
     /* stylelint-disable-next-line declaration-no-important */
     border-left: none !important;
 }
 
-.format-tiles  #section-0 .content .summary .no-overflow,
+.format-supertiles  #section-0 .content .summary .no-overflow,
 #section-0 .content .summary .no-overflow p {
     margin-bottom: 0;
 }
@@ -672,36 +672,36 @@ li#section-0.section.main.clearfix {
     margin-bottom: 0;
 }
 
-.format-tiles ul.tiles li.section .content .modtype_label .no-overflow,
+.format-supertiles ul.tiles li.section .content .modtype_label .no-overflow,
 #section-0 .content .summary .no-overflow {
     margin-bottom: 5px;
 }
-.format-tiles ul.tiles li.section .content {
+.format-supertiles ul.tiles li.section .content {
     /*For snap theme*/
     display: block;
 }
 
-.format-tiles.theme-snap .course-content {
+.format-supertiles.theme-snap .course-content {
     max-width: inherit;
 }
-.format-tiles .label_content {
+.format-supertiles .label_content {
     overflow: hidden;
 }
-.format-tiles .label.dimmed {
+.format-supertiles .label.dimmed {
     opacity: 0.7;
 }
-.format-tiles .label-collapse-btn {
+.format-supertiles .label-collapse-btn {
     float: left;
 }
-.format-tiles .expand-collapse-all-btns {
+.format-supertiles .expand-collapse-all-btns {
     right: 0;
     position: absolute;
 }
-.format-tiles .expand-collapse-all-btns .btn-secondary {
+.format-supertiles .expand-collapse-all-btns .btn-secondary {
     /*Adatpable theme*/
     min-height: unset;
 }
-.format-tiles .buttonhidesec0 {
+.format-supertiles .buttonhidesec0 {
     cursor: pointer;
     height: 40px;
     width: 40px;
@@ -711,7 +711,7 @@ li#section-0.section.main.clearfix {
     padding: 0;
 }
 
-.format-tiles .buttonhidesec0 {
+.format-supertiles .buttonhidesec0 {
     right: 0;
     top: 10px;
     position: absolute;
@@ -720,70 +720,70 @@ li#section-0.section.main.clearfix {
     background-size: 20px 20px;
 }
 
-.format-tiles .tiles#single_section_tiles .buttonhidesec0 {
+.format-supertiles .tiles#single_section_tiles .buttonhidesec0 {
     margin-top: 10px;
 }
 
 
-body.jsenabled.format-tiles .buttonhidesec0 {
+body.jsenabled.format-supertiles .buttonhidesec0 {
     display: inline;
     background-color: white;
     top: -7px;
 }
 
-.format-tiles #collapsiblesec0 {
+.format-supertiles #collapsiblesec0 {
     display: block;
 }
-.format-tiles #section-0 {
+.format-supertiles #section-0 {
     min-height: 50px;
 }
-body.jsenabled.format-tiles #collapsiblesec0 {
+body.jsenabled.format-supertiles #collapsiblesec0 {
     display: none;
 }
 
 /*allows buttons to be displayed at top of this section without going under alert boxes e.g. 'All caches were purged.'*/
-.format-tiles .course-content {
+.format-supertiles .course-content {
     position: relative;
 }
 
-.format-tiles #collapsiblesec0 {
+.format-supertiles #collapsiblesec0 {
     display: none;
 }
 
-.format-tiles .collapsiblesec0 ul.section {
+.format-supertiles .collapsiblesec0 ul.section {
     padding-bottom: 20px;
 }
 
-.format-tiles .collapsiblesec0 li#section-0 {
+.format-supertiles .collapsiblesec0 li#section-0 {
     display: block;
     width: 100%;
     transition: opacity 0.3s ease-in-out;
 }
 
-.format-tiles .collapsiblesec0.collapsed li#section-0 {
+.format-supertiles .collapsiblesec0.collapsed li#section-0 {
     /* stylelint-disable-next-line declaration-no-important */
     opacity: 0 !important;
 }
 
-.format-tiles .collapsiblesec0.expanded li#section-0 {
+.format-supertiles .collapsiblesec0.expanded li#section-0 {
     opacity: 1;
 }
 
-.format-tiles #navicons {
+.format-supertiles #navicons {
     float: right;
     opacity: 0.3;
 }
 
-.format-tiles #navicons img {
+.format-supertiles #navicons img {
     width: 40px;
     height: 40px;
 }
 
-.format-tiles #editactivities:hover {
+.format-supertiles #editactivities:hover {
     opacity: 1;
 }
 
-.format-tiles #hiddeneye {
+.format-supertiles #hiddeneye {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -791,7 +791,7 @@ body.jsenabled.format-tiles #collapsiblesec0 {
     opacity: 0.5;
 }
 
-.format-tiles .course-content #filterbuttons {
+.format-supertiles .course-content #filterbuttons {
     margin-right: 6px;
     display: inline-block;
     margin-bottom: 3px;
@@ -799,40 +799,40 @@ body.jsenabled.format-tiles #collapsiblesec0 {
     float: left;
 }
 
-.format-tiles .overall-prog-radial {
+.format-supertiles .overall-prog-radial {
     font-size: 1.2em;
     height: 40px;
     margin-left: 10px;
     float: right;
 }
-.format-tiles .overall-prog-radial i {
+.format-supertiles .overall-prog-radial i {
     font-size: 30px;
     height: 30px;
     width: 30px;
     color: green;
 }
 
-.format-tiles .overall-prog-radial svg {
+.format-supertiles .overall-prog-radial svg {
     width: 33px;
     height: 33px;
 }
 
-.format-tiles .completion-icon {
+.format-supertiles .completion-icon {
     width: 25px;
     height: 25px;
     opacity: 0.7;
-    background-image: url([[pix:format_tiles|completion-n]]);
+    background-image: url([[pix:format_supertiles|completion-n]]);
     font-size: 1.3em;
     display: block;
     background-size: contain;
 }
-.format-tiles .completion-icon.completion-icon-y {
-    background-image: url([[pix:format_tiles|completion-y]]);
+.format-supertiles .completion-icon.completion-icon-y {
+    background-image: url([[pix:format_supertiles|completion-y]]);
 }
-.format-tiles .completion-icon.completion-icon-fail {
-    background-image: url([[pix:format_tiles|completion-fail]]);
+.format-supertiles .completion-icon.completion-icon-fail {
+    background-image: url([[pix:format_supertiles|completion-fail]]);
 }
-.format-tiles .completionchangenotify {
+.format-supertiles .completionchangenotify {
     position: absolute;
     top: 2px;
     background-color: rgba(255, 255, 255, 0.9);
@@ -845,13 +845,13 @@ body.jsenabled.format-tiles #collapsiblesec0 {
     border: 2px solid #666;
     font-size: 0.9em;
 }
-.format-tiles .allcomplete .icon {
+.format-supertiles .allcomplete .icon {
     font-size: 2em;
     width: 30px;
     height: 30px;
     color: #ffaa30;
 }
-.format-tiles .course-content #filterintro {
+.format-supertiles .course-content #filterintro {
     display: inline-block;
     padding: 10px;
     margin-left: 3px;
@@ -860,26 +860,26 @@ body.jsenabled.format-tiles #collapsiblesec0 {
     overflow: hidden;
 }
 
-.format-tiles #abovetiles {
+.format-supertiles #abovetiles {
     width: 100%;
     min-height: 30px;
 }
 
-.format-tiles .headerabovetiles {
+.format-supertiles .headerabovetiles {
     margin: 5px 0 2px 0;
     display: none;
     width: calc(100% - 70px);
     text-align: right;
 }
 
-body.format-tiles.jsenabled .course-content .headerabovetiles {
+body.format-supertiles.jsenabled .course-content .headerabovetiles {
     display: block;
 }
-.format-tiles .headerabovetiles .progress-indic {
+.format-supertiles .headerabovetiles .progress-indic {
     height: 42px;
 }
 
-.format-tiles .filterbutton {
+.format-supertiles .filterbutton {
     cursor: pointer;
     min-width: 50px;
     transition: all 0.2s ease-in-out;
@@ -891,14 +891,14 @@ body.format-tiles.jsenabled .course-content .headerabovetiles {
     white-space: nowrap;
 }
 
-.format-tiles .course-content li.activity.label h1,
-.format-tiles .section li.activity.label h2,
-.format-tiles .course-content li.activity.label h3,
-.format-tiles .course-content li.activity.label h4,
-.format-tiles .editor_atto_content_wrap h1,
-.format-tiles .editor_atto_content_wrap h2,
-.format-tiles .editor_atto_content_wrap h3,
-.format-tiles .editor_atto_content_wrap h4 {
+.format-supertiles .course-content li.activity.label h1,
+.format-supertiles .section li.activity.label h2,
+.format-supertiles .course-content li.activity.label h3,
+.format-supertiles .course-content li.activity.label h4,
+.format-supertiles .editor_atto_content_wrap h1,
+.format-supertiles .editor_atto_content_wrap h2,
+.format-supertiles .editor_atto_content_wrap h3,
+.format-supertiles .editor_atto_content_wrap h4 {
     font-weight: bold;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -907,76 +907,76 @@ body.format-tiles.jsenabled .course-content .headerabovetiles {
     overflow: hidden;
 }
 
-.format-tiles ul.tiles .tile h3 {
+.format-supertiles ul.tiles .tile h3 {
     font-size: 1.4em;
     line-height: 1.2em;
     font-weight: normal;
     color: #666;
 }
-.format-tiles.theme-snap ul.tiles .tile h3,
-.format-tiles.theme-snap ul.tiles .subtile h4,
-.format-tiles.theme-snap ul.tiles .tile .tile-textinner.longtitle h3 {
+.format-supertiles.theme-snap ul.tiles .tile h3,
+.format-supertiles.theme-snap ul.tiles .subtile h4,
+.format-supertiles.theme-snap ul.tiles .tile .tile-textinner.longtitle h3 {
     font-size: 1em;
 }
-.format-tiles .sectiontitlecontainer {
+.format-supertiles .sectiontitlecontainer {
     margin: 0 0 0.5em 0.5em;
     display: inline-block;
 }
 
-.format-tiles .sectiontitle {
+.format-supertiles .sectiontitle {
     display: inline-block;
     padding-left: 10px;
     font-size: 2em;
 }
 
-.format-tiles .sectiontitle::after,
-.format-tiles .sectiontitle::after {
+.format-supertiles .sectiontitle::after,
+.format-supertiles .sectiontitle::after {
     content: "";
     display: block;
     height: 4px;
 }
 
-.format-tiles .sectiontitle h2 {
+.format-supertiles .sectiontitle h2 {
     font-weight: 600;
     color: #666;
     display: inline-block;
 }
 
-.format-tiles #section-0 .contentwithoutlink .no-overflow p {
+.format-supertiles #section-0 .contentwithoutlink .no-overflow p {
     margin: 0;
 }
 
-.format-tiles #section-0 .contentwithoutlink .no-overflow {
+.format-supertiles #section-0 .contentwithoutlink .no-overflow {
     margin-bottom: 10px;
 }
 
-.format-tiles .tiles .section.main {
+.format-supertiles .tiles .section.main {
     /* stylelint-disable-next-line declaration-no-important */
     border: 0 !important;
     /* We use important here as core-course-dragdrop is not replacing this.originalstyle correctly. */
     /* stylelint-disable-next-line declaration-no-important */
     opacity: 1 !important;
 }
-.format-tiles li.section .availabilityinfo {
+.format-supertiles li.section .availabilityinfo {
     margin-left: 3em;
 }
 .availabilityinfo.isstealth .tag {
     font-size: 0.6em;
 }
-.format-tiles .hidden #hiddeneye {
-    background-image: url([[pix:format_tiles|eye-slash]]);
+.format-supertiles .hidden #hiddeneye {
+    background-image: url([[pix:format_supertiles|eye-slash]]);
     margin-left: 10px;
 }
 
-.format-tiles .buttonhidesec0.open {
-    background-image: url([[pix:format_tiles|remove]]);
+.format-supertiles .buttonhidesec0.open {
+    background-image: url([[pix:format_supertiles|remove]]);
 }
 
-.format-tiles .buttonhidesec0.closed {
-    background-image: url([[pix:format_tiles|sort]]);
+.format-supertiles .buttonhidesec0.closed {
+    background-image: url([[pix:format_supertiles|sort]]);
 }
 
-.format-tiles #editactivitiesimage {
+.format-supertiles #editactivitiesimage {
     background-image: url([[pix:a/view_list_active]]);
     display: inline-block;
     float: right;
@@ -987,7 +987,7 @@ body.format-tiles.jsenabled .course-content .headerabovetiles {
     background-size: 20px 20px;
     opacity: 0.6;
 }
-.format-tiles .tile-loading-icon {
+.format-supertiles .tile-loading-icon {
     position: absolute;
     left: 0;
     top: 0;
@@ -997,23 +997,23 @@ body.format-tiles.jsenabled .course-content .headerabovetiles {
     text-align: center;
 }
 
-.format-tiles .tile-loading-icon img {
+.format-supertiles .tile-loading-icon img {
     width: 24px;
     height: 30px;
 }
 
-.format-tiles .section .activity .activityinstance div.unclickable {
+.format-supertiles .section .activity .activityinstance div.unclickable {
     display: block;
 }
-.format-tiles .section .activity .activityinstance div.contentafterlink {
+.format-supertiles .section .activity .activityinstance div.contentafterlink {
     display: block;
 }
-.format-tiles .section .label .mod-indent-outer {
+.format-supertiles .section .label .mod-indent-outer {
     padding-left: 0;
 }
 
 @media screen and (max-width: 680px) {
-    .format-tiles li.activity.subtile {
+    .format-supertiles li.activity.subtile {
         /* stylelint-disable-next-line declaration-no-important */
         flex-basis: 160px !important;
         min-height: 210px;
@@ -1023,89 +1023,89 @@ body.format-tiles.jsenabled .course-content .headerabovetiles {
         /* stylelint-disable-next-line declaration-no-important */
         max-width: 44% !important;
     }
-    .format-tiles .clickable-region {
+    .format-supertiles .clickable-region {
         /* stylelint-disable-next-line declaration-no-important */
         width: 100% !important;
     }
-    .format-tiles li.subtile.spacer {
+    .format-supertiles li.subtile.spacer {
         /* stylelint-disable-next-line declaration-no-important */
         flex-basis: 160px !important;
         /* stylelint-disable-next-line declaration-no-important */
         min-width: 160px !important;
     }
-    .format-tiles .section .activity.subtile .activityinstance {
+    .format-supertiles .section .activity.subtile .activityinstance {
         display: block;
     }
 }
 /* get rid of wide margins when viewing course on narrow (mobile) device and
 allow tiles to be taller and thinner so can fit two side by side in portrait on iphone 6/7 */
 @media screen and (max-width: 600px) {
-    .format-tiles ul.tiles,
-    .format-tiles #section-0 ul.section,
-    .format-tiles .course-content .card-block {
+    .format-supertiles ul.tiles,
+    .format-supertiles #section-0 ul.section,
+    .format-supertiles .course-content .card-block {
         /* stylelint-disable-next-line declaration-no-important */
         padding-left: 0 !important;
     }
-    .format-tiles .card .card-body {
+    .format-supertiles .card .card-body {
         /* Moove theme.*/
         padding: 0;
     }
-    .format-tiles .course-content ul.section {
+    .format-supertiles .course-content ul.section {
         padding: 1em;
     }
-    .format-tiles .course-content ul.section.subtiles {
+    .format-supertiles .course-content ul.section.subtiles {
         /* stylelint-disable-next-line declaration-no-important */
         margin: auto !important;
     }
-    .format-tiles .course-content ul.section {
+    .format-supertiles .course-content ul.section {
         /* stylelint-disable-next-line declaration-no-important */
         margin: 1px !important;
         /* stylelint-disable-next-line declaration-no-important */
         padding: 1px !important;
     }
-    .format-tiles #region-main {
+    .format-supertiles #region-main {
         padding: 0;
     }
-    .format-tiles.path-course-view .card-block {
+    .format-supertiles.path-course-view .card-block {
         padding-left: 0.3em;
         padding-right: 0.3em;
     }
-    .format-tiles .course-content .section {
+    .format-supertiles .course-content .section {
         /* stylelint-disable-next-line declaration-no-important */
         margin-left: 0 !important;
         background-color: #fff;
     }
-    .format-tiles ul.tiles li.section .content {
+    .format-supertiles ul.tiles li.section .content {
         /* stylelint-disable-next-line declaration-no-important */
         margin: 0 !important;
     }
-    .format-tiles .subtiles .course-content ul.section {
+    .format-supertiles .subtiles .course-content ul.section {
         padding: 0.5em 0.5em 0.5em 1em;
     }
-    .format-tiles .pagesechead {
+    .format-supertiles .pagesechead {
         margin: 0 0 0 5px;
     }
-    .format-tiles .sectiontitlecontainer {
+    .format-supertiles .sectiontitlecontainer {
         /* stylelint-disable-next-line declaration-no-important */
         margin: 0 !important;
     }
-    .format-tiles .sectiontitle {
+    .format-supertiles .sectiontitle {
         width: 100%;
         margin-left: 5px;
         max-width: 98%;
     }
-    .format-tiles .sectiontitle h2 {
+    .format-supertiles .sectiontitle h2 {
         font-size: 1em;
     }
-    .format-tiles #page.container-fluid,
+    .format-supertiles #page.container-fluid,
     .path-course-view li.activity > div {
         /* stylelint-disable-next-line declaration-no-important */
         padding: 0 !important;
     }
-    .format-tiles ul.tiles#multi_section_tiles {
+    .format-supertiles ul.tiles#multi_section_tiles {
         justify-content: center;
     }
-    .format-tiles .course-content ul.tiles .tile {
+    .format-supertiles .course-content ul.tiles .tile {
         /* stylelint-disable-next-line declaration-no-important */
         flex-basis: 160px !important;
         position: relative;
@@ -1115,57 +1115,57 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
         padding: 7px 2px 5px 7px !important;
         margin: 5px;
     }
-    .format-tiles .course-content ul.tiles .tile:not(.spacer) {
+    .format-supertiles .course-content ul.tiles .tile:not(.spacer) {
         min-height: 210px;
     }
-    .format-tiles .clickable-region {
+    .format-supertiles .clickable-region {
         /* stylelint-disable-next-line declaration-no-important */
         width: 150px !important;
     }
-    .format-tiles ul.tiles .tile .tile-text {
+    .format-supertiles ul.tiles .tile .tile-text {
         height: 130px;
     }
-    .format-tiles .collapsiblesec0.expanded .buttonhidesec0 {
+    .format-supertiles .collapsiblesec0.expanded .buttonhidesec0 {
         /* stylelint-disable-next-line declaration-no-important */
         background-color: rgba(255, 255, 255, 1) !important;
     }
-    .format-tiles .progress-indic.percent {
+    .format-supertiles .progress-indic.percent {
         font-size: 0.7em;
     }
-    .format-tiles .overall-prog-radial {
+    .format-supertiles .overall-prog-radial {
         display: none;
     }
-    .format-tiles ul.tiles#multi_section_tiles li.section {
+    .format-supertiles ul.tiles#multi_section_tiles li.section {
         margin: 0;
         padding: 5px;
     }
-    .format-tiles ul.tiles#multi_section_tiles li.section.moveablesection {
+    .format-supertiles ul.tiles#multi_section_tiles li.section.moveablesection {
         padding: 30px 0 30px 0;
     }
-    .format-tiles li.activity.subtile .activitytitle {
+    .format-supertiles li.activity.subtile .activitytitle {
         font-size: 1em;
         word-break: break-word;
         margin-top: 0;
     }
-    .format-tiles .progress-indic {
+    .format-supertiles .progress-indic {
         font-size: 0.8em;
     }
-    .format-tiles ul.tiles .tile h3 {
+    .format-supertiles ul.tiles .tile h3 {
         font-size: 1.1em;
         word-break: break-word;
     }
 }
 
 @media screen and (max-width: 330px) {
-    .format-tiles li.activity.subtile .activitytitle {
+    .format-supertiles li.activity.subtile .activitytitle {
         font-size: 0.9em;
     }
 }
-.format-tiles textarea#id_headertextabovetiles.form-control {
+.format-supertiles textarea#id_headertextabovetiles.form-control {
     width: 100%;
 }
 
-.format-tiles ul.tiles .tile_bar .iconeditcog {
+.format-supertiles ul.tiles .tile_bar .iconeditcog {
     margin: 0;
     vertical-align: top;
     font-size: 12px;
@@ -1174,42 +1174,42 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     display: inline-block;
 }
 
-.format-tiles ul.tiles .tile_bar .iconeditcog img:hover {
+.format-supertiles ul.tiles .tile_bar .iconeditcog img:hover {
     opacity: 1;
 }
 
-.format-tiles .launchiconpicker {
+.format-supertiles .launchiconpicker {
     cursor: pointer;
 }
-#page-course-editsection .format-tiles .icon_picker_modal button.close {
+#page-course-editsection .format-supertiles .icon_picker_modal button.close {
     color: #333;
     opacity: 0.9;
 }
 
-.format-tiles .iconpickericons .pickericondiv,
+.format-supertiles .iconpickericons .pickericondiv,
 .format-site .iconpickericons .pickericondiv {
     padding: 10px;
     cursor: pointer;
     display: inline-block;
 }
 
-#page-course-editsection .format-tiles .icon_picker_modal .modal-header,
-#page-course-edit .format-tiles .icon_picker_modal .modal-header {
+#page-course-editsection .format-supertiles .icon_picker_modal .modal-header,
+#page-course-edit .format-supertiles .icon_picker_modal .modal-header {
     color: #333;
 }
 
-.format-tiles .iconpickericons .pickericondiv:hover,
+.format-supertiles .iconpickericons .pickericondiv:hover,
 .format-site .iconpickericons .pickericondiv:hover {
     background-color: rgb(243, 243, 243);
 }
 
-.format-tiles .icon_picker_modal .modal-dialog {
+.format-supertiles .icon_picker_modal .modal-dialog {
     max-width: 90%;
 }
-.format-tiles .modal-dialog {
+.format-supertiles .modal-dialog {
     margin: 5px auto;
 }
-.format-tiles .pickericon .icon,
+.format-supertiles .pickericon .icon,
 #page-course-edit.format-site .pickericon .icon {
     width: 55px;
     height: 55px;
@@ -1217,26 +1217,26 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     vertical-align: top;
     margin: 3px;
 }
-.format-tiles .embed_cm_modal .modal {
+.format-supertiles .embed_cm_modal .modal {
     margin: 10px auto;
 }
-.format-tiles .embed_cm_modal iframe {
+.format-supertiles .embed_cm_modal iframe {
     border: 0;
 }
-.format-tiles .embed_cm_modal a {
+.format-supertiles .embed_cm_modal a {
     color: #979797;
 }
-.format-tiles .embed_cm_modal .modal-body {
+.format-supertiles .embed_cm_modal .modal-body {
     max-height: 95%;
     overflow-y: auto;
     min-height: 200px;
     padding: 0;
 }
 
-.format-tiles .embed_cm_modal.mod_page .modal-body {
+.format-supertiles .embed_cm_modal.mod_page .modal-body {
     padding: 2em;
 }
-.format-tiles .modal-container.embed_cm_modal .modal-header {
+.format-supertiles .modal-container.embed_cm_modal .modal-header {
     padding: 5px 10px 5px 10px;
     opacity: 0.8;
     border-bottom: 0;
@@ -1245,33 +1245,33 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     color: #fff;
     min-height: 23px;
 }
-.format-tiles .modal-container .modal .modal-header.embed_cm_modal h3 {
+.format-supertiles .modal-container .modal .modal-header.embed_cm_modal h3 {
     color: #fff;
 }
 /*Different themes have these classes slightly differently so repeat some of these*/
-.format-tiles .embed_cm_modal .modal-header {
+.format-supertiles .embed_cm_modal .modal-header {
     padding: 5px 10px 5px 10px;
 }
-.format-tiles .modal-container.embed_cm_modal .modal .modal-header h3 {
+.format-supertiles .modal-container.embed_cm_modal .modal .modal-header h3 {
     color: #fff;
 }
-.format-tiles .embed_cm_modal .modal-footer {
+.format-supertiles .embed_cm_modal .modal-footer {
     display: none;
 }
-.format-tiles .embed_cm_modal i {
+.format-supertiles .embed_cm_modal i {
     width: 20px;
     height: 20px;
     font-size: 0.9em;
 }
-.format-tiles .embed_cm_modal button {
+.format-supertiles .embed_cm_modal button {
     vertical-align: middle;
     margin: 0;
     padding: 0;
 }
-.format-tiles .embed_cm_modal .modal-header #modaltitle {
+.format-supertiles .embed_cm_modal .modal-header #modaltitle {
     font-size: 1.2em;
 }
-.format-tiles li.activity.subtile {
+.format-supertiles li.activity.subtile {
     display: flex;
     flex-basis: 225px;
     max-width: 240px;
@@ -1288,7 +1288,7 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     border: 1px solid #eceeef;
     border-top: #cfcfcf 0.3em solid;
     transition: background-size 0.5s ease-in-out;
-    background-image: url([[pix:format_tiles|subtile/file-text-o]]);
+    background-image: url([[pix:format_supertiles|subtile/file-text-o]]);
     position: relative;
     /* We use important here as dragdrop is not removing its own inline opacity once dragdrop complete.*/
     /* See moodle-core-dragdrop this.originalstyle (not replaced correctly). */
@@ -1296,159 +1296,159 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     opacity: 1 !important;
 }
 
-.format-tiles .subtile_inner,
-.format-tiles .fullwidth {
+.format-supertiles .subtile_inner,
+.format-supertiles .fullwidth {
     width: 100%;
 }
-.format-tiles .clickable-region {
+.format-supertiles .clickable-region {
     height: 110px;
     width: 230px;
     display: block;
 }
-.format-tiles #page-content li.activity.subtile.dimmed a.dropdown-toggle {
+.format-supertiles #page-content li.activity.subtile.dimmed a.dropdown-toggle {
     color: #888;
 }
 
-.format-tiles li.activity.dimmed .inplaceeditable,
-.format-tiles li.section .summary.dimmed,
-.format-tiles li.activity.subtile.dimmed .activityinstance {
+.format-supertiles li.activity.dimmed .inplaceeditable,
+.format-supertiles li.section .summary.dimmed,
+.format-supertiles li.activity.subtile.dimmed .activityinstance {
     opacity: 0.5;
 }
 /*For subtiles, use normal opacity to avoid deep edit menus going under the tile below*/
-.format-tiles li.activity.subtile.dimmed {
+.format-supertiles li.activity.subtile.dimmed {
     opacity: 1;
     /* stylelint-disable-next-line declaration-no-important */
     border-top-color: lightgray !important;
 }
-.format-tiles .dimmed .label_content {
+.format-supertiles .dimmed .label_content {
     color: gray;
 }
-.format-tiles li.activity.subtile:hover {
+.format-supertiles li.activity.subtile:hover {
     background-size: 60px auto;
     transition: background-size 0.5s ease-in-out;
 }
 
-.format-tiles li.activity.subtile.assign {
+.format-supertiles li.activity.subtile.assign {
     border-top-color: orangered;
-    background-image: url([[pix:format_tiles|subtile/assign]]);
+    background-image: url([[pix:format_supertiles|subtile/assign]]);
 }
-.format-tiles li.activity.subtile.book {
+.format-supertiles li.activity.subtile.book {
     border-top-color: lime;
-    background-image: url([[pix:format_tiles|subtile/book]]);
+    background-image: url([[pix:format_supertiles|subtile/book]]);
 }
-.format-tiles li.activity.subtile.choice {
+.format-supertiles li.activity.subtile.choice {
     border-top-color: cyan;
-    background-image: url([[pix:format_tiles|subtile/question-circle]]);
+    background-image: url([[pix:format_supertiles|subtile/question-circle]]);
 }
-.format-tiles li.activity.subtile.data {
+.format-supertiles li.activity.subtile.data {
     border-top-color: #dfb28c;
-    background-image: url([[pix:format_tiles|subtile/database]]);
+    background-image: url([[pix:format_supertiles|subtile/database]]);
 }
-.format-tiles li.activity.subtile.resource.doc {
+.format-supertiles li.activity.subtile.resource.doc {
     border-top-color: #2171d4;
-    background-image: url([[pix:format_tiles|subtile/file-word-o]]);
+    background-image: url([[pix:format_supertiles|subtile/file-word-o]]);
 }
-.format-tiles li.activity.subtile.feedback {
+.format-supertiles li.activity.subtile.feedback {
     border-top-color: cyan;
-    background-image: url([[pix:format_tiles|subtile/feedback]]);
+    background-image: url([[pix:format_supertiles|subtile/feedback]]);
 }
-.format-tiles li.activity.subtile.folder {
+.format-supertiles li.activity.subtile.folder {
     border-top-color: gold;
-    background-image: url([[pix:format_tiles|subtile/folder-o]]);
+    background-image: url([[pix:format_supertiles|subtile/folder-o]]);
 }
-.format-tiles li.activity.subtile.forum,
-.format-tiles li.activity.subtile.chat {
+.format-supertiles li.activity.subtile.forum,
+.format-supertiles li.activity.subtile.chat {
     border-top-color: #60e2b6;
-    background-image: url([[pix:format_tiles|subtile/comments-o]]);
+    background-image: url([[pix:format_supertiles|subtile/comments-o]]);
 }
-.format-tiles li.activity.subtile.glossary {
+.format-supertiles li.activity.subtile.glossary {
     border-top-color: mediumpurple;
-    background-image: url([[pix:format_tiles|subtile/glossary]]);
+    background-image: url([[pix:format_supertiles|subtile/glossary]]);
 }
-.format-tiles li.activity.subtile.lesson {
+.format-supertiles li.activity.subtile.lesson {
     border-top-color: orange;
-    background-image: url([[pix:format_tiles|subtile/lesson]]);
+    background-image: url([[pix:format_supertiles|subtile/lesson]]);
 }
-.format-tiles li.activity.subtile.lti {
+.format-supertiles li.activity.subtile.lti {
     border-top-color: orange;
-    background-image: url([[pix:format_tiles|subtile/lti]]);
+    background-image: url([[pix:format_supertiles|subtile/lti]]);
 }
-.format-tiles li.activity.subtile.modsecurestreaming,
-.format-tiles li.activity.subtile.resource.mp4,
-.format-tiles li.activity.subtile.url.video {
+.format-supertiles li.activity.subtile.modsecurestreaming,
+.format-supertiles li.activity.subtile.resource.mp4,
+.format-supertiles li.activity.subtile.url.video {
     border-top-color: #6bc34a;
-    background-image: url([[pix:format_tiles|subtile/film]]);
+    background-image: url([[pix:format_supertiles|subtile/film]]);
 }
-.format-tiles li.activity.subtile.resource.mp3 {
+.format-supertiles li.activity.subtile.resource.mp3 {
     border-top-color: mediumpurple;
-    background-image: url([[pix:format_tiles|subtile/volume-up]]);
+    background-image: url([[pix:format_supertiles|subtile/volume-up]]);
 }
-.format-tiles li.activity.subtile.page {
+.format-supertiles li.activity.subtile.page {
     border-top-color: #2171d4;
-    background-image: url([[pix:format_tiles|subtile/file-text-o]]);
+    background-image: url([[pix:format_supertiles|subtile/file-text-o]]);
 }
-.format-tiles li.activity.subtile.resource.pdf {
+.format-supertiles li.activity.subtile.resource.pdf {
     border-top-color: #e54e2b;
-    background-image: url([[pix:format_tiles|subtile/file-pdf-o]]);
+    background-image: url([[pix:format_supertiles|subtile/file-pdf-o]]);
 }
-.format-tiles li.activity.subtile.ppt {
+.format-supertiles li.activity.subtile.ppt {
     border-top-color: #e54e2b;
-    background-image: url([[pix:format_tiles|subtile/file-powerpoint-o]]);
+    background-image: url([[pix:format_supertiles|subtile/file-powerpoint-o]]);
 }
-.format-tiles li.activity.subtile.quiz {
+.format-supertiles li.activity.subtile.quiz {
     border-top-color: orange;
-    background-image: url([[pix:format_tiles|subtile/star-o]]);
+    background-image: url([[pix:format_supertiles|subtile/star-o]]);
 }
-.format-tiles li.activity.subtile.resource {
+.format-supertiles li.activity.subtile.resource {
     border-top-color: #2171d4;
-    background-image: url([[pix:format_tiles|subtile/file-text-o]]);
+    background-image: url([[pix:format_supertiles|subtile/file-text-o]]);
 }
-.format-tiles li.activity.subtile.scorm {
+.format-supertiles li.activity.subtile.scorm {
     border-top-color: orange;
-    background-image: url([[pix:format_tiles|subtile/scorm]]);
+    background-image: url([[pix:format_supertiles|subtile/scorm]]);
 }
-.format-tiles li.activity.subtile.survey {
+.format-supertiles li.activity.subtile.survey {
     border-top-color: #60e2b6;
-    background-image: url([[pix:format_tiles|subtile/survey]]);
+    background-image: url([[pix:format_supertiles|subtile/survey]]);
 }
-.format-tiles li.activity.subtile.turnitintooltwo {
+.format-supertiles li.activity.subtile.turnitintooltwo {
     border-top-color: #e54e2b;
-    background-image: url([[pix:format_tiles|subtile/turnitin]]);
+    background-image: url([[pix:format_supertiles|subtile/turnitin]]);
 }
-.format-tiles li.activity.subtile.url {
+.format-supertiles li.activity.subtile.url {
     border-top-color: #0cc;
-    background-image: url([[pix:format_tiles|subtile/globe]]);
+    background-image: url([[pix:format_supertiles|subtile/globe]]);
 }
-.format-tiles li.activity.subtile.wiki {
-    background-image: url([[pix:format_tiles|subtile/wiki]]);
+.format-supertiles li.activity.subtile.wiki {
+    background-image: url([[pix:format_supertiles|subtile/wiki]]);
 }
-.format-tiles li.activity.subtile.workshop {
+.format-supertiles li.activity.subtile.workshop {
     border-top-color: #86aef0;
-    background-image: url([[pix:format_tiles|subtile/workshop]]);
+    background-image: url([[pix:format_supertiles|subtile/workshop]]);
 }
-.format-tiles li.activity.subtile.resource.xls {
+.format-supertiles li.activity.subtile.resource.xls {
     border-top-color: #6bc34a;
-    background-image: url([[pix:format_tiles|subtile/file-excel]]);
+    background-image: url([[pix:format_supertiles|subtile/file-excel]]);
 }
-.format-tiles li.activity.subtile.resource.zip {
-    background-image: url([[pix:format_tiles|subtile/file-zip-o]]);
+.format-supertiles li.activity.subtile.resource.zip {
+    background-image: url([[pix:format_supertiles|subtile/file-zip-o]]);
 }
-.format-tiles .subtiles {
+.format-supertiles .subtiles {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     width: calc(100% - 2em);
 }
-.format-tiles .subtiles li.activity.label {
+.format-supertiles .subtiles li.activity.label {
     padding: 10px;
     width: 100%;
 }
-.format-tiles.editing .subtiles li.activity.label {
+.format-supertiles.editing .subtiles li.activity.label {
     border: 1px solid rgb(231, 231, 231);
     position: relative;
 }
 
-.format-tiles li.activity.subtile .activitytitle {
+.format-supertiles li.activity.subtile .activitytitle {
     font-size: 1.3em;
     font-weight: normal;
     padding-left: 10px;
@@ -1456,25 +1456,25 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     overflow: hidden;
     margin: 0;
 }
-.format-tiles li.activity.subtile .activitytitle a {
+.format-supertiles li.activity.subtile .activitytitle a {
     display: block;
     background-image: linear-gradient(to bottom, rgba(249, 249, 249, 1) 85%, rgba(249, 249, 249, 0));
     padding-bottom: 10px;
 }
-.format-tiles li.activity:focus {
+.format-supertiles li.activity:focus {
     outline: 1px dotted;
 }
-.format-tiles li.activity.label:focus {
+.format-supertiles li.activity.label:focus {
     outline: none;
 }
-.format-tiles li.activity.subtile .activitytype {
+.format-supertiles li.activity.subtile .activitytype {
     padding: 0 5px 10px 5px;
     display: block;
     text-transform: uppercase;
     color: gray;
     font-size: 0.9em;
 }
-.format-tiles.editing li.activity.subtile .activitytype {
+.format-supertiles.editing li.activity.subtile .activitytype {
     position: absolute;
     right: 10px;
     max-width: 90px;
@@ -1482,47 +1482,47 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     font-size: 0.6em;
     top: 0;
 }
-.format-tiles li.activity.subtile a,
-.format-tiles #page-content li.activity.subtile a {
+.format-supertiles li.activity.subtile a,
+.format-supertiles #page-content li.activity.subtile a {
     color: #565656;
 }
 
-.format-tiles .subtiles .instancename {
+.format-supertiles .subtiles .instancename {
     height: 98%;
     width: 98%;
     /*this is clickable so take up whole tile*/
 }
 
-.format-tiles li.activity.subtile a:hover,
-.format-tiles #page-content li.activity.subtile a:hover {
+.format-supertiles li.activity.subtile a:hover,
+.format-supertiles #page-content li.activity.subtile a:hover {
     color: #000;
     text-decoration: none;
 }
 
-.format-tiles .subtiles .completioncheckbox {
+.format-supertiles .subtiles .completioncheckbox {
     padding: 3px;
     display: inline-block;
 }
-.format-tiles.editing .subtiles .completioncheckbox {
+.format-supertiles.editing .subtiles .completioncheckbox {
     position: absolute;
     right: 1px;
     top: 8px;
 }
-.format-tiles .nosubtiles .completioncheckbox {
+.format-supertiles .nosubtiles .completioncheckbox {
     width: 30px;
     height: 30px;
     padding-top: 3px;
 }
-.format-tiles .nosubtiles .completioncheckbox .btn:hover,
-.format-tiles .nosubtiles .completioncheckbox .btn:active {
+.format-supertiles .nosubtiles .completioncheckbox .btn:hover,
+.format-supertiles .nosubtiles .completioncheckbox .btn:active {
     /* Adaptable */
     /* stylelint-disable-next-line declaration-no-important */
     background-color: inherit !important;
 }
-.format-tiles .subtiles .completioncheckbox.completion-auto .completion-icon {
+.format-supertiles .subtiles .completioncheckbox.completion-auto .completion-icon {
     margin-top: 2px;
 }
-.format-tiles .togglecompletion button.btn {
+.format-supertiles .togglecompletion button.btn {
     border: 0;
     background: none;
     height: 30px;
@@ -1530,8 +1530,8 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     padding: 0;
     margin-left: 10px;
 }
-.format-tiles .embed_cm_modal .embed_file_button,
-.format-tiles .modal-container .modal .modal-header button.close {
+.format-supertiles .embed_cm_modal .embed_file_button,
+.format-supertiles .modal-container .modal .modal-header button.close {
     display: inline-block;
     width: 28px;
     height: 28px;
@@ -1545,97 +1545,97 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     text-align: center;
     box-shadow: none;
 }
-.format-tiles .modal-container .modal .modal-header button.close {
+.format-supertiles .modal-container .modal .modal-header button.close {
     font-size: 1.8em;
     background-repeat: no-repeat;
-    background-image: url([[pix:format_tiles|close-white]]);
+    background-image: url([[pix:format_supertiles|close-white]]);
     background-size: 17px 17px;
 }
-.format-tiles .modal-container .modal .modal-header .embed-module-buttons .close {
+.format-supertiles .modal-container .modal .modal-header .embed-module-buttons .close {
     /*Clean theme.*/
     position: relative;
     top: unset;
     right: unset;
 }
-.format-tiles .embed-module-buttons {
+.format-supertiles .embed-module-buttons {
     min-width: 125px;
     text-align: right;
     top: 0;
     position: absolute;
     right: 0;
 }
-.format-tiles .embed-module-buttons button.close {
+.format-supertiles .embed-module-buttons button.close {
     width: 28px;
     height: 28px;
     padding-top: 3px;
     float: none;
 }
-.format-tiles .embed-module-buttons .completion-icon {
+.format-supertiles .embed-module-buttons .completion-icon {
     opacity: 1;
 }
-.format-tiles .embed-module-buttons img.icon {
+.format-supertiles .embed-module-buttons img.icon {
     width: 23px;
     height: 23px;
     padding-right: 10px;
     padding-bottom: 10px;
     margin: 2px 0 0;
 }
-.format-tiles .embed-module-buttons a:focus,
-.format-tiles .embed-module-buttons form:focus {
+.format-supertiles .embed-module-buttons a:focus,
+.format-supertiles .embed-module-buttons form:focus {
     outline: 1px dotted;
 }
-.format-tiles .embed-module-buttons .icon:hover,
-.format-tiles .embed-module-buttons img.icon:hover {
+.format-supertiles .embed-module-buttons .icon:hover,
+.format-supertiles .embed-module-buttons img.icon:hover {
     opacity: 0.7;
 }
-.format-tiles .embed-module-buttons .btn {
+.format-supertiles .embed-module-buttons .btn {
     box-shadow: none;
     margin-top: 2px;
 }
-.format-tiles .embed-module-buttons a .icon {
+.format-supertiles .embed-module-buttons a .icon {
     color: #fff;
 }
-.format-tiles .embed_cm_modal .embed-module-buttons form {
+.format-supertiles .embed_cm_modal .embed-module-buttons form {
     width: 28px;
     height: 28px;
     display: inline-block;
 }
-.format-tiles .embed_cm_modal .embed-module-buttons .completioncheckbox .icon {
+.format-supertiles .embed_cm_modal .embed-module-buttons .completioncheckbox .icon {
     padding: 0;
 }
-.format-tiles .embed_cm_modal .modal-title {
+.format-supertiles .embed_cm_modal .modal-title {
     max-width: calc(100% - 120px);
 }
-.format-tiles .sectionerror {
+.format-supertiles .sectionerror {
     margin-left: 30px;
 }
-.format-tiles .section.subtiles .activity .editing_move {
+.format-supertiles .section.subtiles .activity .editing_move {
     position: relative;
 }
-.format-tiles .section.subtiles .activity .actions {
+.format-supertiles .section.subtiles .activity .actions {
     position: absolute;
     top: 1px;
 }
-.format-tiles.editing .section.subtiles .activity .actions {
+.format-supertiles.editing .section.subtiles .activity .actions {
     left: 35px;
 }
-.format-tiles .section.subtiles .activity.label .actions {
+.format-supertiles .section.subtiles .activity.label .actions {
     top: 0;
     right: 0;
     left: inherit;
     position: absolute;
 }
-.format-tiles .subtile .dropdown-menu .dropdown-item {
+.format-supertiles .subtile .dropdown-menu .dropdown-item {
     padding-top: 3px;
     padding-bottom: 3px;
 }
-.format-tiles .section-cm-edit-actions .dropdown-menu {
+.format-supertiles .section-cm-edit-actions .dropdown-menu {
     margin-top: 0;
     left: -30px;
     position: absolute;
 }
 
-.format-tiles.editing .section .activity.subtile .activityinstance {
+.format-supertiles.editing .section .activity.subtile .activityinstance {
     padding: 0;
     display: block;
     color: #565656;
@@ -1645,141 +1645,141 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     margin-top: 25px;
     margin-left: 0;
 }
-.format-tiles.editing .section .activity .activityinstance {
+.format-supertiles.editing .section .activity .activityinstance {
     margin-left: 30px;
 }
-.format-tiles.editing .section .activity.subtile .action-menu {
+.format-supertiles.editing .section .activity.subtile .action-menu {
     background-color: #f9f9f9;
 }
-.format-tiles li.activity .subtile-activityinstance {
+.format-supertiles li.activity .subtile-activityinstance {
     position: absolute;
     top: 5px;
     height: 95%;
     overflow: hidden;
     width: 100%;
 }
-.format-tiles.editing li.activity .subtile-activityinstance {
+.format-supertiles.editing li.activity .subtile-activityinstance {
     top: 0;
     left: 0;
 }
 
-.format-tiles li.subtile img.activityicon {
+.format-supertiles li.subtile img.activityicon {
     display: none;
     /* when a teacher uses in place editing of mod name, the item is refreshed complete with icon which we do not want so hide it*/
 }
-.format-tiles #section-0 .activity .activityinstance .inplaceeditable img.activityicon {
+.format-supertiles #section-0 .activity .activityinstance .inplaceeditable img.activityicon {
     display: inherit;
 }
-.format-tiles li.subtile .availabilityinfo {
+.format-supertiles li.subtile .availabilityinfo {
     margin: 0;
     position: absolute;
     bottom: 5px;
     left: 0;
     font-size: 0.8em;
 }
-.format-tiles li.tile .availabilityinfo {
+.format-supertiles li.tile .availabilityinfo {
     line-height: 30px;
 }
 
-.format-tiles .inplaceeditable input.form-control {
+.format-supertiles .inplaceeditable input.form-control {
     width: 100%;
 }
-.format-tiles #single_section_tiles .inplaceeditable input.form-control {
+.format-supertiles #single_section_tiles .inplaceeditable input.form-control {
     width: 100%;
 }
-.format-tiles #coursecontrolbuttons {
+.format-supertiles #coursecontrolbuttons {
     margin-right: 40px;
 }
 
-.format-tiles.editing .section .activity .editing_move {
+.format-supertiles.editing .section .activity .editing_move {
     position: relative;
 }
-.format-tiles .course-content ul.section {
+.format-supertiles .course-content ul.section {
     margin: 0;
     padding: 1.2em;
 }
-.format-tiles .course-content ul.section.moveablesection {
+.format-supertiles .course-content ul.section.moveablesection {
     padding: 0;
 }
-.format-tiles .course-content ul.section.nosubtiles,
-.format-tiles .course-content ul.section.nosubtiles .activity {
+.format-supertiles .course-content ul.section.nosubtiles,
+.format-supertiles .course-content ul.section.nosubtiles .activity {
     position: relative;
 }
-.format-tiles .course-content ul.section.nosubtiles li.activity {
+.format-supertiles .course-content ul.section.nosubtiles li.activity {
     width: 100%;
 }
-.format-tiles .course-content ul.section.nosubtiles .actions {
+.format-supertiles .course-content ul.section.nosubtiles .actions {
     margin-top: 0.5em;
 }
-.format-tiles #selectedicon .icon,
+.format-supertiles #selectedicon .icon,
 #page-course-edit.format-site #selectedicon .icon {
     font-size: 1.9em;
     width: 25px;
     height: 25px;
     color: gray;
 }
-.format-tiles #selectedicon {
+.format-supertiles #selectedicon {
     margin-right: 10px;
 }
-.format-tiles .modal-header:focus,
-.format-tiles .resourcecontent:focus,
-.format-tiles .sectiontitle:focus,
-.format-tiles :link:focus,
-.format-tiles li.activity {
+.format-supertiles .modal-header:focus,
+.format-supertiles .resourcecontent:focus,
+.format-supertiles .sectiontitle:focus,
+.format-supertiles :link:focus,
+.format-supertiles li.activity {
     outline: unset;
 }
 
-.format-tiles .resourceintro {
+.format-supertiles .resourceintro {
     margin: 60px;
 }
 
-.format-tiles .subtilecontrols {
+.format-supertiles .subtilecontrols {
     top: 0;
     left: 0;
     position: absolute;
 }
 
-.format-tiles .editingactivity {
+.format-supertiles .editingactivity {
     margin-left: 30px;
 }
 
-.format-tiles .margin-rt .section-cm-edit-actions {
+.format-supertiles .margin-rt .section-cm-edit-actions {
     margin-right: 35px;
 }
 
-.format-tiles.editing .label_content {
+.format-supertiles.editing .label_content {
     padding-left: 30px;
 }
 
-.format-tiles.editing ul.section {
+.format-supertiles.editing ul.section {
     margin-left: 3em;
     padding-right: 3em;
 }
 
-.format-tiles .tooltip-inner {
+.format-supertiles .tooltip-inner {
     background-color: #fff;
     color: #181818;
     border: 2px solid #4a4a4a;
     opacity: 0.98;
 }
-.format-tiles.editing .section-summary-activities {
+.format-supertiles.editing .section-summary-activities {
     width: 200px;
     text-align: right;
     max-height: 60px;
     margin-right: 3px;
 }
-.format-tiles .section-summary-activities .activity-count {
+.format-supertiles .section-summary-activities .activity-count {
     display: block;
 }
-.format-tiles.editing .section-summary-activities .activity-count {
+.format-supertiles.editing .section-summary-activities .activity-count {
     display: inline;
 }
 
-.format-tiles .dimmed .completioncheckbox {
+.format-supertiles .dimmed .completioncheckbox {
     opacity: 0.6;
 }
 
-.format-tiles fieldset#id_courseformathdr .colourpickercircle,
+.format-supertiles fieldset#id_courseformathdr .colourpickercircle,
 .format-site fieldset#id_courseformathdr .colourpickercircle {
     width: 25px;
     height: 25px;
@@ -1789,16 +1789,16 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     border: 3px solid;
 }
 
-.format-tiles fieldset#id_courseformathdr .colourpickercircle:hover,
+.format-supertiles fieldset#id_courseformathdr .colourpickercircle:hover,
 .format-site fieldset#id_courseformathdr .colourpickercircle:hover {
     border-color: orange;
 }
-.format-tiles fieldset#id_courseformathdr .colourpickercircle.selected,
+.format-supertiles fieldset#id_courseformathdr .colourpickercircle.selected,
 .format-site fieldset#id_courseformathdr .colourpickercircle.selected {
-    background-image: url([[pix:format_tiles|check-white]]);
+    background-image: url([[pix:format_supertiles|check-white]]);
     background-size: contain;
 }
-.format-tiles fieldset#id_courseformathdr #colourselectnotify,
+.format-supertiles fieldset#id_courseformathdr #colourselectnotify,
 .format-site fieldset#id_courseformathdr #colourselectnotify {
     color: #212529;
     background-color: #e9ecef;
@@ -1811,28 +1811,28 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     position: relative;
 }
 
-.format-tiles li.dndupload-preview {
+.format-supertiles li.dndupload-preview {
     width: 100%;
 }
-.format-tiles .loading-subtile {
+.format-supertiles .loading-subtile {
     width: 200px;
     padding: 90px;
 }
 /*Adaptable theme buttons*/
-.format-tiles .btn:hover,
-.format-tiles .btn:active,
-.format-tiles .btn.progresshelp {
+.format-supertiles .btn:hover,
+.format-supertiles .btn:active,
+.format-supertiles .btn.progresshelp {
     background: inherit;
 }
 
-.format-tiles .course-content ul.tiles .tile.phototile {
+.format-supertiles .course-content ul.tiles .tile.phototile {
     padding: 0;
     background-size: cover;
     background-position: center;
     background-repeat: repeat;
     height: 175px;
 }
-.format-tiles .course-content ul.tiles .tile.phototile  .photo-tile-text {
+.format-supertiles .course-content ul.tiles .tile.phototile  .photo-tile-text {
     top: 10px;
     bottom: inherit;
     width: calc(100% - 10px);
@@ -1840,7 +1840,7 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     position: absolute;
 }
 
-.format-tiles .course-content ul.tiles .tile.phototile .photo-tile-text h3 {
+.format-supertiles .course-content ul.tiles .tile.phototile .photo-tile-text h3 {
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
     display: inline;
@@ -1849,21 +1849,21 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     font-size: 20px;
     color: #fff;
 }
-.format-tiles ul.tiles .tile.photobacktile:not(.pinned) .tile-text {
+.format-supertiles ul.tiles .tile.photobacktile:not(.pinned) .tile-text {
     margin-top: 35px;
 }
-.format-tiles li.tile.phototile  .availabilityinfo {
+.format-supertiles li.tile.phototile  .availabilityinfo {
     position: absolute;
     bottom: 10px;
 }
 /*Alternate styles for previous phototile items ("altstyle")*/
-.format-tiles .course-content ul.tiles .tile.phototile.altstyle .photo-tile-text {
+.format-supertiles .course-content ul.tiles .tile.phototile.altstyle .photo-tile-text {
     bottom: 0;
     top: inherit;
     text-align: center;
     width: 100%;
 }
-.format-tiles .course-content ul.tiles .tile.phototile.altstyle .photo-tile-text h3 {
+.format-supertiles .course-content ul.tiles .tile.phototile.altstyle .photo-tile-text h3 {
     font-size: 1.3em;
     margin-top: 0;
     margin-bottom: 0;
@@ -1872,15 +1872,15 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     display: block;
     line-height: 25px;
 }
-.format-tiles li.tile.phototile.altstyle  .availabilityinfo {
+.format-supertiles li.tile.phototile.altstyle  .availabilityinfo {
     position: inherit;
     bottom: inherit;
 }
-.format-tiles .existingtilephoto {
+.format-supertiles .existingtilephoto {
     height: 160px;
     margin: 10px;
 }
-.format-tiles .tilebarphoto {
+.format-supertiles .tilebarphoto {
     width: 82px;
     height: 55px;
     background-size: cover;
@@ -1889,27 +1889,27 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     float: left;
 }
 
-.format-tiles ul.tiles .phototilebar .tile_bar_text {
+.format-supertiles ul.tiles .phototilebar .tile_bar_text {
     max-width: calc(100% - 150px);
 }
 
-.format-tiles .iconpickerheader {
+.format-supertiles .iconpickerheader {
     height: 40px;
 }
-.format-tiles .iconpickerheader #phototilebtn {
+.format-supertiles .iconpickerheader #phototilebtn {
     color: #fff;
 }
-.format-tiles .iconpickerheader #phototilebtn:hover {
+.format-supertiles .iconpickerheader #phototilebtn:hover {
     color: darkslategrey;
 }
-.format-tiles .tile.photobacktile:not(.pinned) a {
+.format-supertiles .tile.photobacktile:not(.pinned) a {
     padding: 0;
 }
-.format-tiles .iconpickerphotos {
+.format-supertiles .iconpickerphotos {
     margin: 30px;
     text-align: center;
 }
-.format-tiles .iconpickerphotos .photo {
+.format-supertiles .iconpickerphotos .photo {
     height: 100px;
     width: 150px;
     background-color: lightgrey;
@@ -1917,17 +1917,17 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     margin: 0.5em;
 }
 
-.format-tiles .iconpickerphotos .photo:hover {
+.format-supertiles .iconpickerphotos .photo:hover {
     opacity: 0.7;
 }
 
-.format-tiles #page-loading-icon img {
+.format-supertiles #page-loading-icon img {
     padding: 100px;
     height: 50px;
     width: 50px;
     opacity: 0.8;
 }
-.format-tiles a#page-loading-icon {
+.format-supertiles a#page-loading-icon {
     color: #0c0c0c;
     text-decoration: none;
 }
@@ -1938,10 +1938,10 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     height: 0;
 }
 
-.format-tiles .course-content .tiles.pinnedsections li.pinned {
+.format-supertiles .course-content .tiles.pinnedsections li.pinned {
     position: relative;
     background-color: #19284f;
-    background-image: url("[[pix:format_tiles|pushpin]]");
+    background-image: url("[[pix:format_supertiles|pushpin]]");
     background-size: 10%;
     background-position: 10px;
     background-repeat: no-repeat;
@@ -1960,14 +1960,14 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     flex-grow: 0;
     overflow: hidden;
 }
-.format-tiles .course-content .tiles.pinnedsections li.pinned a {
+.format-supertiles .course-content .tiles.pinnedsections li.pinned a {
     display: flex;
     -ms-flex-pack: center;
     justify-content: center;
     -ms-flex-positive: 1;
     flex-grow: 1;
 }
-.format-tiles .course-content .tiles.pinnedsections li.pinned a .icon_content {
+.format-supertiles .course-content .tiles.pinnedsections li.pinned a .icon_content {
     color: #fff;
     height: auto;
     width: 120px;
@@ -1976,42 +1976,42 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     overflow: hidden;
     text-align: center;
 }
-.format-tiles .course-content .tiles.pinnedsections li.pinned img {
+.format-supertiles .course-content .tiles.pinnedsections li.pinned img {
     display: none;
 }
-.format-tiles .course-content .tiles.pinnedsections li.pinned .image_holder {
+.format-supertiles .course-content .tiles.pinnedsections li.pinned .image_holder {
     display: none;
 }
 
-.format-tiles .course-content .tiles.pinnedsections li.pinned .tile-top {
+.format-supertiles .course-content .tiles.pinnedsections li.pinned .tile-top {
     display: none;
 }
-.format-tiles .course-content .tiles.pinnedsections li.pinned .tile-content .tile-text {
+.format-supertiles .course-content .tiles.pinnedsections li.pinned .tile-content .tile-text {
     height: auto;
     line-height: 1;
     text-overflow: ellipsis;
 }
 
-.format-tiles .course-content .tiles.pinnedsections li.pinned .tile-textinner {
+.format-supertiles .course-content .tiles.pinnedsections li.pinned .tile-textinner {
     display: block;
     max-width: 150px;
     position: relative;
     top: 10px;
 }
-.format-tiles .course-content .tiles.pinnedsections li.pinned .tile-textinner h3 {
+.format-supertiles .course-content .tiles.pinnedsections li.pinned .tile-textinner h3 {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
-.format-tiles .course-content .tiles.pinnedsections li.pinned,
+.format-supertiles .course-content .tiles.pinnedsections li.pinned,
 .sectionname,
-.format-tiles .course-content .tiles.pinnedsections li.pinned h3 {
+.format-supertiles .course-content .tiles.pinnedsections li.pinned h3 {
     font-size: 1em;
     color: #fff;
 }
-.format-tiles .course-content .tiles.pinnedsections li.pinned {
+.format-supertiles .course-content .tiles.pinnedsections li.pinned {
     position: relative;
     background-color: #19284f;
-    background-image: url("[[pix:format_tiles|pushpin]]");
+    background-image: url("[[pix:format_supertiles|pushpin]]");
     background-size: 10%;
 }

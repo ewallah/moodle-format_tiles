@@ -17,12 +17,12 @@
 /**
  * Registration form to be completed by administrator to register plugin with developer.
  *
- * @package format_tiles
+ * @package format_supertiles
  * @copyright  2019 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or late
  **/
 
-namespace format_tiles\form;
+namespace format_supertiles\form;
 defined('MOODLE_INTERNAL') || die();
 
 use moodleform;
@@ -32,7 +32,7 @@ require_once("{$CFG->libdir}/formslib.php");
 
 /**
  * Class registration_form
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2018 David Watson {@link http://evolutioncode.uk}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -52,7 +52,7 @@ class registration_form extends moodleform {
         $admin = get_admin();
         $site = get_site();
 
-        $mform->addElement('text', 'sitename', get_string('sitename', 'format_tiles'),
+        $mform->addElement('text', 'sitename', get_string('sitename', 'format_supertiles'),
             array('class' => 'registration_textfield'));
         $mform->setType('sitename', PARAM_TEXT);
         $mform->setDefault('sitename', $site->fullname);
@@ -96,25 +96,25 @@ class registration_form extends moodleform {
         $mform->setDefault('contactemail', $USER->email);
 
         $options = [
-            '' => '---' . get_string('registerpickemailpref', 'format_tiles') . '---',
-            1 => get_string('registeremailyes', 'format_tiles'),
-            0 => get_string('registeremailno', 'format_tiles')
+            '' => '---' . get_string('registerpickemailpref', 'format_supertiles') . '---',
+            1 => get_string('registeremailyes', 'format_supertiles'),
+            0 => get_string('registeremailno', 'format_supertiles')
         ];
-        $mform->addElement('select', 'emailpref', get_string('registerpickemailpref', 'format_tiles'), $options);
+        $mform->addElement('select', 'emailpref', get_string('registerpickemailpref', 'format_supertiles'), $options);
         $mform->addRule('emailpref', $strrequired, 'required', null, 'client');
 
         $privacypolicylink = \html_writer::link(
             'https://evolutioncode.uk/privacy',
-            get_string('registerpolicyagreedlinktext', 'format_tiles')
+            get_string('registerpolicyagreedlinktext', 'format_supertiles')
         );
         $mform->addElement(
             'checkbox',
             'policyagreed',
-            get_string('registerpolicyagreedlinktext', 'format_tiles'),
-            get_string('registeragreeprivacy', 'format_tiles', array('privacypolicylink' => $privacypolicylink))
+            get_string('registerpolicyagreedlinktext', 'format_supertiles'),
+            get_string('registeragreeprivacy', 'format_supertiles', array('privacypolicylink' => $privacypolicylink))
         );
         $mform->addRule('policyagreed', $strrequired, 'required', null, 'client');
-        $buttonlabel = get_string('register', 'format_tiles');
+        $buttonlabel = get_string('register', 'format_supertiles');
         $this->add_action_buttons(false, $buttonlabel);
     }
 
@@ -131,7 +131,7 @@ class registration_form extends moodleform {
             array_key_exists('emailpref', $data) and $data['emailpref'] == "1"
             && array_key_exists('contactemail', $data) and trim($data['contactemail']) == ''
         ) {
-            $errors['contactemail'] = get_string('registermissingemail', 'format_tiles');
+            $errors['contactemail'] = get_string('registermissingemail', 'format_supertiles');
         }
         return $errors;
     }

@@ -17,7 +17,7 @@
 /**
  * Page called by teacher to upload a photo for a tile background.
  *
- * @package format_tiles
+ * @package format_supertiles
  * @copyright  2019 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or late
  **/
@@ -26,7 +26,7 @@ require_once('../../../config.php');
 require_once($CFG->dirroot . '/repository/lib.php');
 
 global $PAGE, $DB;
-use format_tiles\form\upload_image_form;
+use format_supertiles\form\upload_image_form;
 
 $courseid = required_param('courseid', PARAM_INT);
 $sectionid = required_param('sectionid', PARAM_INT);
@@ -36,11 +36,11 @@ $coursecontext = context_course::instance($courseid);
 require_login($courseid);
 require_capability('moodle/course:update', $coursecontext);
 
-if (!get_config('format_tiles', 'allowphototiles')) {
-        print_error('disabledbyadmin', 'format_tiles');
+if (!get_config('format_supertiles', 'allowphototiles')) {
+        print_error('disabledbyadmin', 'format_supertiles');
 }
 
-$url = new moodle_url('/course/format/tiles/editimage.php', array(
+$url = new moodle_url('/course/format/supertiles/editimage.php', array(
     'courseid' => $courseid,
     'sectionid' => $sectionid
     )
@@ -55,14 +55,14 @@ $PAGE->navbar->add(
     get_section_name($course->id, $section->section),
     new moodle_url('/course/view.php', array('id' => $course->id, 'section' => $section->section))
 );
-$PAGE->navbar->add(get_string('uploadnewphoto', 'format_tiles'));
+$PAGE->navbar->add(get_string('uploadnewphoto', 'format_supertiles'));
 
-$tilephoto = new \format_tiles\tile_photo($courseid, $sectionid);
+$tilephoto = new \format_supertiles\tile_photo($courseid, $sectionid);
 
 if ($deletephoto) {
     $tilephoto->clear();
     $sectionname = get_section_name($courseid, $section->section);
-    \core\notification::success(get_string('imagedeletedfrom', 'format_tiles', $sectionname));
+    \core\notification::success(get_string('imagedeletedfrom', 'format_supertiles', $sectionname));
     redirect(new \moodle_url('/course/view.php', array('id' => $course->id)));
 }
 
@@ -132,7 +132,7 @@ if ($mform->is_cancelled()) {
             $newfilename,
             true
         );
-        if (!\format_tiles\tile_photo::verify_file_type($tempfile)) {
+        if (!\format_supertiles\tile_photo::verify_file_type($tempfile)) {
             debugging('Invalid file type');
             $tempfile->delete();
         } else {
@@ -144,7 +144,7 @@ if ($mform->is_cancelled()) {
                         $verifyaspectratio['message'] . ' '
                         . html_writer::link(
                             new moodle_url(
-                                '/course/format/tiles/editimage.php',
+                                '/course/format/supertiles/editimage.php',
                                 array('courseid' => $courseid, 'sectionid' => $section->id)
                             ),
                             get_string('back')
@@ -153,7 +153,7 @@ if ($mform->is_cancelled()) {
                 } else {
                     $sectionname = get_section_name($courseid, $section->section);
                     \core\notification::success(
-                        get_string('imagesavedfor', 'format_tiles', "'" . $sectionname . "'")
+                        get_string('imagesavedfor', 'format_supertiles', "'" . $sectionname . "'")
                     );
                 };
                 $tempfile->delete();
@@ -169,7 +169,7 @@ if ($mform->is_cancelled()) {
     }
     redirect(new \moodle_url('/course/view.php', array('id' => $course->id)));
 }
-$PAGE->requires->js_call_amd('format_tiles/edit_upload_image_helper', 'init');
+$PAGE->requires->js_call_amd('format_supertiles/edit_upload_image_helper', 'init');
 echo $OUTPUT->header();
 echo $OUTPUT->box_start('generalbox');
 $mform->display();

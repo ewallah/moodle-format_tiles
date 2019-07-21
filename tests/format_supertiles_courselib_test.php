@@ -19,7 +19,7 @@
 /**
  * Course related tests for format tiles (copied core courselib_test with format changed to tiles).
  *
- * @package    format_tiles
+ * @package    format_supertiles
  * @copyright  2018 David Watson {@link http://evolutioncode.uk} based on core version 2012 Petr Skoda {@link http://skodak.org}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -32,12 +32,12 @@ require_once($CFG->dirroot . '/course/tests/fixtures/course_capability_assignmen
 require_once($CFG->dirroot . '/enrol/imsenterprise/tests/imsenterprise_test.php');
 
 /**
- * Class format_tiles_course_courselib_testcase
+ * Class format_supertiles_course_courselib_testcase
  *
  * @copyright 2018 David Watson {@link http://evolutioncode.uk} based on core version 2012 Petr Skoda {@link http://skodak.org}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class format_tiles_course_courselib_testcase extends advanced_testcase {
+class format_supertiles_course_courselib_testcase extends advanced_testcase {
 
     /**
      * Set forum specific test values for calling create_module().
@@ -192,7 +192,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         set_config('forum_enablerssfeeds', 1);
 
         $course = $this->getDataGenerator()->create_course(
-           array('numsections' => 1, 'enablecompletion' => COMPLETION_ENABLED, 'format' => 'tiles'),
+           array('numsections' => 1, 'enablecompletion' => COMPLETION_ENABLED, 'format' => 'supertiles'),
            array('createsections' => true));
 
         $grouping = $this->getDataGenerator()->create_grouping(array('courseid' => $course->id));
@@ -580,7 +580,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $course->idnumber = '123';
         $course->summary = 'Awesome!';
         $course->summaryformat = FORMAT_PLAIN;
-        $course->format = 'tiles';
+        $course->format = 'supertiles';
         $course->newsitems = 0;
         $course->category = $defaultcategory;
         $original = (array) $course;
@@ -616,7 +616,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_create_course_with_generator() {
         global $DB;
         $this->resetAfterTest(true);
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
 
         // Ensure default section is created.
         $sectioncreated = $DB->record_exists('course_sections', array('course' => $course->id, 'section' => 0));
@@ -632,7 +632,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
                 array('shortname' => 'GrowingCourse',
                     'fullname' => 'Growing Course',
                     'numsections' => $numsections,
-                    'format' => 'tiles'),
+                    'format' => 'supertiles'),
                 array('createsections' => true));
 
         // Ensure all 6 (0-5) sections were created and course content cache works properly
@@ -663,7 +663,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $course->idnumber = '1';
         $course->summary = 'Awesome!';
         $course->summaryformat = FORMAT_PLAIN;
-        $course->format = 'tiles';
+        $course->format = 'supertiles';
         $course->newsitems = 0;
         $course->numsections = 5;
         $course->category = $defaultcategory;
@@ -729,7 +729,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
                 array('shortname' => 'GrowingCourse',
                     'fullname' => 'Growing Course',
                     'numsections' => 1,
-                    'format' => 'tiles'),
+                    'format' => 'supertiles'),
                 array('createsections' => true));
 
         // Trash modinfo.
@@ -871,8 +871,8 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         global $DB;
         $this->resetAfterTest(true);
 
-        $this->getDataGenerator()->create_course(array('numsections' => 5, 'format' => 'tiles'), array('createsections' => true));
-        $course = $this->getDataGenerator()->create_course(array('numsections' => 10, 'format' => 'tiles'), array('createsections' => true));
+        $this->getDataGenerator()->create_course(array('numsections' => 5, 'format' => 'supertiles'), array('createsections' => true));
+        $course = $this->getDataGenerator()->create_course(array('numsections' => 10, 'format' => 'supertiles'), array('createsections' => true));
 
         // Set course marker to the section we are going to move..
         course_set_marker($course->id, 2);
@@ -916,7 +916,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $generator = $this->getDataGenerator();
 
         $coursetiles = $generator->create_course(
-            array('numsections' => 5, 'format' => 'tiles'),
+            array('numsections' => 5, 'format' => 'supertiles'),
             array('createsections' => true));
 
         $assign1 = $generator->create_module('assign', array('course' => $coursetiles, 'section' => 1));
@@ -956,7 +956,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
 
         $generator = $this->getDataGenerator();
 
-        $course = $generator->create_course(array('numsections' => 6, 'format' => 'tiles'),
+        $course = $generator->create_course(array('numsections' => 6, 'format' => 'supertiles'),
             array('createsections' => true));
         $assign0 = $generator->create_module('assign', array('course' => $course, 'section' => 0));
         $assign1 = $generator->create_module('assign', array('course' => $course, 'section' => 1));
@@ -1021,7 +1021,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
 
         $this->resetAfterTest(true);
         // Setup fixture
-        $course = $this->getDataGenerator()->create_course(array('numsections' => 5, 'format' => 'tiles'), array('createsections' => true));
+        $course = $this->getDataGenerator()->create_course(array('numsections' => 5, 'format' => 'supertiles'), array('createsections' => true));
         $forum = $this->getDataGenerator()->create_module('forum', array('course' => $course->id));
 
         $cms = get_fast_modinfo($course)->get_cms();
@@ -1083,7 +1083,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $this->resetAfterTest(true);
 
         // Create course and modules.
-        $course = $this->getDataGenerator()->create_course(array('numsections' => 5, 'format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('numsections' => 5, 'format' => 'supertiles'));
         $forum = $this->getDataGenerator()->create_module('forum', array('course' => $course->id));
         $assign = $this->getDataGenerator()->create_module('assign', array('duedate' => time(), 'course' => $course->id));
         $modules = compact('forum', 'assign');
@@ -1105,7 +1105,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $this->setAdminUser();
         $this->resetAfterTest(true);
 
-        $course = $this->getDataGenerator()->create_course(array('numsections' => 1, 'format' => 'tiles'), array('createsections' => true));
+        $course = $this->getDataGenerator()->create_course(array('numsections' => 1, 'format' => 'supertiles'), array('createsections' => true));
         $sectionnumber = 1;
         $forum = $this->getDataGenerator()->create_module('forum', array('course' => $course->id),
             array('section' => $sectionnumber));
@@ -1132,7 +1132,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $this->resetAfterTest(true);
 
         // Create course.
-        $course = $this->getDataGenerator()->create_course(array('numsections' => 3, 'format' => 'tiles'), array('createsections' => true));
+        $course = $this->getDataGenerator()->create_course(array('numsections' => 3, 'format' => 'supertiles'), array('createsections' => true));
 
         $sink = $this->redirectEvents();
 
@@ -1248,7 +1248,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $course->idnumber = '123';
         $course->summary = 'Awesome!';
         $course->summaryformat = FORMAT_PLAIN;
-        $course->format = 'tiles';
+        $course->format = 'supertiles';
         $course->newsitems = 0;
         $course->numsections = 5;
         $course->category = $testcategory->id;
@@ -1381,7 +1381,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
 
         $this->resetAfterTest(true);
 
-        $course = $this->getDataGenerator()->create_course(array('numsections' => 4, 'format' => 'tiles'), array('createsections' => true));
+        $course = $this->getDataGenerator()->create_course(array('numsections' => 4, 'format' => 'supertiles'), array('createsections' => true));
         $forum = $this->getDataGenerator()->create_module('forum', array('course' => $course->id));
         $page = $this->getDataGenerator()->create_module('page', array('course' => $course->id));
         $quiz = $this->getDataGenerator()->create_module('quiz', array('course' => $course->id));
@@ -1463,7 +1463,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
 
         $this->resetAfterTest(true);
 
-        $course = $this->getDataGenerator()->create_course(array('numsections' => 3, 'format' => 'tiles'), array('createsections' => true));
+        $course = $this->getDataGenerator()->create_course(array('numsections' => 3, 'format' => 'supertiles'), array('createsections' => true));
         $page = $this->getDataGenerator()->create_module('page', array('course' => $course->id));
         $forum = $this->getDataGenerator()->create_module('forum', array('course' => $course->id));
 
@@ -1508,7 +1508,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $this->setAdminUser();
 
         // Create course and modules.
-        $course = $this->getDataGenerator()->create_course(array('numsections' => 5, 'format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('numsections' => 5, 'format' => 'supertiles'));
         $options['course'] = $course->id;
 
         // Generate an assignment with due date (will generate a course event).
@@ -1667,7 +1667,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $this->resetAfterTest();
 
         // Create a course.
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
 
         // Create a category we are going to move this course to.
         $category = $this->getDataGenerator()->create_category();
@@ -1746,7 +1746,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $this->resetAfterTest();
 
         // Create the course.
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
 
         // Save the course context before we delete the course.
         $coursecontext = context_course::instance($course->id);
@@ -1799,7 +1799,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $this->resetAfterTest();
 
         // Create the course.
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
 
         // Get the course from the DB. The data generator adds some extra properties, such as
         // numsections, to the course object which will fail the assertions later on.
@@ -1915,7 +1915,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $userid = 2;
 
         // Create a course.
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
 
         // Create backup file and save it to the backup location.
         $bc = new backup_controller(backup::TYPE_1COURSE, $course->id, backup::FORMAT_MOODLE,
@@ -1961,7 +1961,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $userid = 2;
 
         // Create a course.
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
 
         // Create backup file and save it to the backup location.
         $bc = new backup_controller(backup::TYPE_1COURSE, $course->id, backup::FORMAT_MOODLE,
@@ -2021,7 +2021,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $this->resetAfterTest();
 
         // Create the course with sections.
-        $course = $this->getDataGenerator()->create_course(array('numsections' => 10, 'format' => 'tiles'), array('createsections' => true));
+        $course = $this->getDataGenerator()->create_course(array('numsections' => 10, 'format' => 'supertiles'), array('createsections' => true));
         $sections = $DB->get_records('course_sections', array('course' => $course->id));
 
         $coursecontext = context_course::instance($course->id);
@@ -2078,7 +2078,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $sink = $this->redirectEvents();
 
         // Create the course with sections.
-        $course = $this->getDataGenerator()->create_course(array('numsections' => 10, 'format' => 'tiles'), array('createsections' => true));
+        $course = $this->getDataGenerator()->create_course(array('numsections' => 10, 'format' => 'supertiles'), array('createsections' => true));
         $sections = $DB->get_records('course_sections', array('course' => $course->id), 'section');
         $coursecontext = context_course::instance($course->id);
         $section = array_pop($sections);
@@ -2111,7 +2111,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         global $DB;
 
         $this->resetAfterTest(true);
-        $course = $this->getDataGenerator()->create_course(array('numsections' => 1, 'format' => 'tiles'),
+        $course = $this->getDataGenerator()->create_course(array('numsections' => 1, 'format' => 'supertiles'),
            array('createsections' => true));
 
         $forum = $this->getDataGenerator()->create_module('forum', array('course' => $course->id),
@@ -2401,7 +2401,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $this->setAdminUser();
 
         // Create course and modules.
-        $course = $this->getDataGenerator()->create_course(array('numsections' => 5, 'format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('numsections' => 5, 'format' => 'supertiles'));
 
         // Generate an assignment.
         $assign = $this->getDataGenerator()->create_module('assign', array('course' => $course->id));
@@ -2747,7 +2747,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_view_resources_list() {
         $this->resetAfterTest();
 
-        $course = self::getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = self::getDataGenerator()->create_course(array('format' => 'supertiles'));
         $coursecontext = context_course::instance($course->id);
 
         $event = \core\event\course_resources_list_viewed::create(array('context' => context_course::instance($course->id)));
@@ -2779,7 +2779,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_duplicate_module() {
         $this->setAdminUser();
         $this->resetAfterTest();
-        $course = self::getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = self::getDataGenerator()->create_course(array('format' => 'supertiles'));
         $res = self::getDataGenerator()->create_module('resource', array('course' => $course));
         $cm = get_coursemodule_from_id('resource', $res->cmid, 0, false, MUST_EXIST);
 
@@ -2812,7 +2812,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
 
         // Test add.
         $emptyavailability = json_encode(\core_availability\tree::get_root_json(array()));
-        $course = self::getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = self::getDataGenerator()->create_course(array('format' => 'supertiles'));
         $label = self::getDataGenerator()->create_module('label', array(
                 'course' => $course, 'availability' => $emptyavailability));
         $this->assertNull($DB->get_field('course_modules', 'availability',
@@ -2846,7 +2846,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $this->setUser($this->getDataGenerator()->create_user());
 
         $this->resetAfterTest(true);
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $forum = self::getDataGenerator()->create_module('forum', array('course' => $course->id, 'name' => 'forum name'));
 
         // Call service for core_course component without necessary permissions.
@@ -2872,9 +2872,9 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_course_get_tagged_course_modules() {
         global $DB;
         $this->resetAfterTest();
-        $course3 = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
-        $course2 = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
-        $course1 = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course3 = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
+        $course2 = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
+        $course1 = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $cm11 = $this->getDataGenerator()->create_module('assign', array('course' => $course1->id,
             'tags' => 'Cat, Dog'));
         $cm12 = $this->getDataGenerator()->create_module('page', array('course' => $course1->id,
@@ -3030,7 +3030,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_course_get_user_navigation_options_for_managers() {
         global $CFG;
         $this->resetAfterTest();
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $context = context_course::instance($course->id);
         $this->setAdminUser();
 
@@ -3047,7 +3047,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_course_get_user_navigation_options_for_students() {
         global $DB, $CFG;
         $this->resetAfterTest();
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $context = context_course::instance($course->id);
 
         $user = $this->getDataGenerator()->create_user();
@@ -3115,7 +3115,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_course_get_user_administration_options_for_managers() {
         global $CFG;
         $this->resetAfterTest();
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $context = context_course::instance($course->id);
         $this->setAdminUser();
 
@@ -3141,7 +3141,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_course_get_user_administration_options_for_students() {
         global $DB, $CFG;
         $this->resetAfterTest();
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $context = context_course::instance($course->id);
 
         $user = $this->getDataGenerator()->create_user();
@@ -3462,7 +3462,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         set_config('coursebinenable', true, 'tool_recyclebin');
 
         // Create course, module and context.
-        $course = $this->getDataGenerator()->create_course(['numsections' => 5, 'format' => 'tiles']);
+        $course = $this->getDataGenerator()->create_course(['numsections' => 5, 'format' => 'supertiles']);
         $module = $this->getDataGenerator()->create_module('assign', ['course' => $course->id]);
         $modcontext = context_module::instance($module->cmid);
 
@@ -3539,7 +3539,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         }
 
         // Create course, module and context.
-        $course = $this->getDataGenerator()->create_course(['numsections' => 5, 'format' => 'tiles']);
+        $course = $this->getDataGenerator()->create_course(['numsections' => 5, 'format' => 'supertiles']);
         $module = $this->getDataGenerator()->create_module('assign', ['course' => $course->id]);
         $modcontext = context_module::instance($module->cmid);
         $cm = $DB->get_record('course_modules', ['id' => $module->cmid], '*', MUST_EXIST);
@@ -3585,7 +3585,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
 
         // Create course, module and context.
         $generator = $this->getDataGenerator();
-        $course = $generator->create_course(['numsections' => 4, 'format' => 'tiles'], ['createsections' => true]);
+        $course = $generator->create_course(['numsections' => 4, 'format' => 'supertiles'], ['createsections' => true]);
         $assign0 = $generator->create_module('assign', ['course' => $course, 'section' => 2]);
         $assign1 = $generator->create_module('assign', ['course' => $course, 'section' => 2]);
         $assign2 = $generator->create_module('assign', ['course' => $course, 'section' => 2]);
@@ -3684,7 +3684,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
 
         // Create course, module and context.
         $generator = $this->getDataGenerator();
-        $course = $generator->create_course(['numsections' => 4, 'format' => 'tiles'], ['createsections' => true]);
+        $course = $generator->create_course(['numsections' => 4, 'format' => 'supertiles'], ['createsections' => true]);
         $assign0 = $generator->create_module('assign', ['course' => $course, 'section' => 2]);
         $assign1 = $generator->create_module('assign', ['course' => $course, 'section' => 2]);
 
@@ -3753,7 +3753,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
         $futurecourse = $generator->create_course(['startdate' => $future]);
         $pastcourse = $generator->create_course(['startdate' => $past - 60, 'enddate' => $past]);
         $completedcourse = $generator->create_course(['enablecompletion' => COMPLETION_ENABLED]);
-        $inprogresscourse = $generator->create_course(array('format' => 'tiles'));
+        $inprogresscourse = $generator->create_course(array('format' => 'supertiles'));
 
         // Set completion rules.
         $criteriadata = new stdClass();
@@ -3908,7 +3908,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_course_can_view_participants_as_student() {
         $this->resetAfterTest();
 
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $coursecontext = context_course::instance($course->id);
 
         $user = $this->getDataGenerator()->create_user();
@@ -3925,7 +3925,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_course_can_view_participants_as_student_on_site() {
         $this->resetAfterTest();
 
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
 
         $user = $this->getDataGenerator()->create_user();
         $this->getDataGenerator()->enrol_user($user->id, $course->id);
@@ -3954,7 +3954,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
 
         $this->resetAfterTest();
 
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $coursecontext = context_course::instance($course->id);
 
         $user = $this->getDataGenerator()->create_user();
@@ -3974,7 +3974,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
 
         $this->resetAfterTest();
 
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $coursecontext = context_course::instance($course->id);
 
         $user = $this->getDataGenerator()->create_user();
@@ -3998,7 +3998,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
 
         $this->resetAfterTest();
 
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $coursecontext = context_course::instance($course->id);
 
         $user = $this->getDataGenerator()->create_user();
@@ -4022,7 +4022,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
 
         $this->resetAfterTest();
 
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $coursecontext = context_course::instance($course->id);
 
         $user = $this->getDataGenerator()->create_user();
@@ -4044,7 +4044,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_course_require_view_participants() {
         $this->resetAfterTest();
 
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $coursecontext = context_course::instance($course->id);
 
         $user = $this->getDataGenerator()->create_user();
@@ -4061,7 +4061,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_course_require_view_participants_as_student_on_site() {
         $this->resetAfterTest();
 
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
 
         $user = $this->getDataGenerator()->create_user();
         $this->getDataGenerator()->enrol_user($user->id, $course->id);
@@ -4078,7 +4078,7 @@ class format_tiles_course_courselib_testcase extends advanced_testcase {
     public function test_can_download_from_backup_filearea() {
         global $DB;
         $this->resetAfterTest();
-        $course = $this->getDataGenerator()->create_course(array('format' => 'tiles'));
+        $course = $this->getDataGenerator()->create_course(array('format' => 'supertiles'));
         $context = context_course::instance($course->id);
         $user = $this->getDataGenerator()->create_user();
         $teacherrole = $DB->get_record('role', array('shortname' => 'teacher'));

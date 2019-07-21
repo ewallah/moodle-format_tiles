@@ -17,7 +17,7 @@
 /**
  * Page called by administrator from plugin settings page to register plugin.
  *
- * @package format_tiles
+ * @package format_supertiles
  * @copyright  2019 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or late
  **/
@@ -26,26 +26,26 @@ require_once('../../../config.php');
 
 global $PAGE, $DB;
 
-use format_tiles\form\registration_form;
-use format_tiles\registration_manager;
+use format_supertiles\form\registration_form;
+use format_supertiles\registration_manager;
 
 require_login();
 require_sesskey();
 $context = context_system::instance();
 require_capability('moodle/site:config', $context);
 
-$pageurl = new moodle_url('/course/format/tiles/register.php');
+$pageurl = new moodle_url('/course/format/supertiles/register.php');
 $settingsurl = new moodle_url('/admin/settings.php', array('section' => 'formatsettingtiles'));
 $key = optional_param('key', '', PARAM_TEXT);
 
 $PAGE->set_url($pageurl);
 $PAGE->set_context($context);
-$PAGE->set_heading(get_string('tilesformatregistration', 'format_tiles'));
+$PAGE->set_heading(get_string('tilesformatregistration', 'format_supertiles'));
 $PAGE->navbar->add(get_string('administrationsite'), new moodle_url('/admin/search.php'));
 $PAGE->navbar->add(get_string('plugins', 'admin'), new moodle_url('/admin/category.php', array('category' => 'modules')));
 $PAGE->navbar->add(get_string('courseformats'), new moodle_url('/admin/category.php', array('category' => 'formatsettings')));
-$PAGE->navbar->add(get_string('pluginname', 'format_tiles'), $settingsurl);
-$PAGE->navbar->add(get_string('tilesformatregistration', 'format_tiles'));
+$PAGE->navbar->add(get_string('pluginname', 'format_supertiles'), $settingsurl);
+$PAGE->navbar->add(get_string('tilesformatregistration', 'format_supertiles'));
 
 // User is passing key URL param so process it.
 if ($key && registration_manager::validate_key($key)) {
@@ -76,7 +76,7 @@ if ($mform->is_cancelled()) {
             'registrationUrl' => registration_manager::registration_server_url(),
             process_data($data, true)
         );
-        $PAGE->requires->js_call_amd('format_tiles/registration', 'attemptRegistration', $jsparams);
+        $PAGE->requires->js_call_amd('format_supertiles/registration', 'attemptRegistration', $jsparams);
 
         // We also schedule an attempt to register by cron but this will be ignored if JS succeeds.
         // We do this because we cannot know here is JS succeeds.
@@ -86,14 +86,14 @@ if ($mform->is_cancelled()) {
 
 echo $OUTPUT->header();
 echo html_writer::start_div('ml-5');
-echo html_writer::div(get_string('registerintro1', 'format_tiles'));
+echo html_writer::div(get_string('registerintro1', 'format_supertiles'));
 echo html_writer::tag('ul',
-    html_writer::tag('li', get_string('registerintro2', 'format_tiles'), [])
-    . html_writer::tag('li', get_string('registerintro3', 'format_tiles'), [])
-    . html_writer::tag('li', get_string('registerintro4', 'format_tiles'), [])
+    html_writer::tag('li', get_string('registerintro2', 'format_supertiles'), [])
+    . html_writer::tag('li', get_string('registerintro3', 'format_supertiles'), [])
+    . html_writer::tag('li', get_string('registerintro4', 'format_supertiles'), [])
     , array('class' => 'ml-3')
 );
-echo html_writer::div(get_string('registerintro5', 'format_tiles'));
+echo html_writer::div(get_string('registerintro5', 'format_supertiles'));
 echo html_writer::end_div();
 echo $OUTPUT->box_start('generalbox');
 $mform->display();
@@ -102,7 +102,7 @@ echo $OUTPUT->footer();
 
 /**
  * Take the data submitted from the form and supplement it / remove submit button.
- * @package format_tiles
+ * @package format_supertiles
  * @param object $data
  * @param bool $forjs
  * @return array

@@ -17,20 +17,20 @@
 /* eslint space-before-function-paren: 0 */
 
 /**
- * Main Javascript module for format_tiles for when user is *NOT* editing.
+ * Main Javascript module for format_supertiles for when user is *NOT* editing.
  * See course_edit for if they are editing.
  * Handles the UI changes when tiles are selected and anything else not
  * covered by the specific modules
  *
- * @module      format_tiles/course
+ * @module      format_supertiles/course
  * @package     course/format
  * @subpackage  tiles
  * @copyright   2018 David Watson {@link http://evolutioncode.uk}
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
-        "core/notification", "core/str", "format_tiles/tile_fitter"],
+define(["jquery", "core/templates", "core/ajax", "format_supertiles/browser_storage",
+        "core/notification", "core/str", "format_supertiles/tile_fitter"],
     function ($, Templates, ajax, browserStorage, Notification, str, tileFitter) {
 
 
@@ -463,7 +463,7 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
          */
         var getSectionContentFromServer = function (courseId, sectionNum) {
             return ajax.call([{
-                methodname: "format_tiles_get_single_section_page_html",
+                methodname: "format_supertiles_get_single_section_page_html",
                 args: {
                     courseid: courseId,
                     sectionid: sectionNum,
@@ -590,7 +590,7 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
             });
             // Log the fact we viewed the section.
             ajax.call([{
-                methodname: "format_tiles_log_tile_click", args: {
+                methodname: "format_supertiles_log_tile_click", args: {
                     courseid: courseId,
                     sectionid: dataSection
                 }
@@ -910,7 +910,7 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
                     });
 
                     if (useFilterButtons) {
-                        require(["format_tiles/filter_buttons"], function (filterButtons) {
+                        require(["format_supertiles/filter_buttons"], function (filterButtons) {
                             filterButtons.init(courseId, browserStorage.storageEnabledLocal);
                         });
                         if (useJavascriptNav) {
@@ -928,22 +928,22 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
                     $(".tiles_coursenav").removeClass("hidden");
 
                     // Render the loading icon and store its HTML globally so that we can use it where needed later.
-                    Templates.render("format_tiles/loading", {}).done(function (html) {
+                    Templates.render("format_supertiles/loading", {}).done(function (html) {
                         loadingIconHtml = html;
                     });
 
                      // Get these strings now, in case we need them.
                     // E.g. after we lose connection and cannot display content on a user tile click.
                     var stringKeys = [
-                        {key: "sectionerrortitle", component: "format_tiles"},
-                        {key: "sectionerrorstring", component: "format_tiles"},
+                        {key: "sectionerrortitle", component: "format_supertiles"},
+                        {key: "sectionerrorstring", component: "format_supertiles"},
                         {key: "refresh"},
                         {key: "cancel"},
-                        {key: "noconnectionerror", component: "format_tiles"},
+                        {key: "noconnectionerror", component: "format_supertiles"},
                         {key: "show"},
                         {key: "hide"},
-                        {key: "other", component: "format_tiles"},
-                        {key: "blockedpopuptitle", component: "format_tiles"}
+                        {key: "other", component: "format_supertiles"},
+                        {key: "blockedpopuptitle", component: "format_supertiles"}
                     ];
                     str.get_strings(stringKeys).done(function (s) {
                         s.forEach(function(str, index) {
@@ -962,13 +962,13 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
                                 e.stopPropagation();
                                 var cm = target.closest(Selector.ACTIVITY);
                                 ajax.call([{
-                                    methodname: "format_tiles_log_mod_view", args: {
+                                    methodname: "format_supertiles_log_mod_view", args: {
                                         courseid: courseId,
                                         cmid: cm.attr("data-cmid")
                                     }
                                 }])[0].done(function () {
                                     // Because we intercepted the normal event for the click, process auto completion.
-                                    require(["format_tiles/completion"], function (completion) {
+                                    require(["format_supertiles/completion"], function (completion) {
                                         completion.markAsAutoCompleteInUI(courseId, cm);
                                     });
                                 });

@@ -16,7 +16,7 @@
 
 /**
  * This class implements the Privacy API explained at https://docs.moodle.org/dev/Privacy_API
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2018 David Watson {@link http://evolutioncode.uk}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -41,12 +41,12 @@
  */
 
 /**
- * @package    format_tiles
+ * @package    format_supertiles
  * @category   privacy
  * @copyright  2018 David Watson {@link http://evolutioncode.uk} based upon work done by Andrew Nicols <andrew@nicols.co.uk>.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU Public License
  */
-namespace format_tiles\privacy;
+namespace format_supertiles\privacy;
 
 use core_privacy\local\metadata\collection;
 use \core_privacy\local\request\writer;
@@ -54,7 +54,7 @@ use \core_privacy\local\request\writer;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Privacy Subsystem implementation for format_tiles
+ * Privacy Subsystem implementation for format_supertiles
  *
  * @copyright  2018 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -68,7 +68,7 @@ class provider implements \core_privacy\local\metadata\provider,
      * @return collection
      */
     public static function get_metadata(collection $collection) : collection {
-        $collection->add_user_preference('format_tiles_stopjsnav', 'privacy:metadata:preference:format_tiles_stopjsnav');
+        $collection->add_user_preference('format_supertiles_stopjsnav', 'privacy:metadata:preference:format_supertiles_stopjsnav');
         return $collection;
     }
 
@@ -78,11 +78,11 @@ class provider implements \core_privacy\local\metadata\provider,
      * @throws \coding_exception
      */
     public static function export_user_preferences(int $userid) {
-        $preference = get_user_preferences('format_tiles_stopjsnav', 0, $userid);
+        $preference = get_user_preferences('format_supertiles_stopjsnav', 0, $userid);
         if (isset($preference)) {
             $value = $preference ? get_string('yes') : get_string('no');
-            \core_privacy\local\request\writer::export_user_preference('format_tiles', 'format_tiles_stopjsnav',
-                $value, get_string('privacy:metadata:preference:format_tiles_stopjsnav', 'format_tiles'));
+            \core_privacy\local\request\writer::export_user_preference('format_supertiles', 'format_supertiles_stopjsnav',
+                $value, get_string('privacy:metadata:preference:format_supertiles_stopjsnav', 'format_supertiles'));
         }
     }
 }

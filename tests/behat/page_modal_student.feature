@@ -1,4 +1,4 @@
-@format @format_tiles @format_tiles_mod_modal  @format_tiles_page_modal_student @javascript
+@format @format_supertiles @format_supertiles_mod_modal  @format_supertiles_page_modal_student @javascript
 Feature: Student can open a page
 
   Background:
@@ -18,17 +18,17 @@ Feature: Student can open a page
     And the following config values are set as admin:
       | config                 | value    | plugin       |
       | enablecompletion       | 1        | core         |
-      | modalmodules           | page     | format_tiles |
-      | modalresources         | pdf,html | format_tiles |
-      | assumedatastoreconsent | 1        | format_tiles |
-      | reopenlastsection      | 0        | format_tiles |
-      | usejavascriptnav       | 1        | format_tiles |
-      | jsmaxstoreditems       | 0        | format_tiles |
+      | modalmodules           | page     | format_supertiles |
+      | modalresources         | pdf,html | format_supertiles |
+      | assumedatastoreconsent | 1        | format_supertiles |
+      | reopenlastsection      | 0        | format_supertiles |
+      | usejavascriptnav       | 1        | format_supertiles |
+      | jsmaxstoreditems       | 0        | format_supertiles |
     # We set jsmaxstoreditems to zero as otherwise when we switch between subtiles and tiles format we may not see an immediate change in display
 
   @javascript
   Scenario: Open page using modal as student with subtiles on
-    When format_tiles subtiles are on for course "Course 5"
+    When format_supertiles subtiles are on for course "Course 5"
     And I log in as "student1"
     And I am on "Course 5" course homepage
     And I wait until the page is ready
@@ -50,7 +50,7 @@ Feature: Student can open a page
 
   @javascript
   Scenario: Open page using modal as student - with subtiles off
-    When format_tiles subtiles are off for course "Course 5"
+    When format_supertiles subtiles are off for course "Course 5"
     And I log in as "student1"
     And I am on "Course 5" course homepage
     And I click on tile "6"

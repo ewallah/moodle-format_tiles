@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template format_tiles/single_section_page
+    @template format_supertiles/single_section_page
 
     Single section page template.
 
@@ -72,16 +72,16 @@
 
 <div class="single-section">
     {{^from_ajax}}
-        {{> format_tiles/above_tiles}}
+        {{> format_supertiles/above_tiles}}
     {{/from_ajax}}
     <ul id="single_section_tiles">
         {{^from_ajax}}
             {{#section_zero}}
-                {{> format_tiles/section_zero}}
+                {{> format_supertiles/section_zero}}
             {{/section_zero}}
         {{/from_ajax}}
         {{! single_section is a separate template as it is also called directly from JS without this other stuff}}
-        {{>format_tiles/single_section}}
+        {{>format_supertiles/single_section}}
 
     </ul>
 </div>

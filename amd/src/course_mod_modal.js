@@ -157,7 +157,7 @@ define(["jquery", "core/modal_factory", "core/config", "core/templates", "core/n
                     templateData.showNewWindow = 1;
                 }
 
-                Templates.render("format_tiles/embed_file_modal_body", templateData).done(function (html) {
+                Templates.render("format_supertiles/embed_file_modal_body", templateData).done(function (html) {
                     modal.setBody(html);
                     modalRoot.find(Selector.modalBody).animate({"min-height": Math.round(win.height() - 60)}, "fast");
 
@@ -187,7 +187,7 @@ define(["jquery", "core/modal_factory", "core/config", "core/templates", "core/n
                     templateData.completionIsManual = clickedCmObject
                         .find(Selector.toggleCompletion).attr("data-ismanual");
                 }
-                Templates.render("format_tiles/embed_module_modal_header_btns", templateData).done(function (html) {
+                Templates.render("format_supertiles/embed_module_modal_header_btns", templateData).done(function (html) {
                     modalRoot.find(Selector.modalHeader).append(html);
                     modalRoot.find(Selector.closeBtn).detach().appendTo(modalRoot.find(Selector.embedModuleButtons));
                 }).fail(Notification.exception);
@@ -242,7 +242,7 @@ define(["jquery", "core/modal_factory", "core/config", "core/templates", "core/n
                     secondaryurl: clickedCmObject.closest(Selector.ACTIVITY).attr("data-url-secondary")
                 };
 
-                Templates.render("format_tiles/embed_url_modal_body", templateData).done(function (html) {
+                Templates.render("format_supertiles/embed_url_modal_body", templateData).done(function (html) {
                     modal.setBody(html);
                     modalRoot.find(Selector.modalBody).animate({"min-height": modalHeight}, "fast");
                     modalRoot.find(Selector.modal).animate({"max-width": modalWidth}, "fast");
@@ -263,7 +263,7 @@ define(["jquery", "core/modal_factory", "core/config", "core/templates", "core/n
                     templateData.completionIsManual = clickedCmObject
                         .find(Selector.toggleCompletion).attr("data-ismanual");
                 }
-                Templates.render("format_tiles/embed_module_modal_header_btns", templateData).done(function (html) {
+                Templates.render("format_supertiles/embed_module_modal_header_btns", templateData).done(function (html) {
                     modalRoot.find(Selector.modalHeader).append(html);
                     modalRoot.find(Selector.closeBtn).detach().appendTo(modalRoot.find(Selector.embedModuleButtons));
                 }).fail(Notification.exception);
@@ -348,7 +348,7 @@ define(["jquery", "core/modal_factory", "core/config", "core/templates", "core/n
         var launchCourseActivityModal = function (clickedCmObject) {
             var cmid = clickedCmObject.attr("data-cmid");
             // TODO code envisages potentially adding in other web services for other mod types, but for now we have page only.
-            var methodName = "format_tiles_get_mod_" + clickedCmObject.attr("data-modtype") + "_html";
+            var methodName = "format_supertiles_get_mod_" + clickedCmObject.attr("data-modtype") + "_html";
 
             modalFactory.create({
                 type: modalFactory.types.DEFAULT,
@@ -390,7 +390,7 @@ define(["jquery", "core/modal_factory", "core/config", "core/templates", "core/n
                         templateData.completionInUseForCm = 0;
                     }
                     modal.setBody(templateData.content);
-                    Templates.render("format_tiles/embed_module_modal_header_btns", templateData).done(function (html) {
+                    Templates.render("format_supertiles/embed_module_modal_header_btns", templateData).done(function (html) {
                         modalRoot.find(Selector.modalHeader).append(html);
                         modalRoot.find(Selector.closeBtn).detach().appendTo(modalRoot.find(Selector.embedModuleButtons));
                     }).fail(Notification.exception);
@@ -421,13 +421,13 @@ define(["jquery", "core/modal_factory", "core/config", "core/templates", "core/n
                 e.preventDefault();
                 // Log the fact we viewed it.
                 ajax.call([{
-                    methodname: "format_tiles_log_mod_view", args: {
+                    methodname: "format_supertiles_log_mod_view", args: {
                         courseid: courseId,
                         cmid: clickedActivity.attr("data-cmid")
                     }
                 }])[0].done(function () {
                     // Because we intercepted the normal event for the click, process auto completion.
-                    require(["format_tiles/completion"], function (completion) {
+                    require(["format_supertiles/completion"], function (completion) {
                         completion.markAsAutoCompleteInUI(courseId, clickedActivity);
                     });
                     // Then open the pop up.
@@ -442,8 +442,8 @@ define(["jquery", "core/modal_factory", "core/config", "core/templates", "core/n
                             + '</a></div>';
                         require(['core/str', 'core/notification'], function(Str, Notification) {
                             var stringKeys = [
-                                {key: "sectionerrortitle", component: "format_tiles"},
-                                {key: "blockedpopup", component: "format_tiles"},
+                                {key: "sectionerrortitle", component: "format_supertiles"},
+                                {key: "blockedpopup", component: "format_supertiles"},
                                 {key: "cancel"}
                             ];
                             Str.get_strings(stringKeys).done(function (s) {
@@ -498,7 +498,7 @@ define(["jquery", "core/modal_factory", "core/config", "core/templates", "core/n
                             }
                             // Log the fact we viewed it (only do this once not every time the modal launches).
                             ajax.call([{
-                                methodname: "format_tiles_log_mod_view", args: {
+                                methodname: "format_supertiles_log_mod_view", args: {
                                     courseid: courseId,
                                     cmid: clickedCmObject.attr("data-cmid")
                                 }
@@ -507,7 +507,7 @@ define(["jquery", "core/modal_factory", "core/config", "core/templates", "core/n
                     });
 
                      // Render the loading icon and append it to body so that we can use it later.
-                    Templates.render("format_tiles/loading", {})
+                    Templates.render("format_supertiles/loading", {})
                         .catch(Notification.exception)
                         .done(function (html) {
                             loadingIconHtml = html; // TODO get this from elsewhere.

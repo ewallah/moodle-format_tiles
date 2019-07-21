@@ -17,7 +17,7 @@
 /**
  * Upgrade scripts for course format "Tiles"
  *
- * @package    format_tiles
+ * @package    format_supertiles
  * @copyright  2018 David Watson {@link http://evolutioncode.uk} (part copied from "Topics" 2017 Marina Glancy)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,12 +28,12 @@ defined('MOODLE_INTERNAL') || die();
  *
  * This method finds all courses in 'tiles' format that have actual number of sections
  * bigger than their 'numsections' course format option.
- * For each such course we call {@link format_tiles_upgrade_hide_extra_sections()} and
+ * For each such course we call {@link format_supertiles_upgrade_hide_extra_sections()} and
  * either delete or hide "orphaned" sections.
  * @throws dml_exception
  * @throws coding_exception
  */
-function format_tiles_upgrade_remove_numsections() {
+function format_supertiles_upgrade_remove_numsections() {
     global $DB;
 
     $sql1 = "SELECT c.id, max(cs.section) AS coursemaxsection
@@ -47,7 +47,7 @@ function format_tiles_upgrade_remove_numsections() {
           JOIN {course_format_options} n ON n.courseid = c.id AND n.format = :format1 AND n.name = :numsections AND n.sectionid = 0
           WHERE c.format = :format2";
 
-    $params = ['format1' => 'tiles', 'format2' => 'tiles', 'numsections' => 'numsections'];
+    $params = ['format1' => 'supertiles', 'format2' => 'supertiles', 'numsections' => 'numsections'];
 
     $coursemaxsections = $DB->get_records_sql_menu($sql1, $params);
     $numsections = $DB->get_records_sql_menu($sql2, $params);
@@ -78,10 +78,10 @@ function format_tiles_upgrade_remove_numsections() {
     unset($numsections);
 
     foreach ($needfixing as $courseid => $numsections) {
-        format_tiles_upgrade_hide_extra_sections($courseid, $numsections);
+        format_supertiles_upgrade_hide_extra_sections($courseid, $numsections);
     }
 
-    $DB->delete_records('course_format_options', ['format' => 'tiles', 'sectionid' => 0, 'name' => 'numsections']);
+    $DB->delete_records('course_format_options', ['format' => 'supertiles', 'sectionid' => 0, 'name' => 'numsections']);
 }
 
 /**
@@ -97,7 +97,7 @@ function format_tiles_upgrade_remove_numsections() {
  * @throws dml_exception
  * @throws coding_exception
  */
-function format_tiles_upgrade_hide_extra_sections($courseid, $numsections) {
+function format_supertiles_upgrade_hide_extra_sections($courseid, $numsections) {
     global $DB;
     $sections = $DB->get_records_sql('SELECT id, name, summary, sequence, visible
         FROM {course_sections}
@@ -136,9 +136,9 @@ function format_tiles_upgrade_hide_extra_sections($courseid, $numsections) {
  * Remove options which are no longer supported in this version
  * @throws dml_exception
  */
-function format_tiles_remove_unused_format_options() {
+function format_supertiles_remove_unused_format_options() {
     global $DB;
-    $DB->delete_records('course_format_options', array('format' => 'tiles', 'name' => 'showachladderbutton'));
-    $DB->delete_records('course_format_options', array('format' => 'tiles', 'name' => 'prefixtitlewithnumber'));
-    $DB->delete_records('course_format_options', array('format' => 'tiles', 'name' => 'showgradesbutton'));
+    $DB->delete_records('course_format_options', array('format' => 'supertiles', 'name' => 'showachladderbutton'));
+    $DB->delete_records('course_format_options', array('format' => 'supertiles', 'name' => 'prefixtitlewithnumber'));
+    $DB->delete_records('course_format_options', array('format' => 'supertiles', 'name' => 'showgradesbutton'));
 }

@@ -17,13 +17,13 @@
 /**
  * Tiles course format, main course output class to prepare data for mustache templates
  *
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2018 David Watson {@link http://evolutioncode.uk}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-namespace format_tiles\output;
+namespace format_supertiles\output;
 
-use format_tiles\tile_photo;
+use format_supertiles\tile_photo;
 
 defined('MOODLE_INTERNAL') || die();
 global $CFG;
@@ -137,7 +137,7 @@ class course_output implements \renderable, \templatable
             $this->courserenderer = $courserenderer;
         }
         $this->devicetype = \core_useragent::get_device_type();
-        $this->usemodalsforcoursemodules = format_tiles_allowed_modal_modules();
+        $this->usemodalsforcoursemodules = format_supertiles_allowed_modal_modules();
         $this->format = course_get_format($course);
         $this->modinfo = get_fast_modinfo($this->course);
         $this->isediting = $PAGE->user_is_editing();
@@ -187,7 +187,7 @@ class course_output implements \renderable, \templatable
         $data['completionenabled'] = $this->completionenabled;
         $data['from_ajax'] = $this->fromajax;
         $data['ismobile'] = $this->devicetype == \core_useragent::DEVICETYPE_MOBILE;
-        if (isset($SESSION->format_tiles_jssuccessfullyused)) {
+        if (isset($SESSION->format_supertiles_jssuccessfullyused)) {
             // If this flag is set, user is being shown JS versions of pages.
             // Allow them to cancel the session var if they have no JS.
             $data['showJScancelLink'] = 1;
@@ -196,11 +196,11 @@ class course_output implements \renderable, \templatable
         };
         $data['isediting'] = $this->isediting;
         $data['sesskey'] = sesskey();
-        $data['showinitialpageloadingicon'] = format_tiles_width_template_data($this->course->id)['hidetilesinitially'];
-        $data['userdisabledjsnav'] = get_user_preferences('format_tiles_stopjsnav');
-        $data['useSubtiles'] = get_config('format_tiles', 'allowsubtilesview') && $this->courseformatoptions['courseusesubtiles'];
-        $data['usingjsnav'] = get_config('format_tiles', 'usejavascriptnav')
-            && !get_user_preferences('format_tiles_stopjsnav');
+        $data['showinitialpageloadingicon'] = format_supertiles_width_template_data($this->course->id)['hidetilesinitially'];
+        $data['userdisabledjsnav'] = get_user_preferences('format_supertiles_stopjsnav');
+        $data['useSubtiles'] = get_config('format_supertiles', 'allowsubtilesview') && $this->courseformatoptions['courseusesubtiles'];
+        $data['usingjsnav'] = get_config('format_supertiles', 'usejavascriptnav')
+            && !get_user_preferences('format_supertiles_stopjsnav');
 
         if (!$this->isediting) {
             $data['course_activity_clipboard'] = $output->course_activity_clipboard($this->course, $this->sectionnum);
@@ -284,7 +284,7 @@ class course_output implements \renderable, \templatable
 
         // Only show section zero if we need it.
         $data['section_zero_show'] = 0;
-        if ($this->sectionnum == 0 || get_config('format_tiles', 'showseczerocoursewide')) {
+        if ($this->sectionnum == 0 || get_config('format_supertiles', 'showseczerocoursewide')) {
             // We only want to show section zero if we are on the landing page, or admin has said we should show it course wide.
             if ($this->isediting || $seczero->summary || !empty($data['section_zero']['content']['course_modules'])) {
                 // We do have something to show, or are editing, so need to show it.
@@ -355,7 +355,7 @@ class course_output implements \renderable, \templatable
         $data['tileicon'] = $thissection->tileicon;
 
         // If photo tile backgrounds are allowed by site admin, prepare the image for this section.
-        if (get_config('format_tiles', 'allowphototiles')) {
+        if (get_config('format_supertiles', 'allowphototiles')) {
             $data['allowphototiles'] = 1;
             $tilephoto = new tile_photo($this->course->id, $thissection->id);
             $tilephotourl = $tilephoto->get_image_url();
@@ -364,7 +364,7 @@ class course_output implements \renderable, \templatable
             $data['hastilephoto'] = $tilephotourl ? 1 : 0;
             $data['phototileurl'] = $tilephotourl;
             $data['phototileediturl'] = new \moodle_url(
-                '/course/format/tiles/editimage.php',
+                '/course/format/supertiles/editimage.php',
                 array('courseid' => $this->course->id, 'sectionid' => $thissection->id)
             );
         }
@@ -427,7 +427,7 @@ class course_output implements \renderable, \templatable
     
     private function get_tile($output, &$data, $sectionnum, $section, $sectionstree, $allsections, $level) {
         
-        $usingphotoaltstyle = get_config('format_tiles', 'phototilesaltstyle');
+        $usingphotoaltstyle = get_config('format_supertiles', 'phototilesaltstyle');
         $sr = course_get_format($this->course)->get_viewed_section();
 
         $phototileextraclasses = 'phototile';
@@ -476,7 +476,7 @@ class course_output implements \renderable, \templatable
             $newtile['hastilephoto'] = $tilephotourl ? 1 : 0;
             $newtile['phototileurl'] = $tilephotourl;
             $newtile['phototileediturl'] = new \moodle_url(
-                '/course/format/tiles/editimage.php',
+                '/course/format/supertiles/editimage.php',
                 array('courseid' => $this->course->id, 'sectionid' => $section->id)
             );
             $newtile['tileimagebackground'] = $section->tileimgtype;
@@ -525,8 +525,8 @@ class course_output implements \renderable, \templatable
         // If item is restricted, user needs to know why.
         $newtile['availabilitymessage'] = $output->section_availability_message($section, $this->canviewhidden);
 
-        if ($this->courseformatoptions['displayfilterbar'] == FORMAT_TILES_FILTERBAR_OUTCOMES
-            || $this->courseformatoptions['displayfilterbar'] == FORMAT_TILES_FILTERBAR_BOTH) {
+        if ($this->courseformatoptions['displayfilterbar'] == FORMAT_SUPERTILES_FILTERBAR_OUTCOMES
+            || $this->courseformatoptions['displayfilterbar'] == FORMAT_SUPERTILES_FILTERBAR_BOTH) {
             $newtile['tileoutcomeid'] = $section->tileoutcomeid;
         }
 
@@ -620,7 +620,7 @@ class course_output implements \renderable, \templatable
         }
         $data['hasNoSections'] = true;
 
-        $allowedphototiles = get_config('format_tiles', 'allowphototiles');
+        $allowedphototiles = get_config('format_supertiles', 'allowphototiles');
         if ($allowedphototiles) {
             $data['allowphototiles'] = 1;
         }
@@ -663,19 +663,19 @@ class course_output implements \renderable, \templatable
         $data['has_filter_buttons'] = false;
         if ($this->courseformatoptions['displayfilterbar']) {
             $firstidoutcomebuttons = 1;
-            if ($this->courseformatoptions['displayfilterbar'] == FORMAT_TILES_FILTERBAR_NUMBERS
-                || $this->courseformatoptions['displayfilterbar'] == FORMAT_TILES_FILTERBAR_BOTH) {
+            if ($this->courseformatoptions['displayfilterbar'] == FORMAT_SUPERTILES_FILTERBAR_NUMBERS
+                || $this->courseformatoptions['displayfilterbar'] == FORMAT_SUPERTILES_FILTERBAR_BOTH) {
                 $data['fiternumberedbuttons'] = $this->get_filter_numbered_buttons_data($data['tiles']);
                 if (count($data['fiternumberedbuttons']) > 0) {
                     $firstidoutcomebuttons = count($data['fiternumberedbuttons']) + 1;
                     $data['has_filter_buttons'] = true;
                 }
             }
-            if ($this->courseformatoptions['displayfilterbar'] == FORMAT_TILES_FILTERBAR_OUTCOMES
-                || $this->courseformatoptions['displayfilterbar'] == FORMAT_TILES_FILTERBAR_BOTH) {
-                $outcomes = course_get_format($this->course)->format_tiles_get_course_outcomes($this->course->id);
+            if ($this->courseformatoptions['displayfilterbar'] == FORMAT_SUPERTILES_FILTERBAR_OUTCOMES
+                || $this->courseformatoptions['displayfilterbar'] == FORMAT_SUPERTILES_FILTERBAR_BOTH) {
+                $outcomes = course_get_format($this->course)->format_supertiles_get_course_outcomes($this->course->id);
                 $data['fiteroutcomebuttons'] = $this->get_filter_outcome_buttons_data(
-                    $data['tiles'], $outcomes, $firstidoutcomebuttons
+                    $data['supertiles'], $outcomes, $firstidoutcomebuttons
                 );
                 if (count($data['fiternumberedbuttons']) > 0) {
                     $data['has_filter_buttons'] = true;
@@ -696,14 +696,14 @@ class course_output implements \renderable, \templatable
             if ($this->isediting && $data['overall_progress']['num_out_of'] == 0) {
                 $bulklink = \html_writer::link(
                   new \moodle_url('/course/bulkcompletion.php', array('id' => $this->course->id)),
-                  get_string('completionwarning_changeinbulk', 'format_tiles')
+                  get_string('completionwarning_changeinbulk', 'format_supertiles')
                 );
                 $helplink = \html_writer::link(
                     get_docs_url('Activity_completion_settings#Changing_activity_completion_settings_in_bulk'),
                     $output->pix_icon('help', '', 'core')
                 );
                 \core\notification::WARNING(
-                    get_string('completionwarning', 'format_tiles') . ' '  . $bulklink . ' ' . $helplink
+                    get_string('completionwarning', 'format_supertiles') . ' '  . $bulklink . ' ' . $helplink
                 );
             }
         }
@@ -1083,7 +1083,7 @@ class course_output implements \renderable, \templatable
                 if ($folder->display == FOLDER_DISPLAY_INLINE) {
                     $DB->set_field('folder', 'display', FOLDER_DISPLAY_PAGE, array('id' => $folder->id));
                     \core\notification::info(
-                        get_string('folderdisplayerror', 'format_tiles', $moduleobject['url']->out())
+                        get_string('folderdisplayerror', 'format_supertiles', $moduleobject['url']->out())
                     );
                     rebuild_course_cache($mod->course, true);
                 }
@@ -1129,9 +1129,9 @@ class course_output implements \renderable, \templatable
                 // Even though it's really a URL activity, display it as "video" activity with video icon.
                 if ($this->courseformatoptions['courseusesubtiles']) {
                     $moduleobject['extraclasses'] .= ' video';
-                    $moduleobject['modnameDisplay'] = get_string('displaytitle_mod_mp4', 'format_tiles');
+                    $moduleobject['modnameDisplay'] = get_string('displaytitle_mod_mp4', 'format_supertiles');
                 } else {
-                    $moduleobject['iconurl'] = $output->image_url('play-circle-solid', 'format_tiles');
+                    $moduleobject['iconurl'] = $output->image_url('play-circle-solid', 'format_supertiles');
                 }
             }
         } else {
@@ -1152,20 +1152,20 @@ class course_output implements \renderable, \templatable
                 $moduleobject['completionIsManual'] = 1;
                 switch ($completiondata->completionstate) {
                     case COMPLETION_INCOMPLETE:
-                        $moduleobject['completionstring'] = get_string('togglecompletion', 'format_tiles');
+                        $moduleobject['completionstring'] = get_string('togglecompletion', 'format_supertiles');
                         break;
                     case COMPLETION_COMPLETE:
-                        $moduleobject['completionstring'] = get_string('togglecompletion', 'format_tiles');
+                        $moduleobject['completionstring'] = get_string('togglecompletion', 'format_supertiles');
                         $moduleobject['completionicon'] = 'y'; // Green check in circle.
                         break;
                 }
             } else { // Automatic.
                 switch ($completiondata->completionstate) {
                     case COMPLETION_INCOMPLETE:
-                        $moduleobject['completionstring'] = get_string('complete-n-auto', 'format_tiles');
+                        $moduleobject['completionstring'] = get_string('complete-n-auto', 'format_supertiles');
                         break;
                     case COMPLETION_COMPLETE:
-                        $moduleobject['completionstring'] = get_string('complete-y-auto', 'format_tiles');
+                        $moduleobject['completionstring'] = get_string('complete-y-auto', 'format_supertiles');
                         $moduleobject['completionicon'] = 'y'; // Green check in circle.
                         break;
                     case COMPLETION_COMPLETE_PASS:
@@ -1255,12 +1255,12 @@ class course_output implements \renderable, \templatable
         if ($modname == 'resource') {
             if (isset($this->resourcedisplaynames[$resourcetype])) {
                 return $this->resourcedisplaynames[$resourcetype];
-            } else if (get_string_manager()->string_exists('displaytitle_mod_' . $resourcetype, 'format_tiles')) {
-                $str = get_string('displaytitle_mod_' . $resourcetype, 'format_tiles');
+            } else if (get_string_manager()->string_exists('displaytitle_mod_' . $resourcetype, 'format_supertiles')) {
+                $str = get_string('displaytitle_mod_' . $resourcetype, 'format_supertiles');
                 $this->resourcedisplaynames[$resourcetype] = $str;
                 return $str;
             } else {
-                $str = get_string('other', 'format_tiles');
+                $str = get_string('other', 'format_supertiles');
                 $this->resourcedisplaynames[$resourcetype] = $str;
                 return $str;
             }
@@ -1347,10 +1347,10 @@ class course_output implements \renderable, \templatable
         $actions = course_get_cm_edit_actions($mod, $indent, $sectionnum);
 
         if ($mod->modname === "label") {
-            if (get_config('format_tiles', 'allowlabelconversion' )
+            if (get_config('format_supertiles', 'allowlabelconversion' )
                 && has_capability('mod/page:addinstance', $this->coursecontext)
                 && has_capability('moodle/course:manageactivities', $this->coursecontext)) {
-                $converttext = get_string('converttopage', 'format_tiles');
+                $converttext = get_string('converttopage', 'format_supertiles');
                 $actions['labelconvert'] = new \action_menu_link_secondary(
                     new \moodle_url(
                         '/course/view.php', array(
@@ -1360,7 +1360,7 @@ class course_output implements \renderable, \templatable
                             'sesskey' => sesskey()
                         )
                     ),
-                    new \pix_icon('random', $converttext, 'format_tiles'),
+                    new \pix_icon('random', $converttext, 'format_supertiles'),
                     $converttext,
                     array('class' => 'editing_labelconvert ', 'data-action' => 'labelconvert',
                         'data-keepopen' => true, 'data-sectionreturn' => $sectionnum)

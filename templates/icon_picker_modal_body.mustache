@@ -17,7 +17,7 @@
 
 
 {{!
-    @template format_tiles/icon_picker_modal_body
+    @template format_supertiles/icon_picker_modal_body
 
     Icon picker modal template.
 
@@ -50,13 +50,13 @@
     <ul class="nav nav-pills" role="tablist">
         <!-- First the top most node and immediate children -->
         <li class="nav-item">
-            <a class="nav-link active" href="#tileicons" data-toggle="tab" role="tab">{{#str}}tileicons, format_tiles{{/str}}</a>
+            <a class="nav-link active" href="#tileicons" data-toggle="tab" role="tab">{{#str}}tileicons, format_supertiles{{/str}}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="launch-photo-library" href="#photolibrary" data-toggle="tab" role="tab">{{#pix}}camera, format_tiles{{/pix}} {{#str}}photolibrary, format_tiles{{/str}}</a>
+            <a class="nav-link" id="launch-photo-library" href="#photolibrary" data-toggle="tab" role="tab">{{#pix}}camera, format_supertiles{{/pix}} {{#str}}photolibrary, format_supertiles{{/str}}</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="phototilebtn" href="#">{{#pix}}cloud-upload, format_tiles{{/pix}}{{#str}}uploadnewphoto, format_tiles{{/str}}</a>
+            <a class="nav-link" id="phototilebtn" href="#">{{#pix}}cloud-upload, format_supertiles{{/pix}}{{#str}}uploadnewphoto, format_supertiles{{/str}}</a>
         </li>
     </ul>
 
@@ -71,7 +71,7 @@
 
             <div class="iconpickericons" id="iconpickericons">
                 {{#icon_picker_icons}}
-                    {{> format_tiles/icon_picker_icon}}
+                    {{> format_supertiles/icon_picker_icon}}
                 {{/icon_picker_icons}}
             </div>
 
@@ -79,8 +79,8 @@
 
         <div class="tab-pane fade" id="photolibrary" role="tabpanel" aria-labelledby="photolibrary-tab">
             {{!Leave blank for now will lazy load from JS if needed}}
-            <h3>{{#str}}photolibrary, format_tiles{{/str}}</h3>
-            <div>{{#str}}photolibrary_desc, format_tiles{{/str}}</div>
+            <h3>{{#str}}photolibrary, format_supertiles{{/str}}</h3>
+            <div>{{#str}}photolibrary_desc, format_supertiles{{/str}}</div>
             <div class="iconpickerphotos" id="iconpickerphotos">
                 <div class="alert alert-warning">{{#str}}none{{/str}}</div>
             </div>
@@ -100,14 +100,14 @@
 
     <div class="iconpickericons" id="iconpickericons">
         {{#icon_picker_icons}}
-            {{> format_tiles/icon_picker_icon}}
+            {{> format_supertiles/icon_picker_icon}}
         {{/icon_picker_icons}}
     </div>
 {{/photosallowed}}
 {{#documentationurl}}
     <div>
         <a href="{{{documentationurl}}}" target="_blank">
-            {{#pix}}help, core, {{#str}}documentation, format_tiles{{/str}}{{/pix}}{{#str}}documentation, format_tiles{{/str}}
+            {{#pix}}help, core, {{#str}}documentation, format_supertiles{{/str}}{{/pix}}{{#str}}documentation, format_supertiles{{/str}}
         </a>
     </div>
 {{/documentationurl}}

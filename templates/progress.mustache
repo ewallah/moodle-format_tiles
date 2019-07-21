@@ -16,7 +16,7 @@
 }}
 
 {{!
-    @template format_tiles/progress
+    @template format_supertiles/progress
 
     Progress indicator template.
 
@@ -59,8 +59,8 @@
 {{#isComplete}}
     <div class="progress-indic{{#showAsPercent}} percent{{/showAsPercent}}{{#isOverall}} overall-progress allcomplete{{/isOverall}}"
          id="tileprogress-{{tileid}}" data-numcomplete="{{numComplete}}" data-numoutof="{{numOutOf}}">
-        {{#isOverall}}{{#pix}}star-o, format_tiles, {{#str}}allcomplete, format_tiles{{/str}}{{/pix}}{{#str}}allcomplete, format_tiles{{/str}}{{/isOverall}}
-        {{^isOverall}}{{#pix}}check, format_tiles, {{#str}}allcomplete, format_tiles{{/str}}{{/pix}}{{/isOverall}}
+        {{#isOverall}}{{#pix}}star-o, format_supertiles, {{#str}}allcomplete, format_supertiles{{/str}}{{/pix}}{{#str}}allcomplete, format_supertiles{{/str}}{{/isOverall}}
+        {{^isOverall}}{{#pix}}check, format_supertiles, {{#str}}allcomplete, format_supertiles{{/str}}{{/pix}}{{/isOverall}}
     </div>
 {{/isComplete}}
 
@@ -70,9 +70,9 @@
         {{#showAsPercent}}
         <div class="progress-indic percent{{#isOverall}} overall-progress{{/isOverall}}" id="tileprogress-{{tileid}}"
              data-numcomplete="{{numComplete}}" data-numoutof="{{numOutOf}}"
-             title="{{#str}}progress, format_tiles{{/str}}:<br>{{numComplete}} / {{numOutOf}} {{#str}}items, format_tiles{{/str}}<br>{{percent}}%<br>{{#str}}complete, format_tiles{{/str}}"
+             title="{{#str}}progress, format_supertiles{{/str}}:<br>{{numComplete}} / {{numOutOf}} {{#str}}items, format_supertiles{{/str}}<br>{{percent}}%<br>{{#str}}complete, format_supertiles{{/str}}"
              {{#numOutOf}}data-toggle="tooltip" data-html="true" {{/numOutOf}}>
-          <div class="progress-indic-label">{{#isOverall}}{{#str}}overallprogressshort, format_tiles{{/str}}{{/isOverall}}{{^isOverall}}{{#str}}progress, format_tiles{{/str}}{{/isOverall}} %</div>
+          <div class="progress-indic-label">{{#isOverall}}{{#str}}overallprogressshort, format_supertiles{{/str}}{{/isOverall}}{{^isOverall}}{{#str}}progress, format_supertiles{{/str}}{{/isOverall}} %</div>
                 <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
                     {{! two circles, one showing complete and one showing the user's progress }}
                     <circle class="whole" cx="20" cy="20" r="17" fill="none" stroke="#e6e6e6" stroke-width="5"></circle>
@@ -89,9 +89,9 @@
 
         {{^showAsPercent}}
             <div class="progress-indic{{#isOverall}} overall-progress{{/isOverall}}" id="tileprogress-{{tileid}}"
-                 title="{{#str}}progress, format_tiles{{/str}}:<br> {{numComplete}} / {{numOutOf}} {{#str}}items, format_tiles{{/str}} ({{percent}}%) <br>{{#str}}complete, format_tiles{{/str}}"
+                 title="{{#str}}progress, format_supertiles{{/str}}:<br> {{numComplete}} / {{numOutOf}} {{#str}}items, format_supertiles{{/str}} ({{percent}}%) <br>{{#str}}complete, format_supertiles{{/str}}"
                  {{#numOutOf}}data-numcomplete="{{numComplete}}" data-numoutof="{{numOutOf}}" data-toggle="tooltip" data-html="true"{{/numOutOf}}>
-                {{#str}}progress, format_tiles{{/str}}:<br>
+                {{#str}}progress, format_supertiles{{/str}}:<br>
                 <span id="num-complete-{{tileid}}">{{numComplete}} / {{numOutOf}}</span>
             </div>
         {{/showAsPercent}}

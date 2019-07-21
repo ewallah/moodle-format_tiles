@@ -17,18 +17,18 @@
 /**
  * Tiles course format, registration manager class.
  *
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2019 David Watson {@link http://evolutioncode.uk}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace format_tiles;
+namespace format_supertiles;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
  * Class registration_manager
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2019 David Watson {@link http://evolutioncode.uk}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -86,7 +86,7 @@ class registration_manager {
      * @return bool
      */
     public static function is_registered() {
-        return get_config('format_tiles', 'registered') !== false;
+        return get_config('format_supertiles', 'registered') !== false;
     }
 
     /**
@@ -98,10 +98,10 @@ class registration_manager {
         global $USER;
         if (!self::is_registered()) {
             // Schedule an attempt to register later.
-            \core\notification::warning(get_string('registrationdeferred', 'format_tiles'));
-            $task = new \format_tiles\task\deferred_register();
+            \core\notification::warning(get_string('registrationdeferred', 'format_supertiles'));
+            $task = new \format_supertiles\task\deferred_register();
             $task->set_custom_data($data);
-            $task->set_component('format_tiles');
+            $task->set_component('format_supertiles');
             $task->set_userid($USER->id);
             \core\task\manager::queue_adhoc_task($task);
         }
@@ -163,8 +163,8 @@ class registration_manager {
      * @throws \coding_exception
      */
     public static function set_registered() {
-        \core\notification::success(get_string('registeredthanks', 'format_tiles'));
-        return set_config('registered', time(), 'format_tiles');
+        \core\notification::success(get_string('registeredthanks', 'format_supertiles'));
+        return set_config('registered', time(), 'format_supertiles');
     }
 
     /**

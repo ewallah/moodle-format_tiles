@@ -16,12 +16,12 @@
 
 /**
  * Icon set class for format tiles.
- * @package    format_tiles
+ * @package    format_supertiles
  * @copyright  2019 David Watson {@link http://evolutioncode.uk} in respect of modifications to format_grid versions by G J Barnard.
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace format_tiles;
+namespace format_supertiles;
 
 defined('MOODLE_INTERNAL') || die();
 global $CFG;
@@ -31,7 +31,7 @@ require_once($CFG->libdir . '/gdlib.php');
 
 /**
  * Class image_processor
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2018 David Watson {@link http://evolutioncode.uk} in respect of modifications to format_grid versions by G J Barnard.
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -89,7 +89,7 @@ class image_processor
                 unset($tempfile);
                 return $newfile;
             } else {
-                debugging('imagecannotbeused', 'format_tiles', DEBUG_DEVELOPER);
+                debugging('imagecannotbeused', 'format_supertiles', DEBUG_DEVELOPER);
             }
         } catch (Exception $e) {
             if (isset($tempfile)) {

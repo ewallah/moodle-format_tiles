@@ -1,4 +1,4 @@
-@format @format_tiles @format_tiles_mod_modal @format_tiles_html_modal_teacher @javascript
+@format @format_supertiles @format_supertiles_mod_modal @format_supertiles_html_modal_teacher @javascript
 Feature: HTML file can be set to open in modal windows with subtiles off
   In order to improve UX
   As a user
@@ -22,15 +22,15 @@ Feature: HTML file can be set to open in modal windows with subtiles off
     And the following config values are set as admin:
       | config                 | value    | plugin       |
       | enablecompletion       | 1        | core         |
-      | modalmodules           | page     | format_tiles |
-      | modalresources         | pdf,html | format_tiles |
-      | assumedatastoreconsent | 1        | format_tiles |
-      | reopenlastsection      | 0        | format_tiles |
-      | usejavascriptnav       | 1        | format_tiles |
-      | jsmaxstoreditems       | 0        | format_tiles |
+      | modalmodules           | page     | format_supertiles |
+      | modalresources         | pdf,html | format_supertiles |
+      | assumedatastoreconsent | 1        | format_supertiles |
+      | reopenlastsection      | 0        | format_supertiles |
+      | usejavascriptnav       | 1        | format_supertiles |
+      | jsmaxstoreditems       | 0        | format_supertiles |
     # We set jsmaxstoreditems to zero as otherwise when we switch between subtiles and tiles format we may not see an immediate change in display
     When I log in as "teacher1"
-    And format_tiles subtiles are off for course "Course 1"
+    And format_supertiles subtiles are off for course "Course 1"
     And I am on "Course 1" course homepage with editing mode on
     And I wait until the page is ready
     And I follow "Collapse all"
@@ -45,7 +45,7 @@ Feature: HTML file can be set to open in modal windows with subtiles off
       | Name        | Test HTML file         |
       | Description | File description       |
     And I set the field "Completion tracking" to "Students can manually mark the activity as completed"
-    And I upload "course/format/tiles/tests/fixtures/test.html" file to "Select files" filemanager
+    And I upload "course/format/supertiles/tests/fixtures/test.html" file to "Select files" filemanager
     And I expand all fieldsets
     And I set the field "Show type" to "1"
     And I press "Save and return to course"
@@ -59,7 +59,7 @@ Feature: HTML file can be set to open in modal windows with subtiles off
   Scenario: Open section 1 view HTML file as teacher with subtiles off
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And format_tiles subtiles are off for course "Course 1"
+    And format_supertiles subtiles are off for course "Course 1"
     And I click on tile "1"
     And I wait until the page is ready
     And I click format tiles activity "Test HTML file"
@@ -80,7 +80,7 @@ Feature: HTML file can be set to open in modal windows with subtiles off
   Scenario: Open section 1 add HTML file as teacher with subtiles on
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And format_tiles subtiles are on for course "Course 1"
+    And format_supertiles subtiles are on for course "Course 1"
     And I click on tile "1"
     And I wait until the page is ready
     And I click format tiles activity "Test HTML file"

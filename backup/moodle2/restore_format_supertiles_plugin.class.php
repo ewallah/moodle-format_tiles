@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Specialised restore for format_tiles (based on the equivalent for format_topics
+ * Specialised restore for format_supertiles (based on the equivalent for format_topics
  *
- * @package   format_tiles
+ * @package   format_supertiles
  * @category  backup
  * @copyright 2017 David Watson {@link http://evolutioncode.uk}, Marina Glancy
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -31,17 +31,17 @@ define('FILTER_OUTCOMES_ONLY', 2);
 define('FILTER_OUTCOMES_AND_NUMBERS', 3);
 
 /**
- * Specialised restore for format_tiles
+ * Specialised restore for format_supertiles
  *
  * Processes 'numsections' from the old backup files and hides sections that used to be "orphaned".
  * Also handles restoring tile background image files from the backup archive to the tiles.
  *
- * @package   format_tiles
+ * @package   format_supertiles
  * @category  backup
  * @copyright 2019 David Watson {@link http://evolutioncode.uk}, Marina Glancy
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class restore_format_tiles_plugin extends restore_format_plugin {
+class restore_format_supertiles_plugin extends restore_format_plugin {
 
     /** @var int */
     protected $originalnumsections = 0;
@@ -86,7 +86,7 @@ class restore_format_tiles_plugin extends restore_format_plugin {
      * @return array
      */
     public function define_section_plugin_structure() {
-        $this->add_related_files('format_tiles', 'tilephoto', null);
+        $this->add_related_files('format_supertiles', 'tilephoto', null);
         // Dummy path element is needed in order for after_restore_section() to be called.
         return [new restore_path_element('dummy_section', $this->get_pathfor('/dummysection'))];
     }
@@ -146,16 +146,16 @@ class restore_format_tiles_plugin extends restore_format_plugin {
     public function after_restore_course() {
         global $DB;
         // This function will be executed on every restore, whether or not the restored course uses this format.
-        // So before doing anything else, check if the restored course is using format_tiles or not.
+        // So before doing anything else, check if the restored course is using format_supertiles or not.
         $backupinfo = $this->step->get_task()->get_info();
-        if ($backupinfo->original_course_format !== 'tiles') {
+        if ($backupinfo->original_course_format !== 'supertiles') {
             // Backup is from another course format, so we bail out (the other format will take care of everything).
             // Moving this here fixes issue #4.
             return;
         }
         $currentfilterbarsetting = $DB->get_record(
             'course_format_options',
-            array('name' => 'displayfilterbar', 'format' => 'tiles', 'courseid' => $this->step->get_task()->get_courseid())
+            array('name' => 'displayfilterbar', 'format' => 'supertiles', 'courseid' => $this->step->get_task()->get_courseid())
         );
         if ($currentfilterbarsetting && $currentfilterbarsetting->value == FILTER_OUTCOMES_ONLY
             || $currentfilterbarsetting->value == FILTER_OUTCOMES_AND_NUMBERS) {
@@ -176,7 +176,7 @@ class restore_format_tiles_plugin extends restore_format_plugin {
             // Users will have to set out up outcomes in new course for now if they want to.
             $DB->delete_records(
                 'course_format_options',
-                array('name' => 'tileoutcomeid', 'format' => 'tiles', 'courseid' => $this->step->get_task()->get_courseid())
+                array('name' => 'tileoutcomeid', 'format' => 'supertiles', 'courseid' => $this->step->get_task()->get_courseid())
             );
         }
 
@@ -185,15 +185,15 @@ class restore_format_tiles_plugin extends restore_format_plugin {
         // Same for the topic level option "tiletopleftthistile" which becomes "tileicon".
         $courseid = $this->step->get_task()->get_courseid();
         $DB->set_field('course_format_options', 'name', 'defaulttileicon',
-            array('format' => 'tiles', 'name' => 'defaulttiletopleftdisplay', 'courseid' => $courseid));
+            array('format' => 'supertiles', 'name' => 'defaulttiletopleftdisplay', 'courseid' => $courseid));
         $DB->set_field('course_format_options', 'name', 'tileicon',
-            array('format' => 'tiles', 'name' => 'tiletopleftthistile', 'courseid' => $courseid));
+            array('format' => 'supertiles', 'name' => 'tiletopleftthistile', 'courseid' => $courseid));
 
         // Old versions of this plugin used to refer to "course default" for each icon if the user had not selected one.
         // This no longer applies so delete them if present.
         $DB->delete_records_select(
             'course_format_options',
-            "format  = 'tiles' AND name = 'tileicon' AND value = 'course default' AND courseid = :courseid",
+            "format  = 'supertiles' AND name = 'tileicon' AND value = 'course default' AND courseid = :courseid",
             array("courseid" => $courseid)
         );
 
@@ -221,7 +221,7 @@ class restore_format_tiles_plugin extends restore_format_plugin {
 
         // While we are here, delete any temp tile photo files (we don't expect any but just in case).
         $fs = get_file_storage();
-        $fs->delete_area_files(context_course::instance($courseid)->id, 'format_tiles', 'temptilephoto');
+        $fs->delete_area_files(context_course::instance($courseid)->id, 'format_supertiles', 'temptilephoto');
     }
 
     /**
@@ -241,7 +241,7 @@ class restore_format_tiles_plugin extends restore_format_plugin {
         global $DB;
         $record = $DB->get_record_select(
             'files',
-            "contextid = :coursecontextid AND component = 'format_tiles'
+            "contextid = :coursecontextid AND component = 'format_supertiles'
             AND filearea = 'tilephoto' AND filepath = '/tilephoto/'
             AND itemid = :oldsectionid AND filesize > 0",
             array ('coursecontextid' => $contextid, 'oldsectionid' => $oldsectionid)
@@ -255,7 +255,7 @@ class restore_format_tiles_plugin extends restore_format_plugin {
                 // We have a file in the table with the old section id.
                 // However if we are merging a backup into an existing course, the new section may already have a photo too.
                 // We have to delete it if it does, as well as delete the old sec id version.
-                \format_tiles\tile_photo::delete_file_from_ids($newcourseid, $newsectionid);
+                \format_supertiles\tile_photo::delete_file_from_ids($newcourseid, $newsectionid);
                 $newfile = $fs->create_file_from_storedfile($record, $oldfile);
                 $oldfile->delete();
             }

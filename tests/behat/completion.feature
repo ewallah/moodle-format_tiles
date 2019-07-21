@@ -1,4 +1,4 @@
-@format @format_tiles @format_tiles_completion @javascript
+@format @format_supertiles @format_supertiles_completion @javascript
 Feature: Progress indicators can be used to change progress status and changes are reflected in database
 
   Background:
@@ -51,65 +51,65 @@ Feature: Progress indicators can be used to change progress status and changes a
     And the following config values are set as admin:
       | config                 | value    | plugin       |
       | enablecompletion       | 1        | core         |
-      | modalmodules           | page     | format_tiles |
-      | modalresources         | pdf,html | format_tiles |
-      | assumedatastoreconsent | 1        | format_tiles |
-      | reopenlastsection      | 0        | format_tiles |
-      | usejavascriptnav       | 1        | format_tiles |
-      | jsmaxstoreditems       | 0        | format_tiles |
+      | modalmodules           | page     | format_supertiles |
+      | modalresources         | pdf,html | format_supertiles |
+      | assumedatastoreconsent | 1        | format_supertiles |
+      | reopenlastsection      | 0        | format_supertiles |
+      | usejavascriptnav       | 1        | format_supertiles |
+      | jsmaxstoreditems       | 0        | format_supertiles |
     # We set jsmaxstoreditems to zero as otherwise when we switch between subtiles and tiles format we may not see an immediate change in display
 
   @javascript
   Scenario: Log in as student and check/uncheck activities - results correctly reach database
     When I log in as "student1"
-    And format_tiles progress indicator is showing as "percent" for course "Course 1"
+    And format_supertiles progress indicator is showing as "percent" for course "Course 1"
     And I am on "Course 1" course homepage
-    And format_tiles subtiles are off for course "Course 1"
+    And format_supertiles subtiles are off for course "Course 1"
     And I wait "1" seconds
-    And format_tiles progress indicator for tile "1" is "0" out of "2"
+    And format_supertiles progress indicator for tile "1" is "0" out of "2"
     And I click on tile "1"
     And I wait until the page is ready
 
     And I click format tiles progress indicator for "Test page 1a"
-    Then format_tiles progress for "Test page 1a" in "Course 1" is "1" in the database
-    And format_tiles progress indicator for tile "1" is "1" out of "2"
+    Then format_supertiles progress for "Test page 1a" in "Course 1" is "1" in the database
+    And format_supertiles progress indicator for tile "1" is "1" out of "2"
 
     And I click format tiles progress indicator for "Test page 1b"
-    Then format_tiles progress for "Test page 1b" in "Course 1" is "1" in the database
-    And format_tiles progress indicator for tile "1" is "2" out of "2"
+    Then format_supertiles progress for "Test page 1b" in "Course 1" is "1" in the database
+    And format_supertiles progress indicator for tile "1" is "2" out of "2"
 
     And I click format tiles progress indicator for "Test page 1a"
-    Then format_tiles progress for "Test page 1a" in "Course 1" is "0" in the database
-    And format_tiles progress indicator for tile "1" is "1" out of "2"
+    Then format_supertiles progress for "Test page 1a" in "Course 1" is "0" in the database
+    And format_supertiles progress indicator for tile "1" is "1" out of "2"
 
     And I click format tiles progress indicator for "Test page 1b"
-    Then format_tiles progress for "Test page 2b" in "Course 1" is "0" in the database
-    And format_tiles progress indicator for tile "1" is "0" out of "2"
+    Then format_supertiles progress for "Test page 2b" in "Course 1" is "0" in the database
+    And format_supertiles progress indicator for tile "1" is "0" out of "2"
 
   @javascript
   Scenario: Log in as student and check/uncheck activities - results correctly shown in UI
     When I log in as "student1"
-    And format_tiles progress indicator is showing as "percent" for course "Course 1"
+    And format_supertiles progress indicator is showing as "percent" for course "Course 1"
     And I am on "Course 1" course homepage
-    And format_tiles subtiles are off for course "Course 1"
-    And format_tiles progress indicator for tile "1" is "0" out of "2"
+    And format_supertiles subtiles are off for course "Course 1"
+    And format_supertiles progress indicator for tile "1" is "0" out of "2"
     And I click on tile "1"
     And I wait until the page is ready
 
     And I click format tiles progress indicator for "Test page 1a"
-    Then format_tiles progress for "Test page 1a" in "Course 1" is "1" in the database
-    And format_tiles progress indicator for tile "1" is "1" out of "2"
+    Then format_supertiles progress for "Test page 1a" in "Course 1" is "1" in the database
+    And format_supertiles progress indicator for tile "1" is "1" out of "2"
 
     And I click format tiles progress indicator for "Test page 1b"
-    Then format_tiles progress for "Test page 1b" in "Course 1" is "1" in the database
-    And format_tiles progress indicator for tile "1" is "2" out of "2"
+    Then format_supertiles progress for "Test page 1b" in "Course 1" is "1" in the database
+    And format_supertiles progress indicator for tile "1" is "2" out of "2"
 
     And I click format tiles progress indicator for "Test page 1a"
-    Then format_tiles progress for "Test page 1a" in "Course 1" is "0" in the database
-    And format_tiles progress indicator for tile "1" is "1" out of "2"
+    Then format_supertiles progress for "Test page 1a" in "Course 1" is "0" in the database
+    And format_supertiles progress indicator for tile "1" is "1" out of "2"
 
     And I click format tiles progress indicator for "Test page 1b"
-    Then format_tiles progress for "Test page 1b" in "Course 1" is "0" in the database
-    And format_tiles progress indicator for tile "1" is "0" out of "2"
+    Then format_supertiles progress for "Test page 1b" in "Course 1" is "0" in the database
+    And format_supertiles progress indicator for tile "1" is "0" out of "2"
 
 #    TODO check that the completion values shown on the tile and overall are complete when these items change

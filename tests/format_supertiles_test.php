@@ -17,7 +17,7 @@
 /**
  * Course related unit tests for format tiles
  *
- * @package    format_tiles
+ * @package    format_supertiles
  * @copyright  2018 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -28,11 +28,11 @@ global $CFG;
 require_once($CFG->dirroot . '/course/lib.php');
 
 /**
- * Class format_tiles_testcase
+ * Class format_supertiles_testcase
  * @copyright  2018 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class format_tiles_testcase extends advanced_testcase
+class format_supertiles_testcase extends advanced_testcase
 {
 
     /**
@@ -43,7 +43,7 @@ class format_tiles_testcase extends advanced_testcase
         'shortname' => 'GrowingCourse',
         'fullname' => 'Growing Course',
         'numsections' => 5,
-        'format' => 'tiles',
+        'format' => 'supertiles',
         'defaulttileicon' => 'user',
         'basecolour' => '#700000',
         'courseusesubtiles' => 1,
@@ -94,8 +94,8 @@ class format_tiles_testcase extends advanced_testcase
         $course = $this->getDataGenerator()->create_course(
             $this->tilescourseformatoptions,
             array('createsections' => true));
-        set_config('followthemecolour', 0, 'format_tiles');
-        set_config('allowsubtilesview', 0, 'format_tiles');
+        set_config('followthemecolour', 0, 'format_supertiles');
+        set_config('allowsubtilesview', 0, 'format_supertiles');
 
         $pushedvalues = array(
             'id' => $course->id,
@@ -113,7 +113,7 @@ class format_tiles_testcase extends advanced_testcase
 
         $dbdata = $DB->get_records(
             'course_format_options',
-            array('format' => 'tiles', 'courseid' => $course->id, 'sectionid' => 0)
+            array('format' => 'supertiles', 'courseid' => $course->id, 'sectionid' => 0)
         );
         $newvalues = [];
         foreach ($dbdata as $k => $v) {
@@ -143,7 +143,7 @@ class format_tiles_testcase extends advanced_testcase
 
         $dbdata = $DB->get_records(
             'course_format_options',
-            array('format' => 'tiles', 'courseid' => $course->id, 'sectionid' => 0)
+            array('format' => 'supertiles', 'courseid' => $course->id, 'sectionid' => 0)
         );
         $newvalues = [];
         foreach ($dbdata as $k => $v) {
@@ -175,7 +175,7 @@ class format_tiles_testcase extends advanced_testcase
 
         // Call webservice without necessary permissions.
         try {
-            core_external::update_inplace_editable('format_tiles', 'sectionname', $section->id, 'New section name');
+            core_external::update_inplace_editable('format_supertiles', 'sectionname', $section->id, 'New section name');
             $this->fail('Exception expected');
         } catch (moodle_exception $e) {
             $this->assertEquals('Course or activity not accessible. (Not enrolled)',
@@ -186,7 +186,7 @@ class format_tiles_testcase extends advanced_testcase
         $teacherrole = $DB->get_record('role', array('shortname' => 'editingteacher'));
         $this->getDataGenerator()->enrol_user($user->id, $course->id, $teacherrole->id);
 
-        $res = core_external::update_inplace_editable('format_tiles', 'sectionname', $section->id, 'New section name');
+        $res = core_external::update_inplace_editable('format_supertiles', 'sectionname', $section->id, 'New section name');
         $res = external_api::clean_returnvalue(core_external::update_inplace_editable_returns(), $res);
         $this->assertEquals('New section name', $res['value']);
         $this->assertEquals('New section name', $DB->get_field('course_sections', 'name', array('id' => $section->id)));
@@ -208,8 +208,8 @@ class format_tiles_testcase extends advanced_testcase
 
         $section = $DB->get_record('course_sections', array('course' => $course->id, 'section' => 2));
 
-        // Call callback format_tiles_inplace_editable() directly.
-        $tmpl = component_callback('format_tiles', 'inplace_editable', array('sectionname', $section->id, 'Rename me again'));
+        // Call callback format_supertiles_inplace_editable() directly.
+        $tmpl = component_callback('format_supertiles', 'inplace_editable', array('sectionname', $section->id, 'Rename me again'));
         $this->assertInstanceOf('core\output\inplace_editable', $tmpl);
         $res = $tmpl->export_for_template($PAGE->get_renderer('core'));
         $this->assertEquals('Rename me again', $res['value']);

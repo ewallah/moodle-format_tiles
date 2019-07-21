@@ -18,7 +18,7 @@
 /**
  * Renderer for outputting the tiles course format.
  *
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2018 David Watson {@link http://evolutioncode.uk}
  * @copyright Based partly on previous topics format renderer and general course format renderer
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -28,16 +28,16 @@
 
 defined('MOODLE_INTERNAL') || die();
 require_once($CFG->dirroot . '/course/format/renderer.php');
-require_once($CFG->dirroot . '/course/format/tiles/locallib.php');
-require_once($CFG->dirroot . '/course/format/tiles/lib.php');
+require_once($CFG->dirroot . '/course/format/supertiles/locallib.php');
+require_once($CFG->dirroot . '/course/format/supertiles/lib.php');
 
 /**
  * Basic renderer for tiles format.
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2016 David Watson {@link http://evolutioncode.uk}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class format_tiles_renderer extends format_section_renderer_base
+class format_supertiles_renderer extends format_section_renderer_base
 {
     protected $courseformat; // Our course format object as defined in lib.php.
     
@@ -49,7 +49,7 @@ class format_tiles_renderer extends format_section_renderer_base
      */
     public function __construct(moodle_page $page, $target) {
         parent::__construct($page, $target);
-        // Method format_tiles_renderer::section_edit_controls() displays 'Set current section' control when editing is on.
+        // Method format_supertiles_renderer::section_edit_controls() displays 'Set current section' control when editing is on.
         // We need to ensure that 'Turn editing mode on' link is available for user who doesn't have other managing capability.
         $page->set_other_editing_capability('moodle/course:setcurrentsection');
     }
@@ -143,8 +143,8 @@ class format_tiles_renderer extends format_section_renderer_base
                     $url = course_get_url($course);
                     $url->param('pinned', 1);
                     $url->param('sesskey', sesskey());
-                    $pinnedsection = get_string('pinnedsection', 'format_tiles');
-                    $topuninsection = get_string('tounpinsection', 'format_tiles');
+                    $pinnedsection = get_string('pinnedsection', 'format_supertiles');
+                    $topuninsection = get_string('tounpinsection', 'format_supertiles');
                     $controls['pinned'] = array('url' => $url, "icon" => 'i/unlock',
                                                    'name' => $topuninsection,
                                                    'pixattr' => array('class' => '', 'alt' => $pinnedsection),
@@ -154,8 +154,8 @@ class format_tiles_renderer extends format_section_renderer_base
                     $url = course_get_url($course);
                     $url->param('pinned', 0); // not pinned section. show pin icon
                     $url->param('sesskey', sesskey());
-                    $unpinnedsection = get_string('unpinnedsection', 'format_tiles');
-                    $topinsection = get_string('topinsection', 'format_tiles');
+                    $unpinnedsection = get_string('unpinnedsection', 'format_supertiles');
+                    $topinsection = get_string('topinsection', 'format_supertiles');
                     $controls['pinned'] = array('url' => $url, "icon" => 'i/lock',
                                                    'name' => $topinsection,
                                                    'pixattr' => array('class' => '', 'alt' => $unpinnedsection),
@@ -175,10 +175,10 @@ class format_tiles_renderer extends format_section_renderer_base
             $controls['entersection'] = array(
                 'url' => $urlsinglesection,
                 "icon" => 'a/view_list_active',
-                'name' => get_string('entersection', 'format_tiles'),
+                'name' => get_string('entersection', 'format_supertiles'),
                 'attr' => array(
                     'class' => 'editing_activities',
-                    'title' => get_string('entersection', 'format_tiles')
+                    'title' => get_string('entersection', 'format_supertiles')
                 )
             );
 
@@ -197,10 +197,10 @@ class format_tiles_renderer extends format_section_renderer_base
                 $controls['collapseactivities'] = array(
                     'url' => $url,
                     "icon" => 'i/up',
-                    'name' => get_string('collapse', 'format_tiles'),
+                    'name' => get_string('collapse', 'format_supertiles'),
                     'attr' => array(
                         'class' => 'editing_activities',
-                        'title' => get_string('collapse', 'format_tiles')
+                        'title' => get_string('collapse', 'format_supertiles')
                     )
                 );
             } else {
@@ -212,10 +212,10 @@ class format_tiles_renderer extends format_section_renderer_base
                 );
                 $controls['expandactivities'] = array(
                     'url' => $url, "icon" => 'e/resize',
-                    'name' => get_string('revealcontents', 'format_tiles'),
+                    'name' => get_string('revealcontents', 'format_supertiles'),
                     'attr' => array(
                         'class' => 'editing_activities',
-                        'title' => get_string('revealcontents', 'format_tiles')
+                        'title' => get_string('revealcontents', 'format_supertiles')
                     )
                 );
             }
@@ -230,7 +230,7 @@ class format_tiles_renderer extends format_section_renderer_base
             $url = course_get_url($course);
             $url->param('deletesection', $section->section);
             $url->param('sesskey', sesskey());
-            $deletesection = get_string('deletesection', 'format_tiles');
+            $deletesection = get_string('deletesection', 'format_supertiles');
             $endcontrols['delete'] = array('url' => $url, "icon" => 'i/delete',
                                            'name' => $deletesection,
                                            'pixattr' => array('class' => '', 'alt' => $deletesection),
@@ -285,9 +285,9 @@ class format_tiles_renderer extends format_section_renderer_base
      * @throws moodle_exception
      */
     public function print_single_section_page($course, $sections, $mods, $modnames, $modnamesused, $displaysection) {
-        $templateable = new \format_tiles\output\course_output($course, false, $displaysection, $this->courserenderer);
+        $templateable = new \format_supertiles\output\course_output($course, false, $displaysection, $this->courserenderer);
         $data = $templateable->export_for_template($this);
-        echo $this->render_from_template('format_tiles/single_section_page', $data);
+        echo $this->render_from_template('format_supertiles/single_section_page', $data);
     }
 
     /**
@@ -306,9 +306,9 @@ class format_tiles_renderer extends format_section_renderer_base
     public function print_multiple_section_page($course, $sections, $mods, $modnames, $modnamesused) {
         global $PAGE;
         
-        $templateable = new \format_tiles\output\course_output($course, false, 0, $this->courserenderer);
+        $templateable = new \format_supertiles\output\course_output($course, false, 0, $this->courserenderer);
         $data = $templateable->export_for_template($this);
-        echo $this->render_from_template('format_tiles/multi_section_page', $data);
+        echo $this->render_from_template('format_supertiles/multi_section_page', $data);
     }
 
     
@@ -416,7 +416,7 @@ class format_tiles_renderer extends format_section_renderer_base
         $o = '';
         if (!$PAGE->user_is_editing()) {
             // Added for tiles.
-            $contents = '<b>' . get_string('contents', 'format_tiles') . ':</b><br>';
+            $contents = '<b>' . get_string('contents', 'format_supertiles') . ':</b><br>';
             $extraclass = '';
         } else {
             $contents = '';
@@ -538,12 +538,12 @@ class format_tiles_renderer extends format_section_renderer_base
     
     
     /**
-     * renders HTML for format_tiles_edit_control
+     * renders HTML for format_supertiles_edit_control
      *
-     * @param format_tiles_edit_control $control
+     * @param format_supertiles_edit_control $control
      * @return string
      */
-    protected function render_format_tiles_edit_control(format_tiles_edit_control $control) {
+    protected function render_format_supertiles_edit_control(format_supertiles_edit_control $control) {
         if (!$control) {
             return '';
         }
@@ -587,11 +587,11 @@ class format_tiles_renderer extends format_section_renderer_base
         $url = course_get_url($courseid, get_viewed_section());
         $url->param('addchildsection', $parentsection);
         if ($parentsection) {
-            $text = new lang_string('addsubsection', 'format_tiles');
+            $text = new lang_string('addsubsection', 'format_supertiles');
         } else {
-            $text = new lang_string('addsection', 'format_tiles');
+            $text = new lang_string('addsection', 'format_supertiles');
         }
-        return $this->render(new format_tiles_edit_control('addsection', 'addsection', $url, $text));
+        return $this->render(new format_supertiles_edit_control('addsection', 'addsection', $url, $text));
     }
     
     public function display_insert_section_here($courseorid, $parent, $before = null, $sr = null) {
@@ -633,12 +633,12 @@ class format_tiles_renderer extends format_section_renderer_base
     }
     
     /**
-     * renders HTML for format_tiles_moving_control
+     * renders HTML for format_supertiles_moving_control
      *
-     * @param format_tiles_moving_control $control
+     * @param format_supertiles_moving_control $control
      * @return string
      */
-    protected function render_format_tiles_moving_control(format_tiles_edit_control $control) {
+    protected function render_format_supertiles_moving_control(format_supertiles_edit_control $control) {
         if (!$control) {
             return '';
         }
@@ -683,7 +683,7 @@ class format_tiles_renderer extends format_section_renderer_base
         $optionsyes = array('confirm' => 1, 'deletesection' => $deletesection, 'sesskey' => sesskey());
         $formcontinue = new single_button(new moodle_url($courseurl, $optionsyes), get_string('yes'));
         $formcancel = new single_button($courseurl, get_string('no'), 'get');
-        echo $this->confirm(get_string('confirmdelete', 'format_tiles'), $formcontinue, $formcancel);
+        echo $this->confirm(get_string('confirmdelete', 'format_supertiles'), $formcontinue, $formcancel);
         echo $this->box_end();
     }
 }

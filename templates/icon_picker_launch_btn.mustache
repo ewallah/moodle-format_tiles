@@ -16,7 +16,7 @@
 }}
 
 {{!
-    @template format_tiles/icon_picker_launch_btn
+    @template format_supertiles/icon_picker_launch_btn
 
     Icon picker launch button template.
 
@@ -41,11 +41,11 @@
     }
 }}
 {{#initialicon}}
-    <span id="selectedicon" title="{{initialname}}">{{#pix}}tileicon/{{initialicon}}, format_tiles, {{initialname}}{{/pix}}</span>
+    <span id="selectedicon" title="{{initialname}}">{{#pix}}tileicon/{{initialicon}}, format_supertiles, {{initialname}}{{/pix}}</span>
 {{/initialicon}}
 <div id="launchiconpicker" class="btn btn-secondary launchiconpicker" data-sectionid="{{sectionId}}">
     <span>
-        {{^allowphototiles}}{{#str}}picknewicon, format_tiles{{/str}}{{/allowphototiles}}
-        {{#allowphototiles}}{{#str}}picknewiconphoto, format_tiles{{/str}}{{/allowphototiles}}
+        {{^allowphototiles}}{{#str}}picknewicon, format_supertiles{{/str}}{{/allowphototiles}}
+        {{#allowphototiles}}{{#str}}picknewiconphoto, format_supertiles{{/str}}{{/allowphototiles}}
     </span>
 </div>

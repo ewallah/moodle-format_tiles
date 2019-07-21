@@ -15,23 +15,23 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Ad hoc task to be executed the next time cron runs for component 'format_tiles', to register plugin.
+ * Ad hoc task to be executed the next time cron runs for component 'format_supertiles', to register plugin.
  *
- * @package   format_tiles
+ * @package   format_supertiles
  * @copyright 2019 David Watson {@link http://evolutioncode.uk}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace format_tiles\task;
+namespace format_supertiles\task;
 
-use format_tiles\registration_manager;
+use format_supertiles\registration_manager;
 use moodle_exception;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
  * Class deferred_register
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2018 David Watson {@link http://evolutioncode.uk}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -39,7 +39,7 @@ class deferred_register extends \core\task\adhoc_task {
 
     /**
      * Run the register task to attempt to register the tiles plugin with the developer's website.
-     * The task is initiated if the site admin clicks "Register" from Site Admin > Course Formats > Tiles format.
+     * The task is initiated if the site admin clicks "Register" from Site Admin > Course Formats > supertiles format.
      * Ad hoc tasks are tried on cron and if they fail are retried with exponential fall off up to 24 hours.
      * i.e. after 1 min, 2, 4, 8, 16 mins etc.
      */

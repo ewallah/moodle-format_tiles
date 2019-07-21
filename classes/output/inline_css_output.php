@@ -17,11 +17,11 @@
 /**
  * Tiles course format, inline css output class
  *
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2018 David Watson {@link http://evolutioncode.uk}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-namespace format_tiles\output;
+namespace format_supertiles\output;
 
 defined('MOODLE_INTERNAL') || die();
 global $CFG;
@@ -30,7 +30,7 @@ require_once($CFG->dirroot .'/course/format/lib.php');
 /**
  * Prepares data for echoing inline css via template to provide custom colour for tiles
  *
- * @package format_tiles
+ * @package format_supertiles
  * @copyright 2018 David Watson {@link http://evolutioncode.uk}
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -74,7 +74,7 @@ class inline_css_output implements \renderable, \templatable {
     }
     /**
      * Export the data for the mustache template.
-     * @see format_tiles_width_template_data()
+     * @see format_supertiles_width_template_data()
      * @param \renderer_base $output
      * @return array|\stdClass
      * @throws \dml_exception
@@ -90,22 +90,22 @@ class inline_css_output implements \renderable, \templatable {
         $outputdata = array(
             'base_colour' => $this->rgbacolour($basecolour),
             'tile_light_colour' => $this->rgbacolour($basecolour, 0.05),
-            'tile_hover_colour' => get_config('format_tiles', 'hovercolour'),
-            'custom_css' => get_config('format_tiles', 'customcss'),
+            'tile_hover_colour' => get_config('format_supertiles', 'hovercolour'),
+            'custom_css' => get_config('format_supertiles', 'customcss'),
             'button_hover_colour' => $this->rgbacolour($basecolour, 0.1),
         );
         if ($this->allowphototiles) {
             $outputdata['allowphototiles'] = 1;
             $outputdata['photo_tile_text_bg'] = $this->rgbacolour(
                 $basecolour,
-                1.0 - (float)get_config('format_tiles', 'phototiletitletransarency')
+                1.0 - (float)get_config('format_supertiles', 'phototiletitletransarency')
             );
 
             // The best values here vary by theme and browser, so mostly come from admin setting.
             // If the site admin sets background opacity to solid then it doesn't matter if the lines overlap.
             $outputdata['phototilefontsize'] = 20;
-            $outputdata['phototiletextpadding'] = (float)get_config('format_tiles', 'phototitletitlepadding') / 10;
-            $outputdata['phototiletextlineheight'] = (float)get_config('format_tiles', 'phototitletitlelineheight') / 10;
+            $outputdata['phototiletextpadding'] = (float)get_config('format_supertiles', 'phototitletitlepadding') / 10;
+            $outputdata['phototiletextlineheight'] = (float)get_config('format_supertiles', 'phototitletitlelineheight') / 10;
         }
 
         if ($this->course->courseusebarforheadings != 0 && $this->course->courseusebarforheadings != 'standard') {
@@ -117,7 +117,7 @@ class inline_css_output implements \renderable, \templatable {
 
         if ($this->usejsnav && !$this->ismobile) {
             // See the PHP doc for the template_data function below for what this is doing.
-            $widthdata = format_tiles_width_template_data($this->course->id);
+            $widthdata = format_supertiles_width_template_data($this->course->id);
             foreach ($widthdata as $k => $v) {
                 $outputdata[$k] = $v;
             }
@@ -148,10 +148,10 @@ class inline_css_output implements \renderable, \templatable {
         global $PAGE;
         // Get tile colours to echo in CSS.
         $basecolour = '';
-        if (!(get_config('format_tiles', 'followthemecolour'))) {
+        if (!(get_config('format_supertiles', 'followthemecolour'))) {
             if (!$basecolour = $course->basecolour) {
                 // If no course tile colour is set, use plugin default colour.
-                $basecolour = get_config('format_tiles', 'tilecolour1');
+                $basecolour = get_config('format_supertiles', 'tilecolour1');
             }
         }
         // We are following theme's main colour so find out what it is.

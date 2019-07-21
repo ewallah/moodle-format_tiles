@@ -16,20 +16,20 @@
 
 /**
  * Icon set class for format tiles.
- * @package    format_tiles
+ * @package    format_supertiles
  * @copyright  2019 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace format_tiles;
+namespace format_supertiles;
 
 use core\output\icon_system;
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Icon set class for format tiles.
- * @package    format_tiles
+ * Icon set class for format supertiles.
+ * @package    format_supertiles
  * @copyright  2019 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -43,7 +43,7 @@ class icon_set {
      * If you change this in code, purge all caches afterwards.
      * @var bool
      */
-    private $usefontawesome = true; // Change this to false if you don't want "Tiles" plugin to use font awesome.
+    private $usefontawesome = true; // Change this to false if you don't want "supertiles" plugin to use font awesome.
 
     /**
      * These are shown on tiles.  The teacher chooses which one to apply to each tile or course.
@@ -177,8 +177,8 @@ class icon_set {
             if ($faiconsystem  || array_search($PAGE->theme->name, $fontawesomethemeswhitelist) !== false) {
                 foreach ($this->fontawesometileicons as $iconname) {
                     $pixname = str_replace('fa-', '', $iconname);
-                    if ($stringmanager->string_exists('icontitle-' . $pixname, 'format_tiles')) {
-                        $displayname = get_string('icontitle-' . $pixname, 'format_tiles');
+                    if ($stringmanager->string_exists('icontitle-' . $pixname, 'format_supertiles')) {
+                        $displayname = get_string('icontitle-' . $pixname, 'format_supertiles');
                     } else {
                         $displayname = ucwords(str_replace('_', ' ', (str_replace('-', ' ', $pixname))));
                     }
@@ -193,13 +193,13 @@ class icon_set {
         // The reason is that those fallback images are never called if the theme is font awesome compatible (as fa is used).
         // However they are left in pix for now as some older themes (e.g. Clean) may need them.
         $iconsindirectory = get_directory_list($CFG->dirroot
-            . '/course/format/tiles/pix/tileicon', '', false, false, true);
+            . '/course/format/supertiles/pix/tileicon', '', false, false, true);
         foreach ($iconsindirectory as $icon) {
             $filename = explode('.', $icon)[0];
             // If we don't already have it from font awesome (e.g. book, flipchart, assessment_timer), then add it here.
             if (!isset($availableicons[$filename])) {
-                if ($stringmanager->string_exists('icontitle-' . $filename, 'format_tiles')) {
-                    $displayname = get_string('icontitle-' . $filename, 'format_tiles');
+                if ($stringmanager->string_exists('icontitle-' . $filename, 'format_supertiles')) {
+                    $displayname = get_string('icontitle-' . $filename, 'format_supertiles');
                 } else {
                     $displayname = ucwords(str_replace('_', ' ', (str_replace('-', ' ', $filename))));
                 }
@@ -214,7 +214,7 @@ class icon_set {
             // Put the default course icon in first place.
             $defaulticon = $DB->get_field('course_format_options', 'value', array(
                 'courseid' => $courseid,
-                'format' => 'tiles',
+                'format' => 'supertiles',
                 'sectionid' => 0,
                 'name' => 'defaulttileicon'
             ));
@@ -229,7 +229,7 @@ class icon_set {
 
     /**
      * Lib.php calls this for example when caches are purged or plugin is updated, to get latest FA icon map.
-     * @see format_tiles_get_fontawesome_icon_map()
+     * @see format_supertiles_get_fontawesome_icon_map()
      * @return array
      */
     public function get_font_awesome_icon_map() {
@@ -239,52 +239,52 @@ class icon_set {
         // First the general icons (not specific to tiles).
         // These are used for example to show nav buttons within tiles.
         $generalicons = [
-            'format_tiles:camera' => 'fa-camera',
-            'format_tiles:check' => 'fa-check',
-            'format_tiles:chevron-left' => 'fa-chevron-left',
-            'format_tiles:chevron-right' => 'fa-chevron-right',
-            'format_tiles:clone' => 'fa-clone',
-            'format_tiles:close' => 'fa-close',
-            'format_tiles:cloud-download' => 'fa-cloud-download',
-            'format_tiles:cloud-upload' => 'fa-cloud-upload',
-            'format_tiles:filter' => 'fa-filter',
-            'format_tiles:eye-slash' => 'fa-eye-slash',
-            'format_tiles:home' => 'fa-home',
-            'format_tiles:lock' => 'fa-lock',
-            'format_tiles:star-o' => 'fa-star-o',
-            'format_tiles:pencil' => 'fa-pencil',
-            'format_tiles:random' => 'fa-random',
-            'format_tiles:star' => 'fa-star',
-            'format_tiles:toggle-off' => 'fa-toggle-off',
-            'format_tiles:toggle-on' => 'fa-toggle-on'
+            'format_supertiles:camera' => 'fa-camera',
+            'format_supertiles:check' => 'fa-check',
+            'format_supertiles:chevron-left' => 'fa-chevron-left',
+            'format_supertiles:chevron-right' => 'fa-chevron-right',
+            'format_supertiles:clone' => 'fa-clone',
+            'format_supertiles:close' => 'fa-close',
+            'format_supertiles:cloud-download' => 'fa-cloud-download',
+            'format_supertiles:cloud-upload' => 'fa-cloud-upload',
+            'format_supertiles:filter' => 'fa-filter',
+            'format_supertiles:eye-slash' => 'fa-eye-slash',
+            'format_supertiles:home' => 'fa-home',
+            'format_supertiles:lock' => 'fa-lock',
+            'format_supertiles:star-o' => 'fa-star-o',
+            'format_supertiles:pencil' => 'fa-pencil',
+            'format_supertiles:random' => 'fa-random',
+            'format_supertiles:star' => 'fa-star',
+            'format_supertiles:toggle-off' => 'fa-toggle-off',
+            'format_supertiles:toggle-on' => 'fa-toggle-on'
         ];
 
          // These are used on sub-tiles (if used) e.g. to show PDF, Excel activities.
         $subtileicons = [
-            'format_tiles:subtile/comments-o' => 'fa-comments-o',
-            'format_tiles:subtile/database' => 'fa-database',
-            'format_tiles:subtile/feedback' => 'fa-bullhorn',
-            'format_tiles:subtile/file-excel' => 'fa-table',
-            'format_tiles:subtile/file-pdf-o' => 'fa-file-pdf-o',
-            'format_tiles:subtile/file-powerpoint-o' => 'fa-file-powerpoint-o',
-            'format_tiles:subtile/file-text-o' => 'fa-file-text-o',
-            'format_tiles:subtile/file-word-o' => 'fa-file-word-o',
-            'format_tiles:subtile/file-zip-o' => 'fa-file-zip-o',
-            'format_tiles:subtile/film' => 'fa-film',
-            'format_tiles:subtile/folder-o' => 'fa-folder-o',
-            'format_tiles:subtile/globe' => 'fa-globe',
-            'format_tiles:subtile/puzzle-piece' => 'fa-puzzle-piece',
-            'format_tiles:subtile/question-circle' => 'fa-question-circle',
-            'format_tiles:subtile/star' => 'fa-star',
-            'format_tiles:subtile/star-o' => 'fa-star-o',
-            'format_tiles:subtile/survey' => 'fa-bar-chart',
-            'format_tiles:subtile/volume-up' => 'fa-volume-up'
+            'format_supertiles:subtile/comments-o' => 'fa-comments-o',
+            'format_supertiles:subtile/database' => 'fa-database',
+            'format_supertiles:subtile/feedback' => 'fa-bullhorn',
+            'format_supertiles:subtile/file-excel' => 'fa-table',
+            'format_supertiles:subtile/file-pdf-o' => 'fa-file-pdf-o',
+            'format_supertiles:subtile/file-powerpoint-o' => 'fa-file-powerpoint-o',
+            'format_supertiles:subtile/file-text-o' => 'fa-file-text-o',
+            'format_supertiles:subtile/file-word-o' => 'fa-file-word-o',
+            'format_supertiles:subtile/file-zip-o' => 'fa-file-zip-o',
+            'format_supertiles:subtile/film' => 'fa-film',
+            'format_supertiles:subtile/folder-o' => 'fa-folder-o',
+            'format_supertiles:subtile/globe' => 'fa-globe',
+            'format_supertiles:subtile/puzzle-piece' => 'fa-puzzle-piece',
+            'format_supertiles:subtile/question-circle' => 'fa-question-circle',
+            'format_supertiles:subtile/star' => 'fa-star',
+            'format_supertiles:subtile/star-o' => 'fa-star-o',
+            'format_supertiles:subtile/survey' => 'fa-bar-chart',
+            'format_supertiles:subtile/volume-up' => 'fa-volume-up'
         ];
 
         $tileicons = [];
         foreach ($this->fontawesometileicons as $icon) {
             $pixname = str_replace('fa-', '', $icon);
-            $tileicons['format_tiles:tileicon/' . $pixname] = $icon;
+            $tileicons['format_supertiles:tileicon/' . $pixname] = $icon;
         }
         return array_merge($tileicons, $generalicons, $subtileicons);
     }

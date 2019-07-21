@@ -16,7 +16,7 @@
 }}
 
 {{!
-    @template format_tiles/course_module
+    @template format_supertiles/course_module
 
     Tiles course module template.
 
@@ -122,7 +122,7 @@
                           id="label_content_{{cmid}}">{{{content}}}</span>
                 {{/clickable}}
                 {{#availabilitymessage}}
-                    {{>format_tiles/availability_info}}
+                    {{>format_supertiles/availability_info}}
                 {{/availabilitymessage}}
             {{/is_label}}
 
@@ -156,7 +156,7 @@
                     {{#isediting}}
                         <div>
                             {{#modtitle_inplaceeditable}}
-                                {{>format_tiles/inplace_editable}}
+                                {{>format_supertiles/inplace_editable}}
                             {{/modtitle_inplaceeditable}}
                             {{^modtitle_inplaceeditable}}
                                 {{{modtitle}}}
@@ -169,7 +169,7 @@
                     {{#isediting}}
                         <div>
                             {{#modtitle_inplaceeditable}}
-                                {{>format_tiles/inplace_editable}}
+                                {{>format_supertiles/inplace_editable}}
                             {{/modtitle_inplaceeditable}}
                             {{^modtitle_inplaceeditable}}
                                 {{{modtitle}}}
@@ -203,7 +203,7 @@
                 <div class="contentafterlink">
                     {{#availabilitymessage}}
                         {{#stealth}}{{{availabilitymessage}}}{{/stealth}}
-                        {{^stealth}}{{>format_tiles/availability_info}}{{/stealth}}
+                        {{^stealth}}{{>format_supertiles/availability_info}}{{/stealth}}
                     {{/availabilitymessage}}
                 </div>
             {{/is_label}}
@@ -228,13 +228,13 @@
             {{#useSubtiles}}
                 {{^is_label}}
                     {{#completionenabled}}
-                        {{>format_tiles/completion_icon}}
+                        {{>format_supertiles/completion_icon}}
                     {{/completionenabled}}
                 {{/is_label}}
             {{/useSubtiles}}
             {{^useSubtiles}}
                 {{#completionenabled}}
-                    {{>format_tiles/completion_icon}}
+                    {{>format_supertiles/completion_icon}}
                 {{/completionenabled}}
             {{/useSubtiles}}
         {{/completionInUseForCm}}

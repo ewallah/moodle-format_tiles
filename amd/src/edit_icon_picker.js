@@ -16,7 +16,7 @@
 /* eslint space-before-function-paren: 0 */
 
 /**
- * Javascript Module to handle the icon picker dialogue for format_tiles
+ * Javascript Module to handle the icon picker dialogue for format_supertiles
  * which the editing user uses to select an icon for a tile or the default icon
  * for all tiles in the course
  *
@@ -44,7 +44,7 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
          */
         var getAndStoreIconSet = function(courseId, callback) {
             var photosPromises = ajax.call([{
-                methodname: "format_tiles_get_icon_set",
+                methodname: "format_supertiles_get_icon_set",
                 args: {courseid: courseId}
             }]);
             photosPromises[0].done(function (response) {
@@ -97,7 +97,7 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
          * @returns {string}
          */
         var getPhotoTileButtonUrl = function(courseId, sectionId) {
-            return config.wwwroot + '/course/format/tiles/editimage.php?courseid=' + courseId + '&sectionid=' + sectionId;
+            return config.wwwroot + '/course/format/supertiles/editimage.php?courseid=' + courseId + '&sectionid=' + sectionId;
         };
 
         /**
@@ -153,7 +153,7 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                 }
                 var divToAnimate = pageType === "course-view-tiles" ? jqueryObjToChange : selectedIcon;
                 divToAnimate.animate({opacity: 0}, 500, function () {
-                    Templates.render("format_tiles/" + templateToRender, templateParams)
+                    Templates.render("format_supertiles/" + templateToRender, templateParams)
                         .done(function (html) {
                             divToAnimate.html(html)
                                 .animate({opacity: 1}, 500);
@@ -173,7 +173,7 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                 // Sectionid will be zero if relates to whole course not just one sec.
             };
             var setIconDbPromises = ajax.call([{
-                methodname: "format_tiles_set_image",
+                methodname: "format_supertiles_set_image",
                 args: ajaxIconPickArgs
             }]);
             setIconDbPromises[0].done(function (response) {
@@ -193,13 +193,13 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                         selectBox.val(icon);
                         // Then change the image shown next to it.
                         if (imageType === "tileicon") {
-                            Templates.renderPix("tileicon/" + icon, "format_tiles", displayname)
+                            Templates.renderPix("tileicon/" + icon, "format_supertiles", displayname)
                                 .done(function (newIcon) {
                                     selectedIcon.html(newIcon);
                                     if (pageType === "course-editsection") {
                                         str.get_strings([
-                                            {key: "tip", component: "format_tiles"},
-                                            {key: "tileselecttip", component: "format_tiles"}
+                                            {key: "tip", component: "format_supertiles"},
+                                            {key: "tileselecttip", component: "format_supertiles"}
                                         ]).done(function (strings) {
                                             Notification.alert(
                                                 strings[0],
@@ -283,7 +283,7 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                 // We only have one modal per page which we recycle.  We dont have it yet so create it.
 
                 var renderModal = function() {
-                    Templates.render("format_tiles/icon_picker_modal_body", {
+                    Templates.render("format_supertiles/icon_picker_modal_body", {
                         /* eslint-disable-next-line camelcase */
                         icon_picker_icons: iconSet,
                         photosallowed: allowPhotoTiles,
@@ -345,7 +345,7 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
                                     // Now that we have modal, if photo library tab is clicked we need to lazy load the photos.
                                     $("#launch-photo-library").click(function () {
                                         if (recentPhotoSet.length !== 0) {
-                                            Templates.render("format_tiles/icon_picker_photos", {
+                                            Templates.render("format_supertiles/icon_picker_photos", {
                                                 /* eslint-disable-next-line camelcase */
                                                 icon_picker_photos: recentPhotoSet,
                                                 wwwroot: config.wwwroot
@@ -398,7 +398,7 @@ define(["jquery", "core/templates", "core/ajax", "core/str", "core/notification"
             init: function (courseId, pageType, allowPhotoTiles, documentationurl) {
                 $(document).ready(function () {
                     var stringKey = allowPhotoTiles ? "picknewiconphoto" : "picknewicon";
-                    str.get_string(stringKey, "format_tiles").done(function (pickAnIcon) {
+                    str.get_string(stringKey, "format_supertiles").done(function (pickAnIcon) {
                         stringStore.pickAnIcon = pickAnIcon;
                     });
                     // Get the core icon set now so that we don't have to wait later.

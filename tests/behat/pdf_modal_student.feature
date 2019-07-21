@@ -1,4 +1,4 @@
-@format @format_tiles @format_tiles_mod_modal @format_tiles_pdf_modal_student  @javascript
+@format @format_supertiles @format_supertiles_mod_modal @format_supertiles_pdf_modal_student  @javascript
 Feature: PDFs can be set to open in modal windows
   In order to improve UX
   As a student
@@ -22,12 +22,12 @@ Feature: PDFs can be set to open in modal windows
     And the following config values are set as admin:
       | config                 | value    | plugin       |
       | enablecompletion       | 1        | core         |
-      | modalmodules           | page     | format_tiles |
-      | modalresources         | pdf,html | format_tiles |
-      | assumedatastoreconsent | 1        | format_tiles |
-      | reopenlastsection      | 0        | format_tiles |
-      | usejavascriptnav       | 1        | format_tiles |
-      | jsmaxstoreditems       | 0        | format_tiles |
+      | modalmodules           | page     | format_supertiles |
+      | modalresources         | pdf,html | format_supertiles |
+      | assumedatastoreconsent | 1        | format_supertiles |
+      | reopenlastsection      | 0        | format_supertiles |
+      | usejavascriptnav       | 1        | format_supertiles |
+      | jsmaxstoreditems       | 0        | format_supertiles |
     # We set jsmaxstoreditems to zero as otherwise when we switch between subtiles and tiles format we may not see an immediate change in display
 
     # Add PDF to course so student can see it in test
@@ -47,7 +47,7 @@ Feature: PDFs can be set to open in modal windows
       | Name        | Test PDF         |
       | Description | File description |
     And I set the field "Completion tracking" to "Students can manually mark the activity as completed"
-    And I upload "course/format/tiles/tests/fixtures/test.pdf" file to "Select files" filemanager
+    And I upload "course/format/supertiles/tests/fixtures/test.pdf" file to "Select files" filemanager
     And I expand all fieldsets
     And I set the field "Show type" to "1"
     And I press "Save and return to course"
@@ -58,7 +58,7 @@ Feature: PDFs can be set to open in modal windows
     # First with subtiles off as student
   @javascript
   Scenario: Open modal PDF as student with subtiles off
-    When format_tiles subtiles are off for course "Course 1"
+    When format_supertiles subtiles are off for course "Course 1"
     And I wait "2" seconds
     And I log in as "student1"
     And I am on "Course 1" course homepage
@@ -80,7 +80,7 @@ Feature: PDFs can be set to open in modal windows
     # First with subtiles off as teacher
   @javascript
   Scenario: Open modal PDF as student with subtiles off
-    When format_tiles subtiles are off for course "Course 1"
+    When format_supertiles subtiles are off for course "Course 1"
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
 
@@ -101,7 +101,7 @@ Feature: PDFs can be set to open in modal windows
       # Now the same again with subtiles on
   @javascript
   Scenario: Open modal PDF as student with subtiles on
-    When format_tiles subtiles are on for course "Course 1"
+    When format_supertiles subtiles are on for course "Course 1"
     And I log in as "student1"
     And I am on "Course 1" course homepage
     And I wait until the page is ready
@@ -122,7 +122,7 @@ Feature: PDFs can be set to open in modal windows
   # Now the same again for teacher with subtiles on
   @javascript
   Scenario: Open modal PDF as student with subtiles on
-    When format_tiles subtiles are on for course "Course 1"
+    When format_supertiles subtiles are on for course "Course 1"
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
 

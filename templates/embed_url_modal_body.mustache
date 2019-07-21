@@ -16,7 +16,7 @@
 }}
 
 {{!
-    @template format_tiles/embed_url_modal_body
+    @template format_supertiles/embed_url_modal_body
 
     Icon picker single icon template.
 
@@ -45,6 +45,6 @@
 }}
 <iframe id="embedded-url-{{cmid}}" class="center-text" width="{{#width}}{{width}}{{/width}}{{^width}}800{{/width}}" height="{{#height}}{{height}}{{/height}}{{^height}}600{{/height}}"
         src="{{{pluginfileUrl}}}"></iframe>
-<div class="embed-url-alt-link" id="embed-url-alt-link-{{cmid}}">{{#str}}embeddedurlerror, format_tiles{{/str}}
-    {{#secondaryurl}}<a class="secondary-url center-text" href="{{{secondaryurl}}}">{{#str}}alternativelink, format_tiles{{/str}}</a>{{/secondaryurl}}
+<div class="embed-url-alt-link" id="embed-url-alt-link-{{cmid}}">{{#str}}embeddedurlerror, format_supertiles{{/str}}
+    {{#secondaryurl}}<a class="secondary-url center-text" href="{{{secondaryurl}}}">{{#str}}alternativelink, format_supertiles{{/str}}</a>{{/secondaryurl}}
 </div>

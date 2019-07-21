@@ -17,7 +17,7 @@
 /**
  * Page called by administrator to carry out admin functions from plugin settings page.
  *
- * @package format_tiles
+ * @package format_supertiles
  * @copyright  2019 David Watson {@link http://evolutioncode.uk}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or late
  **/
@@ -32,24 +32,24 @@ $context = context_system::instance();
 require_capability('moodle/site:config', $context);
 $sesskey = required_param('sesskey', PARAM_TEXT);
 $action = required_param('action', PARAM_TEXT);
-$pageurl = new moodle_url('/course/format/tiles/admintools.php', array('sesskey' => $sesskey, 'action' => $action));
+$pageurl = new moodle_url('/course/format/supertiles/admintools.php', array('sesskey' => $sesskey, 'action' => $action));
 $settingsurl = new moodle_url('/admin/settings.php', array('section' => 'formatsettingtiles'));
 
 $PAGE->set_url($pageurl);
 $PAGE->set_context($context);
-$PAGE->set_heading(get_string('admintools', 'format_tiles'));
+$PAGE->set_heading(get_string('admintools', 'format_supertiles'));
 $PAGE->navbar->add(get_string('administrationsite'), new moodle_url('/admin/search.php'));
 $PAGE->navbar->add(get_string('plugins', 'admin'), new moodle_url('/admin/category.php', array('category' => 'modules')));
 $PAGE->navbar->add(get_string('courseformats'), new moodle_url('/admin/category.php', array('category' => 'formatsettings')));
-$PAGE->navbar->add(get_string('pluginname', 'format_tiles'), $settingsurl);
-$PAGE->navbar->add(get_string('admintools', 'format_tiles'));
+$PAGE->navbar->add(get_string('pluginname', 'format_supertiles'), $settingsurl);
+$PAGE->navbar->add(get_string('admintools', 'format_supertiles'));
 
 if ($action === "resetcolours") {
     $permittedcolours = permitted_colours();
     if (count($permittedcolours) === 0) {
         redirect(
             $settingsurl,
-            get_string('novaliddefaultcolour', 'format_tiles'), null, \core\output\notification::NOTIFY_ERROR
+            get_string('novaliddefaultcolour', 'format_supertiles'), null, \core\output\notification::NOTIFY_ERROR
         );
     }
     // Prepare a "NOT IN" statement for the permitted colours, to find records which have other colours.
@@ -59,43 +59,43 @@ if ($action === "resetcolours") {
         // User has not said they are sure yet so count how many courses are affected and offer user chance to confirm.
         $requiredchangecount = $DB->count_records_sql(
             "SELECT COUNT(courseid) FROM {course_format_options}
-                WHERE format = 'tiles' AND name = 'basecolour'
+                WHERE format = 'supertiles' AND name = 'basecolour'
                 AND value " . $permittedcolourssql,
             $params
         );
 
         if ($requiredchangecount === 0) {
-            redirect($settingsurl, get_string('allcoursescomplypalette', 'format_tiles'));
+            redirect($settingsurl, get_string('allcoursescomplypalette', 'format_supertiles'));
         } else {
             echo $OUTPUT->header();
-            echo html_writer::div(get_string('sureresetcolours', 'format_tiles', $requiredchangecount), 'mb-3 mt-3');
+            echo html_writer::div(get_string('sureresetcolours', 'format_supertiles', $requiredchangecount), 'mb-3 mt-3');
             $pageurl->param('sure', '1');
-            echo html_writer::link($pageurl, get_string('resetcolours', 'format_tiles'), array('class' => 'btn btn-danger'));
+            echo html_writer::link($pageurl, get_string('resetcolours', 'format_supertiles'), array('class' => 'btn btn-danger'));
             echo html_writer::link($settingsurl, get_string('cancel'), array('class' => 'btn btn-secondary'));
         }
     } else {
         // User has said they are sure so go ahead and reset.
-        $defaultvalue = get_config('format_tiles', 'tilecolour1');
+        $defaultvalue = get_config('format_supertiles', 'tilecolour1');
 
         // Validate our default value before we apply it to multiple courses.
         if (!$defaultvalue || strlen($defaultvalue) > 7 || substr($defaultvalue, 0, 1) !== "#"
             || !ctype_xdigit(substr($defaultvalue, 1)) || hexdec($defaultvalue) === 0) {
             redirect(
                 $settingsurl,
-                get_string('novaliddefaultcolour', 'format_tiles'), null, \core\output\notification::NOTIFY_ERROR
+                get_string('novaliddefaultcolour', 'format_supertiles'), null, \core\output\notification::NOTIFY_ERROR
             );
         }
         // We don't want to trawl through and update each course record individually as it may take a while.
         // Better to just reset the 'illegal' colours in the DB in one query, given that we know what the permitted colours are.
         $sql = "UPDATE {course_format_options} SET value = :defaultvalue
-            WHERE format = 'tiles' AND name = 'basecolour' AND sectionid = '0'
+            WHERE format = 'supertiles' AND name = 'basecolour' AND sectionid = '0'
             AND value " . $permittedcolourssql;
         $params['defaultvalue'] = $defaultvalue;
         $DB->execute($sql, $params);
 
         redirect(
             $settingsurl,
-            get_string('tilecolourschanged', 'format_tiles'), null, \core\output\notification::NOTIFY_SUCCESS
+            get_string('tilecolourschanged', 'format_supertiles'), null, \core\output\notification::NOTIFY_SUCCESS
         );
     }
 }
@@ -103,7 +103,7 @@ echo $OUTPUT->footer();
 
 /**
  * Get an array of all the permitted colour hex values allowed by site admin in plugin settings.
- * @package format_tiles
+ * @package format_supertiles
  * @return array
  * @throws dml_exception
  */
@@ -111,7 +111,7 @@ function permitted_colours() {
     global $DB;
     $records = $DB->get_records_select(
         'config_plugins',
-        "plugin = 'format_tiles' AND " . $DB->sql_like('name', '?', false), array("tilecolour%")
+        "plugin = 'format_supertiles' AND " . $DB->sql_like('name', '?', false), array("tilecolour%")
     );
     $permittedcolours = [];
     foreach ($records as $record) {

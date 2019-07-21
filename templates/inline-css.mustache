@@ -16,7 +16,7 @@
 }}
 
 {{!
-    @template format_tiles/inline_css
+    @template format_supertiles/inline_css
 
     Inline css template.
 
@@ -49,85 +49,85 @@
 }}
 
 <style type="text/css">
-    .format-tiles .course-content ul.tiles .tile,
-    .format-tiles .course-content ul.tiles .tile_bar {
+    .format-supertiles .course-content ul.tiles .tile,
+    .format-supertiles .course-content ul.tiles .tile_bar {
         border-top-color: {{base_colour}};
         background-color: {{tile_light_colour}};
         border-radius: 0;
     }
-    .format-tiles ul.tiles .tile {
+    .format-supertiles ul.tiles .tile {
         border-top-color: {{base_colour}};
         transition: border-top-color 0s;
     }
-    .format-tiles ul.tiles .tile-clickable:hover,
-    .format-tiles ul.tiles .tile_bar.clickable:hover,
-    .format-tiles ul.tiles .tile-clickable.current:hover{
+    .format-supertiles ul.tiles .tile-clickable:hover,
+    .format-supertiles ul.tiles .tile_bar.clickable:hover,
+    .format-supertiles ul.tiles .tile-clickable.current:hover{
         border-top-color: {{tile_hover_colour}};
         transition: border-top-color 0s;
     }
-    .format-tiles ul.tiles .tile.selected {
+    .format-supertiles ul.tiles .tile.selected {
         border-top-color: {{tile_hover_colour}};
     }
-    .format-tiles ul.tiles .current .sectiontitle::after{
+    .format-supertiles ul.tiles .current .sectiontitle::after{
         background-color: red;
     }
-    .format-tiles ul.tiles .headerabovetiles button.selected,
+    .format-supertiles ul.tiles .headerabovetiles button.selected,
     .headerabovetiles button:active, .headerabovetiles button:focus,
-    .format-tiles .modal-header {
+    .format-supertiles .modal-header {
         background-color: {{base_colour}};
     }
-    .format-tiles .modal-header h5,
-    .format-tiles .modal-header h4 {
+    .format-supertiles .modal-header h5,
+    .format-supertiles .modal-header h4 {
         color: #fff;
     }
-    .format-tiles .modal-header .close {
+    .format-supertiles .modal-header .close {
         color: #fff;
         opacity: 0.8;
     }
-    .format-tiles .embed_cm_modal .modal-header,
-    .format-tiles .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    .format-supertiles .embed_cm_modal .modal-header,
+    .format-supertiles .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
         background-color: {{base_colour}};
         color: #fff;
     }
-    .format-tiles a.nav-link {
+    .format-supertiles a.nav-link {
         color: {{base_colour}};
     }
-    .format-tiles .sectiontitle::after,
-    .format-tiles .tag-info {
+    .format-supertiles .sectiontitle::after,
+    .format-supertiles .tag-info {
         background-color: {{base_colour}};
     }
-    .format-tiles ul.tiles .headerabovetiles button:hover {
+    .format-supertiles ul.tiles .headerabovetiles button:hover {
         border-color: {{tile_hover_colour}};
     }
 
-    .format-tiles .course-content .single-section .navigation-arrows .navigation-arrow:hover,
-    .format-tiles .embed_cm_modal .embed_file_button:hover {
+    .format-supertiles .course-content .single-section .navigation-arrows .navigation-arrow:hover,
+    .format-supertiles .embed_cm_modal .embed_file_button:hover {
         background-color: {{button_hover_colour}};
     }
 
     /*boost theme item selected in left hand menu*/
-    .format-tiles .filterbutton:hover,
+    .format-supertiles .filterbutton:hover,
     .sectionbutton:hover {
         background-color: {{button_hover_colour}};
         transition: all 0.1s ease-in-out;
     }
 
-    .format-tiles .filterbutton.selected{
+    .format-supertiles .filterbutton.selected{
         background-color: {{button_hover_colour}};
     }
 
-    .format-tiles #buttonhidesec0:hover {
+    .format-supertiles #buttonhidesec0:hover {
         background-color: {{button_hover_colour}};
     }
     {{#shade_heading_bar}}
-        .format-tiles .course-content li.activity.label h1,
-        .format-tiles .course-content .section li.activity.label h2,
-        .format-tiles .course-content li.activity.label h3,
-        .format-tiles .course-content li.activity.label h4,
-        .format-tiles .editor_atto_content_wrap h1,
-        .format-tiles .editor_atto_content_wrap h2,
-        .format-tiles .editor_atto_content_wrap h3,
-        .format-tiles .editor_atto_content_wrap h4 {
+        .format-supertiles .course-content li.activity.label h1,
+        .format-supertiles .course-content .section li.activity.label h2,
+        .format-supertiles .course-content li.activity.label h3,
+        .format-supertiles .course-content li.activity.label h4,
+        .format-supertiles .editor_atto_content_wrap h1,
+        .format-supertiles .editor_atto_content_wrap h2,
+        .format-supertiles .editor_atto_content_wrap h3,
+        .format-supertiles .editor_atto_content_wrap h4 {
             border-left-color: {{base_colour}};
             border-left-style: solid;
             padding-left: 0.4em;
@@ -136,7 +136,7 @@
     {{/shade_heading_bar}}
 
     {{#allowphototiles}}
-        .format-tiles .course-content ul.tiles .tile.phototile .photo-tile-text h3 {
+        .format-supertiles .course-content ul.tiles .tile.phototile .photo-tile-text h3 {
             background-color: {{photo_tile_text_bg}};
             line-height: {{phototiletextlineheight}}px;
             padding: {{phototiletextpadding}}px 7px;
@@ -146,17 +146,17 @@
     {{^ismobile}}
         {{#hidetilesinitially}}
             {{!We will remove this opacity in JS}}
-            .format-tiles.jsenabled ul.tiles,
-            .format-tiles.jsenabled li.tile,
-            .format-tiles.jsenabled #section-0,
-            .format-tiles.jsenabled ul.tiles .tile.tile-restricted,
-            .format-tiles.jsenabled ul.tiles .tile.tile-hidden {
+            .format-supertiles.jsenabled ul.tiles,
+            .format-supertiles.jsenabled li.tile,
+            .format-supertiles.jsenabled #section-0,
+            .format-supertiles.jsenabled ul.tiles .tile.tile-restricted,
+            .format-supertiles.jsenabled ul.tiles .tile.tile-hidden {
                 opacity: 0;
             }
         {{/hidetilesinitially}}
 
         {{#defaultscreenwidthsession}}
-            .format-tiles.jsenabled ul.tiles {
+            .format-supertiles.jsenabled ul.tiles {
                 max-width: {{defaultscreenwidthsession}}px;
             }
         {{/defaultscreenwidthsession}}

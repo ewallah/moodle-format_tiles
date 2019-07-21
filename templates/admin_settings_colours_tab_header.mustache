@@ -15,25 +15,25 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template format_tiles/admin_settings_colours_tab_header
+    @template format_supertiles/admin_settings_colours_tab_header
     This template is a slightly modified clone of the theme_boost/admin_setting_tabs template.
 
     Example context (json):
     {"sesskey": "abcde12345"}
 }}
-<h3>{{#str}}setavailabletilecolours, format_tiles{{/str}}</h3>
-<div>{{#str}}tilecolourgeneral_descr, format_tiles{{/str}}</div>
+<h3>{{#str}}setavailabletilecolours, format_supertiles{{/str}}</h3>
+<div>{{#str}}tilecolourgeneral_descr, format_supertiles{{/str}}</div>
 
-<h3>{{#str}}resetcolours, format_tiles{{/str}}</h3>
+<h3>{{#str}}resetcolours, format_supertiles{{/str}}</h3>
 <div class="row">
     <div class="col-sm-3">
-        {{#str}}resetcolours, format_tiles{{/str}}
+        {{#str}}resetcolours, format_supertiles{{/str}}
     </div>
     <div class="col-sm-9">
-        <a href="{{{config.wwwroot}}}/course/format/tiles/admintools.php?action=resetcolours&sesskey={{sesskey}}" class="btn btn-primary">
-            {{#str}}resetallcoursecolours, format_tiles{{/str}}
+        <a href="{{{config.wwwroot}}}/course/format/supertiles/admintools.php?action=resetcolours&sesskey={{sesskey}}" class="btn btn-primary">
+            {{#str}}resetallcoursecolours, format_supertiles{{/str}}
         </a>
-        <div class="mt-3">{{#str}}resetcolours_desc, format_tiles{{/str}}</div>
+        <div class="mt-3">{{#str}}resetcolours_desc, format_supertiles{{/str}}</div>
     </div>
 </div>
 

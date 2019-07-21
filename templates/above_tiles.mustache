@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template format_tiles/above_tiles
+    @template format_supertiles/above_tiles
 
     Example context (json):
     {
@@ -38,21 +38,21 @@
                 {{#has_filter_buttons}}
                     <div id="filterbuttons">
                             <span id="filterintro">
-                                {{#pix}}filter, format_tiles{{/pix}}
+                                {{#pix}}filter, format_supertiles{{/pix}}
                             </span>
                         {{#fiternumberedbuttons}}
-                            {{> format_tiles/filterbutton}}
+                            {{> format_supertiles/filterbutton}}
                         {{/fiternumberedbuttons}}
                         {{#fiteroutcomebuttons}}
-                            {{> format_tiles/filterbutton}}
+                            {{> format_supertiles/filterbutton}}
                         {{/fiteroutcomebuttons}}
                         <div id="filterbutton-all" class="filterbutton" data-buttonid="all" data-sections="[all]">
-                            {{#str}}all, format_tiles{{/str}}
+                            {{#str}}all, format_supertiles{{/str}}
                         </div>
                     </div>
                 {{/has_filter_buttons}}
                 {{#overall_progress_indicator}}
-                    {{> format_tiles/progress}}
+                    {{> format_supertiles/progress}}
                 {{/overall_progress_indicator}}
             {{/is_multi_section}}
             {{^isediting}}{{#section_zero_show}}

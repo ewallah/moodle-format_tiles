@@ -16,7 +16,7 @@
 }}
 
 {{!
-    @template format_tiles/embed_module_modal_header
+    @template format_supertiles/embed_module_modal_header
 
     The purpose of this template is to render the buttons for the header in a modal window
     which can be used to display an embedded file (i.e. a PDF)
@@ -48,15 +48,15 @@
 <div class="embed-module-buttons pull-right">
     {{#showNewWindow}}
         <a href="{{pluginfileUrl}}?redirect=1" class="embed_file_button button_expand" id="expandbutton_{{id}}" data-cmid="{{id}}" data-command="expand" target="_blank">
-            {{#pix}}clone, format_tiles, {{#str}}showseparatewin, format_tiles{{/str}}{{/pix}}
+            {{#pix}}clone, format_supertiles, {{#str}}showseparatewin, format_supertiles{{/str}}{{/pix}}
         </a>
     {{/showNewWindow}}
     {{#showDownload}}
         <a href="{{{pluginfileUrl}}}?forcedownload=1" class="embed_file_button button_download" id="downloadbutton_{{id}}" data-cmid="{{id}}" data-command="download">
-            {{#pix}}cloud-download, format_tiles, {{#str}}download, format_tiles{{/str}}{{/pix}}
+            {{#pix}}cloud-download, format_supertiles, {{#str}}download, format_supertiles{{/str}}{{/pix}}
         </a>
     {{/showDownload}}
     {{#completionInUseForCm}}
-        {{>format_tiles/completion_icon}}
+        {{>format_supertiles/completion_icon}}
     {{/completionInUseForCm}}
 </div>
