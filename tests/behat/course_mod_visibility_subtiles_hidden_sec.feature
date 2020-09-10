@@ -40,6 +40,7 @@ Feature: Teacher can hide course modules when subtiles being used and this is re
     And I log in as "teacher1"
     And I am on "Course Mod Vis Course3" course homepage with editing mode on
     And I wait until the page is ready
+    And I wait "2" seconds
     And I hide tile "1"
     And I log out tiles
 
@@ -85,4 +86,5 @@ Feature: Teacher can hide course modules when subtiles being used and this is re
     And I should not see "Test URL NV"
 
     And "#closesectionbtn-1" "css_element" should not be visible
+    And I wait "1" seconds
     And I log out tiles

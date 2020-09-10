@@ -42,10 +42,12 @@ Feature: Teacher can restrict course modules to groups
     When format_tiles subtiles are on for course "Course 1"
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
+    And I wait "1" seconds
 
     And I am on "Course 1" course homepage with editing mode on
     And I wait until the page is ready
     And I expand section "1" for edit
+    And I wait "3" seconds
     And I wait until activity "Restricted page" exists in "subtiles" format
     And I follow "Restricted page"
     And I navigate to "Edit settings" in current page administration
@@ -64,6 +66,7 @@ Feature: Teacher can restrict course modules to groups
     And I follow "Collapse all"
     And I expand section "1" for edit
     And I add a "Label" to section "1"
+    And I wait "2" seconds
     And I wait until the page is ready
     And I set the following fields to these values:
       | Label text | I am a restricted label |

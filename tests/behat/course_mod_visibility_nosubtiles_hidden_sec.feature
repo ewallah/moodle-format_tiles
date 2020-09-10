@@ -41,6 +41,7 @@ Feature:  In a section for Teacher, hidden activities are dimmed where subtiles 
     And  I log in as "teacher1"
     And I am on "Course Mod Vis NoSubtiles Course2" course homepage with editing mode on
     And I wait until the page is ready
+    And I wait "1" seconds
     And I hide tile "1"
 #  Section 1 is hidden so all activities below should be dimmed even if not individually hidden
     And I turn editing mode off
@@ -85,6 +86,7 @@ Feature:  In a section for Teacher, hidden activities are dimmed where subtiles 
   Scenario: Student cannot see visible (NV) activities or section with subtiles off
     When I log in as "student1"
     And I am on "Course Mod Vis NoSubtiles Course2" course homepage
+    And I wait "1" seconds
     Then "li#tile-1" "css_element" should not be visible
     And I should not see "Test quiz V"
     And I should not see "Test page V"

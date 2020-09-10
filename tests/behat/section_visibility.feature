@@ -43,6 +43,7 @@ Feature: Show/hide course sections in format_tiles
       | Description  | Test hidden forum 11 description |
       | Availability | Hide from students               |
     And I wait until the page is ready
+    And I wait "1" seconds
     And I add a "Forum" to section "1" and I fill the form with:
       | Forum name   | Test hidden forum 12 name        |
       | Description  | Test hidden forum 12 description |
@@ -55,6 +56,7 @@ Feature: Show/hide course sections in format_tiles
     And I wait until the page is ready
     And I expand section "2" for edit
     And I wait until the page is ready
+    And I wait "1" seconds
     And I add a "Forum" to section "2" and I fill the form with:
       | Forum name   | Test hidden forum 21 name        |
       | Description  | Test hidden forum 21 description |
@@ -68,23 +70,29 @@ Feature: Show/hide course sections in format_tiles
     And I wait until the page is ready
     And I expand section "3" for edit
     And I wait until the page is ready
+    And I wait "1" seconds
     And I add a "Forum" to section "3" and I fill the form with:
       | Forum name   | Test hidden forum 31 name        |
       | Description  | Test hidden forum 31 description |
       | Availability | Hide from students               |
     And I wait until the page is ready
+    And I wait "1" seconds
     And activity in format tiles is dimmed "Test hidden forum 31 name"
+    And I wait "1" seconds
     And I add a "Forum" to section "3" and I fill the form with:
       | Forum name   | Test visible forum 32 name        |
       | Description  | Test visible forum 32 description |
       | Availability | Show on course page              |
     And I wait until the page is ready
+    And I wait "1" seconds
     And activity in format tiles is not dimmed "Test hidden forum 31 name"
 
     And I am on "Course 1" course homepage
+    And I wait "1" seconds
     And I wait until the page is ready
     And I hide tile "1"
     And I wait until the page is ready
+    And I wait "1" seconds
     And section "1" should be hidden
     And section "2" should be visible
     And section "3" should be visible

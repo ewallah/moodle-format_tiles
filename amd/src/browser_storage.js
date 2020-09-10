@@ -26,7 +26,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @since Moodle 3.3
  */
-/* global localStorage, sessionStorage, setTimeout*/
+
 /* eslint space-before-function-paren: 0 */
 
 define(["jquery", "format_tiles/browser_storage_set_up"], function ($, storageSetUp) {
@@ -272,7 +272,10 @@ define(["jquery", "format_tiles/browser_storage_set_up"], function ($, storageSe
             userId = user.toString();
             MAX_SECTIONS_TO_STORE = parseInt(maxContentSectionsToStore);
             storageSetUp.init(userId, assumeDataStoreConsent, clearAllStorage);
-
+            if (parseInt(maxContentSectionsToStore) === 0) {
+                // We do not want to use local storage at all.
+                storageSetUp.setAllowed(false);
+            }
             $(document).ready(function () {
 
                 if (storageSetUp.storageAllowed() !== true) {

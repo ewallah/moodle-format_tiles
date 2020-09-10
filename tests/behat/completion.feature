@@ -65,6 +65,7 @@ Feature: Progress indicators can be used to change progress status and changes a
     And format_tiles progress indicator is showing as "percent" for course "Course 1"
     And I am on "Course 1" course homepage
     And format_tiles subtiles are off for course "Course 1"
+    And I wait "1" seconds
     And format_tiles progress indicator for tile "1" is "0" out of "2"
     And I click on tile "1"
     And I wait until the page is ready

@@ -1,4 +1,4 @@
-@format @format_tiles @format_tiles_mod_modal @format_tiles_pdf_modal_student  @javascript
+@format @format_tiles @format_tiles_mod_modal @format_tiles_pdf_modal_student  @javascript @_file_upload
 Feature: PDFs can be set to open in modal windows
   In order to improve UX
   As a student
@@ -36,10 +36,13 @@ Feature: PDFs can be set to open in modal windows
     And I wait until the page is ready
     And I follow "Collapse all"
     And I wait until the page is ready
+    And I wait "1" seconds
     And I expand section "1" for edit
     And I wait until the page is ready
+    And I wait "2" seconds
     And I add a "File" to section "1"
     And I wait until the page is ready
+    And I wait "2" seconds
     And I set the following fields to these values:
       | Name        | Test PDF         |
       | Description | File description |
@@ -49,12 +52,14 @@ Feature: PDFs can be set to open in modal windows
     And I set the field "Show type" to "1"
     And I press "Save and return to course"
     Then I should see "Test PDF"
+    And I wait "2" seconds
     And I log out tiles
 
     # First with subtiles off as student
   @javascript
   Scenario: Open modal PDF as student with subtiles off
     When format_tiles subtiles are off for course "Course 1"
+    And I wait "2" seconds
     And I log in as "student1"
     And I am on "Course 1" course homepage
     And I wait until the page is ready

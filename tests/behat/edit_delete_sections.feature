@@ -36,6 +36,7 @@ Feature: Sections can be edited and deleted in tiles format
     And I log in as "teacher1"
     And I am on "Edit Delete Secs Course" course homepage with editing mode on
     And I wait until the page is ready
+    And I wait "1" seconds
 
   Scenario: View the default name of the second section in tiles format
     And I edit the section "2"
@@ -63,6 +64,7 @@ Feature: Sections can be edited and deleted in tiles format
     And I should see "Setting up in business" in the "li#section-1" "css_element"
 
   Scenario: Deleting the last section in tiles format
+    And I wait "1" seconds
     And I delete section "5"
     Then I should see "Are you absolutely sure you want to completely delete \"Tile 5\" and all the activities it contains?"
     And I press "Delete"
@@ -70,6 +72,7 @@ Feature: Sections can be edited and deleted in tiles format
     And I should see "Tile 4"
 
   Scenario: Deleting the middle section in tiles format
+    And I wait "1" seconds
     And I delete section "4"
     And I press "Delete"
     Then I should not see "Tile 5"
@@ -78,8 +81,10 @@ Feature: Sections can be edited and deleted in tiles format
   @javascript
   Scenario: Adding sections in tiles format
 #    Increase by 1 tile
+#    And I wait "1" seconds
 #    And I follow "Add tiles"
 #    And I wait until the page is ready
+#    And I wait "1" seconds
 #    Then the field "Number of sections" matches value "1"
 #    And I press "Add tiles"
 #    And I should see "Tile 6" in the "li#section-6" "css_element"
@@ -89,6 +94,7 @@ Feature: Sections can be edited and deleted in tiles format
 #    Increase by 3 more tiles
 #    And I follow "Add tiles"
 #    And I wait until the page is ready
+#    And I wait "1" seconds
 #    And I set the field "Number of sections" to "3"
 #    And I press "Add tiles"
 #    And I wait until the page is ready

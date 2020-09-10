@@ -33,16 +33,18 @@ Feature: Section zero can be collapsed or expanded in tiles format
     # We set jsmaxstoreditems to zero as otherwise when we switch between subtiles and tiles format we may not see an immediate change in display
 
     And I log in as "student1"
-    
+    And I am on "Course 1" course homepage
+
   @javascript
   Scenario: Collapse section zero then expand it again
-    When I am on "Course 1" course homepage
-    And I wait until the page is ready
+    And I wait "60" seconds
     When "#buttonhidesec0" "css_element" should be visible
     And I click on "#buttonhidesec0" "css_element"
+    And I wait "1" seconds
     And I should not see "Announcements Sec 0" in the "#section-0" "css_element"
 
     And "#buttonhidesec0" "css_element" should be visible
     And I click on "#buttonhidesec0" "css_element"
+    And I wait "1" seconds
     And I should see "Announcements Sec 0" in the "#section-0" "css_element"
     And I log out tiles

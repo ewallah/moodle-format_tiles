@@ -38,11 +38,10 @@ class registration_manager {
      * Contact the registration server and seek a key.
      * @copyright 2018 David Watson {@link http://evolutioncode.uk}
      * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
-     * @param [] $data the registration data.
+     * @param [] $serverresponse the registration data.
      * @return bool|mixed
      */
     public static function parse_server_response($serverresponse) {
-        return true;
         try {
             if (isset($serverresponse['status']) && $serverresponse['status']
                 && isset($serverresponse['key']) && self::validate_key($serverresponse['key'])) {
@@ -83,7 +82,6 @@ class registration_manager {
      * @return bool
      */
     public static function is_registered() {
-        return true;
         $dbvalue = get_config('format_tiles', 'registered');
         return is_numeric($dbvalue) && $dbvalue > 1514764800; // Newer than 1/1/2018.
     }
@@ -94,7 +92,6 @@ class registration_manager {
      * @throws \dml_exception
      */
     public static function has_recent_attempt() {
-        return true;
         $lastattempt = get_config('format_tiles', 'lastregistrationattempt');
         if ($lastattempt && $lastattempt > time() - 60 * 60) {
             return true;
@@ -109,7 +106,6 @@ class registration_manager {
      * @throws \coding_exception
      */
     public static function schedule_registration_attempt($data) {
-        return true;
         global $USER;
         if (!self::is_registered()) {
             // Schedule an attempt to register later.
@@ -130,7 +126,6 @@ class registration_manager {
      * @throws \coding_exception
      */
     public static function make_curl_request($data, $timeout) {
-        return true;
         $curl = new \curl();
         $curl->setopt( array(
                 'CURLOPT_TIMEOUT' => $timeout,
@@ -153,7 +148,6 @@ class registration_manager {
      * @throws \coding_exception
      */
     public static function attempt_deferred_registration($data) {
-        return true;
         if (self::is_registered()) {
             return true;
         }
@@ -173,7 +167,6 @@ class registration_manager {
      * @return string the URL.
      */
     public static function registration_server_url() {
-        return true;
         return "https://api.evolutioncode.uk/registration";
     }
 

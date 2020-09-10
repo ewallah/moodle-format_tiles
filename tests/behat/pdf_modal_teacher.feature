@@ -1,4 +1,4 @@
-@format @format_tiles @format_tiles_mod_modal @format_tiles_pdf_modal_teacher @javascript
+@format @format_tiles @format_tiles_mod_modal @format_tiles_pdf_modal_teacher @javascript @_file_upload
 Feature: PDFs can be set to open in modal windows with subtiles off
   In order to improve UX
   As a user
@@ -39,8 +39,10 @@ Feature: PDFs can be set to open in modal windows with subtiles off
     And I wait until the page is ready
     And I expand section "1" for edit
     And I wait until the page is ready
+    And I wait "2" seconds
     And I add a "File" to section "1"
     And I wait until the page is ready
+    And I wait "3" seconds
     And I set the following fields to these values:
       | Name        | Test PDF         |
       | Description | File description |

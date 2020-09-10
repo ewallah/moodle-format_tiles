@@ -1,4 +1,4 @@
-@format @format_tiles @format_tiles_photo_tiles @javascript
+@format @format_tiles @format_tiles_photo_picker @javascript @_file_upload
 Feature: Teacher can allocate photos to tiles
 
   Background:
@@ -46,7 +46,8 @@ Feature: Teacher can allocate photos to tiles
     And I am on "Business Law" course homepage with editing mode on
     And I click on "#tileicon_1" "css_element"
     And I wait until the page is ready
-    And "Pick a new icon" "dialogue" should be visible
+    And I wait "1" seconds
+    And "Pick a new icon or background photo" "dialogue" should be visible
     And I follow "Upload new photo"
     And I upload "course/format/tiles/tests/fixtures/blueberries.jpg" file to "Upload new photo" filemanager
     And I press "Save changes"
@@ -58,23 +59,29 @@ Feature: Teacher can allocate photos to tiles
 
     And I turn editing mode on
     And I wait until the page is ready
+    And I wait "1" seconds
     And I click on "#tileicon_2" "css_element"
     And I wait until the page is ready
+    And I wait "1" seconds
     And I click on ".tile-icon[data-original-title=\"Refresh\"]" "css_element" in the "#icon_picker_modal" "css_element"
     And I wait until the page is ready
-    
+    And I wait "2" seconds
+
     And I click on "#tileicon_3" "css_element"
     And I wait until the page is ready
-    And "Pick a new icon" "dialogue" should be visible
+    And I wait "1" seconds
+    And "Pick a new icon or background photo" "dialogue" should be visible
     And I follow "Upload new photo"
     And I upload "course/format/tiles/tests/fixtures/strawberries.jpg" file to "Upload new photo" filemanager
     And I press "Save changes"
     And I wait until the page is ready
     And I should see "Image saved for tile 'Tile 3'"
 
+    And I wait "1" seconds
     And I click on "#tileicon_7" "css_element"
     And I wait until the page is ready
-    And "Pick a new icon" "dialogue" should be visible
+    And I wait "1" seconds
+    And "Pick a new icon or background photo" "dialogue" should be visible
     And I follow "Photo library"
     And I wait until the page is ready
     And I click on ".photo[title=\"blueberries.jpg\"]" "css_element" in the "#icon_picker_modal" "css_element"
@@ -92,23 +99,32 @@ Feature: Teacher can allocate photos to tiles
     # Remove the photo tiles so we can check they come back on restore.
     And I wait until the page is ready
     And I am on "Business Law" course homepage with editing mode on
+    And I wait "1" seconds
     And I click on "#tileicon_1" "css_element"
     And I wait until the page is ready
+    And I wait "1" seconds
     And I click on ".tile-icon[data-original-title=\"Refresh\"]" "css_element" in the "#icon_picker_modal" "css_element"
     And I wait until the page is ready
-    
+    And I wait "2" seconds
+
     And I wait until the page is ready
+    And I wait "1" seconds
     And I click on "#tileicon_3" "css_element"
     And I wait until the page is ready
+    And I wait "1" seconds
     And I click on ".tile-icon[data-original-title=\"Refresh\"]" "css_element" in the "#icon_picker_modal" "css_element"
     And I wait until the page is ready
-    
+    And I wait "2" seconds
+
     And I wait until the page is ready
+    And I wait "1" seconds
     And I click on "#tileicon_7" "css_element"
     And I wait until the page is ready
+    And I wait "1" seconds
     And I click on ".tile-icon[data-original-title=\"Refresh\"]" "css_element" in the "#icon_picker_modal" "css_element"
     And I wait until the page is ready
-    
+    And I wait "2" seconds
+
     And I navigate to "Restore" in current page administration
     And I wait until the page is ready
     And I merge "test_backup.mbz" backup into the current course after deleting it's contents using this options:
@@ -123,17 +139,21 @@ Feature: Teacher can allocate photos to tiles
 
     And I am on "Course 2" course homepage with editing mode on
     And I wait until the page is ready
+    And I wait "1" seconds
     And I click on "#tileicon_3" "css_element"
     And I wait until the page is ready
-    And "Pick a new icon" "dialogue" should be visible
+    And I wait "1" seconds
+    And "Pick a new icon or background photo" "dialogue" should be visible
     And I follow "Photo library"
     And I wait until the page is ready
     And I click on ".photo[title=\"blueberries.jpg\"]" "css_element" in the "#icon_picker_modal" "css_element"
     And I wait until the page is ready
 
+    And I wait "1" seconds
     And I click on "#tileicon_6" "css_element"
     And I wait until the page is ready
-    And "Pick a new icon" "dialogue" should be visible
+    And I wait "1" seconds
+    And "Pick a new icon or background photo" "dialogue" should be visible
     And I follow "Photo library"
     And I wait until the page is ready
     And I click on ".photo[title=\"strawberries.jpg\"]" "css_element" in the "#icon_picker_modal" "css_element"
@@ -151,6 +171,7 @@ Feature: Teacher can allocate photos to tiles
     And I backup "Business Law" course using this options:
       | Confirmation | Filename | test_backup.mbz |
     And I wait until the page is ready
+    And I wait "1" seconds
     And I restore "test_backup.mbz" backup into a new course using this options:
     And I wait until the page is ready
     And I turn editing mode off

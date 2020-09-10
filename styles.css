@@ -71,7 +71,7 @@
     margin-right: 3px;
 }
 
-li#section-0.section.main.clearfix {
+.format-tiles li#section-0.section.main.clearfix {
     border-bottom: 0;
 }
 
@@ -98,7 +98,7 @@ li#section-0.section.main.clearfix {
 .format-tiles .progress-indic i.fa-check {
     color: darkgreen;
 }
-.format-tiles  .progress-indic svg circle.partial {
+.format-tiles .progress-indic svg circle.partial {
     stroke: #888;
     fill: none;
 }
@@ -608,7 +608,7 @@ li#section-0.section.main.clearfix {
 }
 
 .format-tiles  #section-0 .content .summary .no-overflow,
-#section-0 .content .summary .no-overflow p {
+.format-tiles #section-0 .content .summary .no-overflow p {
     margin-bottom: 0;
 }
 
@@ -617,7 +617,7 @@ li#section-0.section.main.clearfix {
 }
 
 .format-tiles ul.tiles li.section .content .modtype_label .no-overflow,
-#section-0 .content .summary .no-overflow {
+.format-tiles #section-0 .content .summary .no-overflow {
     margin-bottom: 5px;
 }
 .format-tiles ul.tiles li.section .content {
@@ -922,7 +922,7 @@ body.format-tiles.jsenabled .course-content .headerabovetiles {
 .format-tiles li.section .availabilityinfo {
     margin-left: 3em;
 }
-.availabilityinfo.isstealth .tag {
+.format-tiles .availabilityinfo.isstealth .tag {
     font-size: 0.6em;
 }
 .format-tiles .hidden #hiddeneye {
@@ -1257,7 +1257,13 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     /* stylelint-disable-next-line declaration-no-important */
     opacity: 1 !important;
 }
-
+.format-tiles li.activity.subtile:hover {
+    background-repeat: no-repeat;
+    background-position: 50% 70%;
+}
+.format-tiles .course-content .section .activity:hover {
+    background-color: #f9f9f9;
+}
 .format-tiles .subtile_inner,
 .format-tiles .fullwidth {
     width: 100%;
@@ -1640,7 +1646,7 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     font-size: 0.8em;
 }
 .format-tiles li.tile .availabilityinfo {
-    line-height: 30px;
+    line-height: 15px;
 }
 
 .format-tiles .inplaceeditable input.form-control {
@@ -1776,12 +1782,6 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     width: 200px;
     padding: 90px;
 }
-/*Adaptable theme buttons*/
-.format-tiles .btn:hover,
-.format-tiles .btn:active,
-.format-tiles .btn.progresshelp {
-    background: inherit;
-}
 
 .format-tiles .course-content ul.tiles .tile.phototile {
     padding: 0;
@@ -1893,4 +1893,7 @@ allow tiles to be taller and thinner so can fit two side by side in portrait on 
     float: right;
     transform: translateY(-50px);
     height: 0;
+}
+.format-tiles .course-content li.section .summary ul {
+    list-style: disc;
 }

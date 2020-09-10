@@ -12,7 +12,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-/* global document, window */
+
 /* eslint space-before-function-paren: 0 */
 
 /**
@@ -331,10 +331,6 @@ define(["jquery", "core/modal_factory", "core/config", "core/templates", "core/n
                 if (iframeHeight > modalBody.height() - MODAL_MARGIN) {
                     modalBody.animate({"min-height": Math.min(iframeHeight + MODAL_MARGIN, win.height())}, "fast");
                 }
-
-                // Align the iframe in the centre of the modal.
-                modalBody.css("text-align", "center");
-
                 stopAllVideosOnDismiss(modalRoot);
             });
         };

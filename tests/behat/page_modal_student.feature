@@ -34,6 +34,7 @@ Feature: Student can open a page
     And I wait until the page is ready
     And I click on tile "6"
     And I wait until the page is ready
+    And I wait "1" seconds
     And I click format tiles activity "Test page name"
     And I wait until the page is ready
     And "Test page name" "dialogue" should be visible
@@ -41,6 +42,7 @@ Feature: Student can open a page
     And "Close" "button" should exist in the "Test page name" "dialogue"
     And I click on "Close" "button"
     And I wait until the page is ready
+    And I wait "1" seconds
 
     And I click on close button for tile "6"
     And "Test page content" "text" should not be visible
@@ -60,6 +62,7 @@ Feature: Student can open a page
     And "Close" "button" should exist in the "Test page name" "dialogue"
     And I click on "Close" "button"
     And I wait until the page is ready
+    And I wait "1" seconds
     And I click on close button for tile "6"
     And "Test page content" "text" should not be visible
     And I log out tiles

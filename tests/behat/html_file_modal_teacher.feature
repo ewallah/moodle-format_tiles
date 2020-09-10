@@ -1,4 +1,4 @@
-@format @format_tiles @format_tiles_mod_modal @format_tiles_html_modal_teacher @javascript
+@format @format_tiles @format_tiles_mod_modal @format_tiles_html_modal_teacher @javascript @_file_upload
 Feature: HTML file can be set to open in modal windows with subtiles off
   In order to improve UX
   As a user
@@ -37,6 +37,7 @@ Feature: HTML file can be set to open in modal windows with subtiles off
     And I wait until the page is ready
     And I expand section "1" for edit
     And I wait until the page is ready
+    And I wait "3" seconds
     And I add a "File" to section "1"
     And I wait until the page is ready
 
@@ -49,6 +50,7 @@ Feature: HTML file can be set to open in modal windows with subtiles off
     And I set the field "Show type" to "1"
     And I press "Save and return to course"
     Then I should see "Test HTML file"
+    And I wait "2" seconds
     And I am on "Course 1" course homepage
     And I log out tiles
 

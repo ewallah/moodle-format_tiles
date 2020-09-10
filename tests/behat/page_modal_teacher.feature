@@ -38,12 +38,15 @@ Feature: Teacher can add a page to a course and open it with subtiles off
     And I wait until the page is ready
     And I expand section "1" for edit
     And I wait until the page is ready
+    And I wait "3" seconds
     And I add a "page" to section "1"
     And I wait until the page is ready
+    And I wait "2" seconds
     And I set the following fields to these values:
       | Name                | Test page 2                                          |
       | Page content        | Test page 2 content                                  |
       | Completion tracking | Students can manually mark the activity as completed |
+    And I wait "2" seconds
     And I click on "Save and display" "button"
 
     And I am on "Course 1" course homepage
@@ -54,6 +57,7 @@ Feature: Teacher can add a page to a course and open it with subtiles off
 #    Check that we can see the original page we added
     And I wait until activity "Test page 2" exists in "non-subtile" format
     And I click format tiles activity "Test page 2"
+    And I wait "2" seconds
     And "Test page 2" "dialogue" should be visible
     And "Test page 2 content" "text" should be visible
     And "Close" "button" should exist in the "Test page 2" "dialogue"
@@ -61,9 +65,11 @@ Feature: Teacher can add a page to a course and open it with subtiles off
     And I wait until the page is ready
 
 #    Close tile etc
+    And I wait "1" seconds
     And I click on close button for tile "1"
     And "Test page 1" "text" should not be visible
     And "Test page 2" "text" should not be visible
+    And I wait "1" seconds
     And I log out tiles
 
 #Now try the same again with sub tiles on
@@ -74,10 +80,12 @@ Feature: Teacher can add a page to a course and open it with subtiles off
     And I wait until the page is ready
     And I follow "Collapse all"
     And I wait until the page is ready
+    And I wait "2" seconds
     And I expand section "1" for edit
     And I wait until the page is ready
     And I add a "page" to section "1"
     And I wait until the page is ready
+    And I wait "2" seconds
     And I set the following fields to these values:
       | Name                | Test page 2                                          |
       | Page content        | Test page 2 content                                  |
@@ -97,4 +105,5 @@ Feature: Teacher can add a page to a course and open it with subtiles off
     And I click on "Close" "button"
     And I wait until the page is ready
 
+    And I wait "1" seconds
     And I click on close button for tile "1"

@@ -25,7 +25,6 @@
  * @since Moodle 3.3
  */
 
-/* global setTimeout, document, window */
 /* eslint space-before-function-paren: 0 */
 
 define(["jquery", "core/ajax"], function ($, ajax) {
@@ -203,6 +202,10 @@ define(["jquery", "core/ajax"], function ($, ajax) {
             var maxTilesPerRow = 1;
             var thisRowCount = 0;
             var allTiles = $(Selector.TILES).children(Selector.TILE).not(Selector.TILE_COLLAPSED).not(".spacer");
+            if (allTiles.length === 0) {
+                // Course has no sections.
+                return [];
+            }
             allTiles.each(function (index, tile) {
                 currentSectionId = $(tile).attr("data-section");
                 var maxVerticalPositionDifference = 100;
@@ -341,15 +344,6 @@ define(["jquery", "core/ajax"], function ($, ajax) {
      */
     var unHideTiles = function() {
         $(Selector.TILES).animate({opacity: 1}, "fast");
-        $(Selector.TILE).not(Selector.SPACER).each(function(index, tile) {
-            tile = $(tile);
-            setTimeout(function() {
-                tile.animate(
-                    {opacity: tile.hasClass("tile-hidden") || tile.hasClass("tile-restricted") ? 0.5 : 1},
-                    "fast"
-                );
-            }, index * 10);
-        });
         $(Selector.SECTION_ZERO).animate({opacity: 1}, "fast");
         $("#page-loading-icon").fadeOut(500).remove();
     };

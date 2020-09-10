@@ -122,7 +122,7 @@ class behat_format_tiles extends behat_base {
             $pagecms[$cminfo->name] = $cminfo->id;
         }
         $this->wait_for_pending_js(); // Wait for AJAX request to complete.
-        //$this->getSession()->wait(100);
+        $this->getSession()->wait(1000);
         $completionstate = $DB->get_field(
             'course_modules_completion',
             'completionstate',
@@ -188,7 +188,7 @@ class behat_format_tiles extends behat_base {
 
         // Click the tile.
         $this->execute("behat_general::i_click_on", array("//li[@id=" . $tileid . "]", "xpath_element"));
-        $this->getSession()->wait(150); // Important to wait here as page is scrolling and might click wrong thing after.
+        $this->getSession()->wait(1500); // Important to wait here as page is scrolling and might click wrong thing after.
         $this->wait_for_pending_js(); // Wait for AJAX request to complete.
     }
 
@@ -204,10 +204,10 @@ class behat_format_tiles extends behat_base {
 
         // Click the tile.
         $this->wait_for_pending_js();
-        $this->getSession()->wait(150);  // Just in case we did a collapse all - wait a bit.
+        $this->getSession()->wait(1500);  // Just in case we did a collapse all - wait a bit.
         $this->execute("behat_general::i_click_on", array("//a[@id=" . $tileid . "]", "xpath_element"));
         $this->wait_for_pending_js(); // Wait for AJAX request to complete.
-        //$this->getSession()->wait(300); // Important to wait here as section is expanding with transition.
+        $this->getSession()->wait(3000); // Important to wait here as section is expanding with transition.
     }
 
     /**
@@ -225,7 +225,7 @@ class behat_format_tiles extends behat_base {
         $this->wait_for_pending_js();
         $this->execute("behat_general::i_click_on", array("//span[@id=" . $tileid . "]", "xpath_element"));
         $this->execute('behat_general::wait_until_the_page_is_ready');
-        // $this->getSession()->wait(200);
+        $this->getSession()->wait(2000);
         $this->wait_for_pending_js(); // Wait for AJAX request to complete.
     }
     // @codingStandardsIgnoreStart.
@@ -271,7 +271,7 @@ class behat_format_tiles extends behat_base {
         $this->execute('behat_general::wait_until_the_page_is_ready');
         if ($this->running_javascript()) {
             $this->wait_for_pending_js();
-            //$this->getSession()->wait(self::REDUCED_TIMEOUT);
+            $this->getSession()->wait(self::REDUCED_TIMEOUT * 1000);
         }
         $this->execute("behat_general::i_click_on", array($this->escape($xpath), "xpath_element"));
     }
@@ -397,8 +397,7 @@ class behat_format_tiles extends behat_base {
         );
 
         if ($this->running_javascript()) {
-            $this->wait_for_pending_js();
-            //$this->getSession()->wait(self::TIMEOUT, self::PAGE_READY_JS);
+            $this->getSession()->wait(self::TIMEOUT * 1000, self::PAGE_READY_JS);
         }
     }
 
@@ -412,7 +411,7 @@ class behat_format_tiles extends behat_base {
 
         // Wait for page to be loaded.
         $this->wait_for_pending_js();
-        //$this->getSession()->wait(100); // Additional wait.
+        $this->getSession()->wait(1000); // Additional wait.
 
         // Click on logout link in footer, as it's much faster.
         $this->execute('behat_general::i_click_on_in_the', array(get_string('logout'), 'link', '#page-footer', "css_element"));

@@ -13,7 +13,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/* global setTimeout, document, window */
 /* eslint space-before-function-paren: 0 */
 
 /**
@@ -48,6 +47,7 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
         var backDropZIndex = 0;
         var courseId;
         var resizeLocked = false;
+        var enableCompletion;
 
          // Keep a record of which tile is currently open.
         var openTile = 0;
@@ -138,8 +138,10 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
             contentSection.find("iframe").each(function (index, iframe) {
                 iframe = $(iframe);
                 // Remove the src from the iframe but keep it in case the section is re-opened.
-                iframe.attr('data-src', iframe.attr("src"));
-                iframe.attr('src', "");
+                if (iframe.attr('src')) {
+                    iframe.attr('data-src', iframe.attr("src"));
+                    iframe.attr('src', "");
+                }
             });
 
             // Then Moodle media player.
@@ -248,7 +250,10 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
                     setTimeout(function () {
                         // Manual forms, auto icons and "Restricted until ..." etc.
                         try {
-                            contentArea.find(".togglecompletion, .completioncheckbox, .tag-info").tooltip();
+                            const tooltipItems = contentArea.find(".togglecompletion, .completioncheckbox, .tag-info");
+                            if (tooltipItems.length > 0) {
+                                tooltipItems.tooltip();
+                            }
                         } catch (err) {
                             require(["core/log"], function(log) {
                                 log.debug(err);
@@ -304,13 +309,26 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
 
                 // If we have any iframes in the section which were previous emptied out, re-populate.
                 // This will happen if we have previously closed a section with videos in, and they were muted.
-                contentArea.find("iframe").each(function (index, iframe) {
-                    iframe = $(iframe);
-                    // If iframe has no src, add it from data-src.
-                    if (iframe.attr('src') === '' && iframe.attr('data-src') !== undefined) {
-                        iframe.attr('src', iframe.attr("data-src"));
+                const iframes = contentArea.find("iframe");
+                if (iframes.length > 0) {
+                    iframes.each(function (index, iframe) {
+                        iframe = $(iframe);
+                        // If iframe has no src, add it from data-src.
+                        if (iframe.attr('src') === '' && iframe.attr('data-src') !== undefined) {
+                            iframe.attr('src', iframe.attr("data-src"));
+                        }
+                    });
+
+                    if (enableCompletion) {
+                        // Some iframes may load content set to mark as complete on view.
+                        // So maybe need to update tile completion info. E.g. applies with H5P filter.
+                        require(["format_tiles/completion"], function (completion) {
+                            setTimeout(() => {
+                                completion.updateTileInformation();
+                            }, 1000);
+                        });
                     }
-                });
+                }
             };
 
             /**
@@ -664,7 +682,9 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
                 assumeDataStoreConsent, // Set by site admin see settings.php.
                 reopenLastSectionInit, // Set by site admin see settings.php.
                 userId,
-                fitTilesToWidth
+                fitTilesToWidth,
+                usingH5pFilter,
+                enableCompletionInit
             ) {
                 courseId = courseIdInit;
                 isMobile = isMobileInit;
@@ -672,6 +692,7 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
                 reopenLastVisitedSection = reopenLastSectionInit === "1";
                 useFilterButtons = useFilterButtons === 1;
                 assumeDataStoreConsent = assumeDataStoreConsent === "1";
+                enableCompletion = enableCompletionInit === "1";
                  // We want to initialise the browser storage JS module for storing user settings.
                  // And (depending on maxContentSectionsToStore) possibly also content in browser.
                 browserStorage.init(
@@ -751,7 +772,7 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
                             // Silently set the *next* section's content to if it exists and if user is not on mobile.
                             // short delay as more important to get current section content first (above).
                             var nextSecIfExists = $(Selector.SECTION_ID + (dataSection + 1));
-                            if (!isMobile && nextSecIfExists.length && dataSection > 0) {
+                            if (!isMobile && !usingH5pFilter && nextSecIfExists.length && dataSection > 0) {
                                 setTimeout(function () {
                                     var storedContentAge = browserStorage.getStoredContentAge(courseId, dataSection + 1);
                                     if (storedContentAge) {
@@ -981,19 +1002,6 @@ define(["jquery", "core/templates", "core/ajax", "format_tiles/browser_storage",
 
                         // Move focus to the first tile in the course (not sec zero contents if present).
                         $("ul.tiles .tile").first().focus();
-
-                        // Initialise tooltips shown for example for tile contents when hover on tile ("Files: 1")
-                        // But not on mobile as they make clicks harder.
-                        var toolTips = $(Selector.TOOLTIP);
-                        if (toolTips.length !== 0) {
-                            try {
-                                toolTips.tooltip();
-                            } catch (err) {
-                                require(["core/log"], function(log) {
-                                    log.debug(err);
-                                });
-                            }
-                        }
                     }
 
                     // If Adaptable theme is being used, and Glossary auto link filter is on, we need this.
